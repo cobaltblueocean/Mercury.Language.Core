@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace Mercury.Language.Core
+namespace System
 {
     /// <summary>
     /// Core Description
