@@ -32,16 +32,19 @@ namespace Mercury.Language.Core.Test
             objectA.Name = "Dummy";
             objectA.Value = values;
             objectA.ReferenceObject = ref1;
+            objectA.Function = new SimpleFunction();
 
             objectB.Id = 1;
             objectB.Name = "Dummy";
             objectB.Value = values;
             objectB.ReferenceObject = ref1;
+            objectB.Function = new SimpleFunction();
 
             objectC.Id = 1;
             objectC.Name = "Dummy";
             objectC.Value = values;
             objectC.ReferenceObject = ref2;
+            objectC.Function = new MultiplyFunction();
 
             foreach (var item in data)
             {
@@ -57,6 +60,7 @@ namespace Mercury.Language.Core.Test
             Assert.IsFalse(objectB.AreObjectsEqual(objectC));
 
             objectB.ReferenceObject.Name = "Test";
+            objectB.Function = new MultiplyFunction();
             Assert.IsTrue(objectB.AreObjectsEqual(objectC));
 
             //Assert.Pass();

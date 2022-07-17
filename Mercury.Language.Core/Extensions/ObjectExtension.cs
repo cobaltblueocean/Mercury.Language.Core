@@ -86,7 +86,7 @@ namespace System
                     {
                         return objectA.Equals(objectB);
                     }
-                    else if (objectTypeA != objectTypeB)
+                    else if (!objectTypeA.Equals(objectTypeB))
                     {
                         return false;
                     }
@@ -102,6 +102,10 @@ namespace System
                         {
                             valueA = propertyInfo.GetValue(objectA, null);
                             valueB = propertyInfo.GetValue(objectB, null);
+
+                            // check if any property returned the object itself
+                            if ((valueA != null) &&  (valueA.Equals(objectA)))
+                                return true;
 
                             // if it is a primitive type, value type or implements IComparable, just directly try and compare the value
                             if (CanDirectlyCompare(propertyInfo.PropertyType))

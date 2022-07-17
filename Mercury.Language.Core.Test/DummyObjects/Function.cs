@@ -1,5 +1,9 @@
 ﻿// Copyright (c) 2017 - presented by Kei Nakai
 //
+// Original project is developed and published by OpenGamma Inc.
+//
+// Copyright (C) 2012 - present by OpenGamma Inc. and the OpenGamma group of companies
+//
 // Please see distribution for license.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,37 +26,25 @@ using System.Threading.Tasks;
 namespace Mercury.Language.Core.Test.DummyObjects
 {
     /// <summary>
-    /// ComplexObject Description
+    /// Function Description
     /// </summary>
-    public class ComplexObject : IComplexObject
+    public abstract class Function<S, T>
     {
-        private List<ChildObject> _children;
-        private Function<Double, Double> _function;
-        
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public double?[] Value { get; set; }
+        ///// <summary>
+        ///// 1-D function method
+        ///// </summary>
+        ///// <param name="x">The argument of the function, not null</param>
+        ///// <returns>The value of the function</returns>
+        public Func<S, T> evaluator;
 
-        public Object Reference { get ; set; }
-
-        public ChildObject[] Children { get { return _children.ToArray(); } }
-
-        public IRefObject ReferenceObject { get; set; }
-        public Function<Double, Double> Function { get; set; }
-
-        public ComplexObject()
+        ///// <summary>
+        ///// 1-D function method
+        ///// </summary>
+        ///// <param name="x">The argument of the function, not null</param>
+        ///// <returns>The value of the function</returns>
+        public virtual T Evaluate(params S[] x)
         {
-            _children = new List<ChildObject>();
-        }
-
-        public void AddChild(int key, double? value)
-        {
-            _children.Add(new ChildObject(key, value));
-        }
-
-        public void AddRange(double?[] values)
-        {
-            throw new NotSupportedException();
+            return evaluator(x[0]);
         }
     }
 }

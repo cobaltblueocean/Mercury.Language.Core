@@ -1,5 +1,9 @@
 ﻿// Copyright (c) 2017 - presented by Kei Nakai
 //
+// Original project is developed and published by OpenGamma Inc.
+//
+// Copyright (C) 2012 - present by OpenGamma Inc. and the OpenGamma group of companies
+//
 // Please see distribution for license.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,37 +26,21 @@ using System.Threading.Tasks;
 namespace Mercury.Language.Core.Test.DummyObjects
 {
     /// <summary>
-    /// ComplexObject Description
+    /// MultiplyFunction Description
     /// </summary>
-    public class ComplexObject : IComplexObject
+    public class MultiplyFunction: Function<Double, Double>
     {
-        private List<ChildObject> _children;
-        private Function<Double, Double> _function;
-        
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public double?[] Value { get; set; }
-
-        public Object Reference { get ; set; }
-
-        public ChildObject[] Children { get { return _children.ToArray(); } }
-
-        public IRefObject ReferenceObject { get; set; }
-        public Function<Double, Double> Function { get; set; }
-
-        public ComplexObject()
+        public MultiplyFunction()
         {
-            _children = new List<ChildObject>();
+            evaluator = new Func<double, double>((x) => {
+                return x * 2;
+            });
         }
 
-        public void AddChild(int key, double? value)
+        public Function<Double, Double> PrimaryFunction
         {
-            _children.Add(new ChildObject(key, value));
+            get { return this; }
         }
 
-        public void AddRange(double?[] values)
-        {
-            throw new NotSupportedException();
-        }
     }
 }
