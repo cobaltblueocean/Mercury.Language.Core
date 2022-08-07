@@ -2,13 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.8.0.4</Version>
+    <Version>0.8.0.8</Version>
     <Authors>Kei Nakai</Authors>
     <Company>Mercury</Company>
     <Description>Supplemental Extension Methods for Object comparison and Premitive classes</Description>
     <PackageReleaseNotes>- Property base object compare methods and premitive class
 - Bug fixed AreObjectsEqual method
-- Bug fixed when a property returned the pbject itself</PackageReleaseNotes>
+- Bug fixed when a property returned the pbject itself
+- Removed check "IsValueType" from CanDirectlyCompare() method</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

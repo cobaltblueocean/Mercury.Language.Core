@@ -46,6 +46,59 @@ namespace System
                    o.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(Dictionary<,>));
         }
 
+        /// <summary>
+        /// Identify if this object is KeyValuePair or not
+        /// </summary>
+        /// <see href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/9ad76a19-ed9c-4a02-be6b-95870af0e10b/how-to-determine-if-object-is-keyvaluepairlttkey-tvaluegt?forum=csharpgeneral"/>
+        /// <param name="o">target object</param>
+        /// <returns>True if the target object is KeyValuePair, otherwise returns false</returns>
+        public static bool IsKeyValuePair(this object o)
+        {
+            Type type = o.GetType();
+            if (type.IsGenericType)
+            {
+                return type.GetGenericTypeDefinition() != null ? type.GetGenericTypeDefinition() == typeof(KeyValuePair<,>) : false;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Get Property value by Property's name
+        /// </summary>
+        /// <param name="src">target object</param>
+        /// <param name="propName">Property name</param>
+        /// <returns>The property's value</returns>
+        public static object GetPropertyValue(this object src, string propName)
+        {
+            var properties = src.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+
+            var propInfo = properties.FirstOrDefault(x => x.Name.ToLower() == propName.ToLower());
+
+            if (propInfo != null)
+                return propInfo.GetValue(src, null);
+
+            throw new KeyNotFoundException(String.Format("The property {0} is not found in the source object.", propName));
+        }
+
+
+        /// <summary>
+        /// Get Property value by Property's name
+        /// </summary>
+        /// <param name="target">target object</param>
+        /// <param name="propName">Property name</param>
+        /// <returns>The property's value</returns>
+        public static void SetPropertyValue<T, V>(this T target, String propName, V value)
+        {
+            var properties = target.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+
+            var propInfo = properties.FirstOrDefault(x => x.Name.ToLower() == propName.ToLower());
+
+            if (propInfo != null)
+                propInfo.SetValue(target, value);
+
+            throw new KeyNotFoundException(String.Format("The property {0} is not found in the source object.", propName));
+        }
+
         public static String ValueOf<T>(this T target)
         {
             if (IsNullable(typeof(T)))
@@ -86,7 +139,7 @@ namespace System
                     {
                         return objectA.Equals(objectB);
                     }
-                    else if (!objectTypeA.Equals(objectTypeB))
+                    else if (objectTypeA != objectTypeB)
                     {
                         return false;
                     }
@@ -104,100 +157,177 @@ namespace System
                             valueB = propertyInfo.GetValue(objectB, null);
 
                             // check if any property returned the object itself
-                            if ((valueA != null) &&  (valueA.Equals(objectA)))
+                            if ((valueA != null) && (valueA.Equals(objectA)))
                                 return true;
 
-                            // if it is a primitive type, value type or implements IComparable, just directly try and compare the value
-                            if (CanDirectlyCompare(propertyInfo.PropertyType))
+                            if (!IsKeyValuePair(objectA))
                             {
-                                if (!AreValuesEqual(valueA, valueB))
+                                // if it is a primitive type, value type or implements IComparable, just directly try and compare the value
+                                if (CanDirectlyCompare(propertyInfo.PropertyType))
                                 {
-                                    Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
-                                    result = false;
-                                }
-                            }
-                            // if it implements IEnumerable, then scan any items
-                            else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType))
-                            {
-                                IEnumerable<object> collectionItems1;
-                                IEnumerable<object> collectionItems2;
-                                int collectionItemsCount1;
-                                int collectionItemsCount2;
-
-                                // null check
-                                if (valueA == null && valueB != null || valueA != null && valueB == null)
-                                {
-                                    Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
-                                    result = false;
-                                }
-                                else if (valueA != null && valueB != null)
-                                {
-                                    collectionItems1 = ((IEnumerable)valueA).Cast<object>();
-                                    collectionItems2 = ((IEnumerable)valueB).Cast<object>();
-                                    collectionItemsCount1 = collectionItems1.Count();
-                                    collectionItemsCount2 = collectionItems2.Count();
-
-                                    // check the counts to ensure they match
-                                    if (collectionItemsCount1 != collectionItemsCount2)
+                                    if (!AreValuesEqual(valueA, valueB))
                                     {
-                                        Console.WriteLine(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name);
+                                        if (!AreObjectsEqual(valueA, valueB, ignoreList))
+                                        {
+                                            Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                            result = false;
+                                        }
+                                    }
+                                }
+                                // if it implements IEnumerable, then scan any items
+                                else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType))
+                                {
+                                    IEnumerable<object> collectionItems1;
+                                    IEnumerable<object> collectionItems2;
+                                    int collectionItemsCount1;
+                                    int collectionItemsCount2;
+
+                                    // null check
+                                    if (valueA == null && valueB != null || valueA != null && valueB == null)
+                                    {
+                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
                                         result = false;
                                     }
-                                    // and if they do, compare each item... this assumes both collections have the same order
-                                    else
+                                    else if (valueA != null && valueB != null)
                                     {
-                                        for (int i = 0; i < collectionItemsCount1; i++)
+                                        collectionItems1 = ((IEnumerable)valueA).Cast<object>();
+                                        collectionItems2 = ((IEnumerable)valueB).Cast<object>();
+                                        collectionItemsCount1 = collectionItems1.Count();
+                                        collectionItemsCount2 = collectionItems2.Count();
+
+                                        // check the counts to ensure they match
+                                        if (collectionItemsCount1 != collectionItemsCount2)
                                         {
-                                            object collectionItem1;
-                                            object collectionItem2;
-                                            Type collectionItemType;
-
-                                            collectionItem1 = collectionItems1.ElementAt(i);
-                                            collectionItem2 = collectionItems2.ElementAt(i);
-                                            collectionItemType = collectionItem1.GetType();
-
-                                            if (CanDirectlyCompare(collectionItemType))
+                                            Console.WriteLine(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name);
+                                            result = false;
+                                        }
+                                        // and if they do, compare each item... this assumes both collections have the same order
+                                        else
+                                        {
+                                            for (int i = 0; i < collectionItemsCount1; i++)
                                             {
-                                                if (!AreValuesEqual(collectionItem1, collectionItem2))
+                                                object collectionItem1;
+                                                object collectionItem2;
+                                                Type collectionItemType;
+
+                                                collectionItem1 = collectionItems1.ElementAt(i);
+                                                collectionItem2 = collectionItems2.ElementAt(i);
+                                                collectionItemType = collectionItem1.GetType();
+                                                if (!IsKeyValuePair(collectionItem1))
                                                 {
-                                                    Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
-                                                    result = false;
+                                                    if (CanDirectlyCompare(collectionItemType))
+                                                    {
+                                                        if (!AreValuesEqual(collectionItem1, collectionItem2))
+                                                        {
+                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            result = false;
+                                                        }
+                                                    }
+                                                    else if (!AreObjectsEqual(collectionItem1, collectionItem2, ignoreList))
+                                                    {
+                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        result = false;
+                                                    }
                                                 }
-                                            }
-                                            else if (!AreObjectsEqual(collectionItem1, collectionItem2, ignoreList))
-                                            {
-                                                Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
-                                                result = false;
+                                                else
+                                                {
+                                                    var collectionItem1Key = GetPropertyValue(collectionItem1, "Key");
+                                                    var collectionItem2Key = GetPropertyValue(collectionItem2, "Key");
+                                                    var collectionItemKeyType = collectionItem1Key.GetType();
+                                                    if (CanDirectlyCompare(collectionItemKeyType))
+                                                    {
+                                                        if (!AreValuesEqual(collectionItem1Key, collectionItem2Key))
+                                                        {
+                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            result = false;
+                                                        }
+                                                    }
+                                                    else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, ignoreList))
+                                                    {
+                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        result = false;
+                                                    }
+
+                                                    var collectionItem1Value = GetPropertyValue(collectionItem1, "Value");
+                                                    var collectionItem2Value = GetPropertyValue(collectionItem2, "Value");
+                                                    var collectionItemValueType = collectionItem1Value.GetType();
+                                                    if (CanDirectlyCompare(collectionItemValueType))
+                                                    {
+                                                        if (!AreValuesEqual(collectionItem1Value, collectionItem2Value))
+                                                        {
+                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            result = false;
+                                                        }
+                                                    }
+                                                    else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, ignoreList))
+                                                    {
+                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        result = false;
+                                                    }
+                                                }
                                             }
                                         }
                                     }
                                 }
-                            }
-                            else if (propertyInfo.PropertyType.IsClass || propertyInfo.PropertyType.IsInterface)
-                            {
-                                if (!AreObjectsEqual(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), ignoreList))
+                                else if (propertyInfo.PropertyType.IsClass || propertyInfo.PropertyType.IsInterface)
                                 {
-                                    Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                    if (!AreObjectsEqual(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), ignoreList))
+                                    {
+                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                        result = false;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine(LocalizedResources.Instance().CannotCompareProperty, objectTypeA.FullName, propertyInfo.Name);
                                     result = false;
                                 }
                             }
                             else
                             {
-                                Console.WriteLine(LocalizedResources.Instance().CannotCompareProperty, objectTypeA.FullName, propertyInfo.Name);
-                                result = false;
+                                var collectionItem1Key = GetPropertyValue(objectA, "Key");
+                                var collectionItem2Key = GetPropertyValue(objectB, "Key");
+                                var collectionItemKeyType = collectionItem1Key.GetType();
+                                if (CanDirectlyCompare(collectionItemKeyType))
+                                {
+                                    if (!AreValuesEqual(collectionItem1Key, collectionItem2Key))
+                                    {
+                                        if (!AreObjectsEqual(valueA, valueB, ignoreList))
+                                        {
+                                            Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                            result = false;
+                                        }
+                                    }
+                                }
+                                else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, ignoreList))
+                                {
+                                    Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                    result = false;
+                                }
+
+                                var collectionItem1Value = GetPropertyValue(objectA, "Value");
+                                var collectionItem2Value = GetPropertyValue(objectB, "Value");
+                                var collectionItemValueType = collectionItem1Value.GetType();
+                                if (CanDirectlyCompare(collectionItemValueType))
+                                {
+                                    if (!AreValuesEqual(collectionItem1Value, collectionItem2Value))
+                                    {
+                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                        result = false;
+                                    }
+                                }
+                                else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, ignoreList))
+                                {
+                                    Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                    result = false;
+                                }
                             }
                         }
-                        catch (NotImplementedException ne)
+                        catch (NotImplementedException)
                         {
                             continue;
                         }
-
-                        catch (NotSupportedException ne)
-                        {
-                            continue;
-                        }
-
-                        catch (System.Reflection.TargetParameterCountException te)
+                        catch (System.Reflection.TargetParameterCountException)
                         {
                             continue;
                         }
@@ -218,7 +348,6 @@ namespace System
                 }
                 else
                     result = object.Equals(objectA, objectB);
-
             }
             catch (System.Exception ex)
             {
@@ -354,20 +483,5 @@ namespace System
                 }
             }
         }
-
-        public static void SetPropertyValue<T, V>(this T target, String property, V value)
-        {
-            var properties = target.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
-
-            foreach (var prop in properties)
-            {
-                if (prop.Name.ToLower() == property.ToLower())
-                {
-                    prop.SetValue(target, value);
-                    return;
-                }
-            }
-        }
-
     }
 }
