@@ -115,13 +115,26 @@ namespace System
         }
 
         /// <summary>
-        /// Compares the properties of two objects of the same type and returns if all properties are equal.
+        /// Compares the properties of two objects of the same type and returns if all properties are equal ignoring Obsoleted property.
         /// </summary>
         /// <param name="objectA">The first object to compare.</param>
         /// <param name="objectB">The second object to compre.</param>
         /// <param name="ignoreList">A list of property names to ignore from the comparison.</param>
         /// <returns><c>true</c> if all property values are equal, otherwise <c>false</c>.</returns>
         public static bool AreObjectsEqual(this object objectA, object objectB, params string[] ignoreList)
+        {
+            return AreObjectsEqual(objectA, objectB, false, ignoreList);
+        }
+
+        /// <summary>
+        /// Compares the properties of two objects of the same type and returns if all properties are equal.
+        /// </summary>
+        /// <param name="objectA">The first object to compare.</param>
+        /// <param name="objectB">The second object to compre.</param>
+        /// <param name="isIncludeObsolete">Compare including Obsoleted property or not</param>
+        /// <param name="ignoreList">A list of property names to ignore from the comparison.</param>
+        /// <returns><c>true</c> if all property values are equal, otherwise <c>false</c>.</returns>
+        public static bool AreObjectsEqual(this object objectA, object objectB, Boolean isIncludeObsolete, params string[] ignoreList)
         {
             bool result;
 
@@ -146,7 +159,13 @@ namespace System
 
                     result = true; // assume by default they are equal
 
-                    foreach (PropertyInfo propertyInfo in objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name)))
+                    PropertyInfo[] properties;
+                    if (isIncludeObsolete)
+                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name)).ToArray();
+                    else
+                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && p.GetCustomAttributes(typeof(ObsoleteAttribute), true).Length == 0 && !ignoreList.Contains(p.Name)).ToArray();
+
+                    foreach (PropertyInfo propertyInfo in properties)
                     {
                         object valueA;
                         object valueB;
@@ -167,7 +186,7 @@ namespace System
                                 {
                                     if (!AreValuesEqual(valueA, valueB))
                                     {
-                                        if (!AreObjectsEqual(valueA, valueB, ignoreList))
+                                        if (!AreObjectsEqual(valueA, valueB, isIncludeObsolete, ignoreList))
                                         {
                                             Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
                                             result = false;
@@ -223,7 +242,7 @@ namespace System
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(collectionItem1, collectionItem2, ignoreList))
+                                                    else if (!AreObjectsEqual(collectionItem1, collectionItem2, isIncludeObsolete, ignoreList))
                                                     {
                                                         Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
                                                         result = false;
@@ -242,7 +261,7 @@ namespace System
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, ignoreList))
+                                                    else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, isIncludeObsolete, ignoreList))
                                                     {
                                                         Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
                                                         result = false;
@@ -259,7 +278,7 @@ namespace System
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, ignoreList))
+                                                    else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, isIncludeObsolete, ignoreList))
                                                     {
                                                         Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
                                                         result = false;
@@ -271,7 +290,7 @@ namespace System
                                 }
                                 else if (propertyInfo.PropertyType.IsClass || propertyInfo.PropertyType.IsInterface)
                                 {
-                                    if (!AreObjectsEqual(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), ignoreList))
+                                    if (!AreObjectsEqual(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), isIncludeObsolete, ignoreList))
                                     {
                                         Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
                                         result = false;
@@ -292,14 +311,14 @@ namespace System
                                 {
                                     if (!AreValuesEqual(collectionItem1Key, collectionItem2Key))
                                     {
-                                        if (!AreObjectsEqual(valueA, valueB, ignoreList))
+                                        if (!AreObjectsEqual(valueA, valueB, isIncludeObsolete, ignoreList))
                                         {
                                             Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
                                             result = false;
                                         }
                                     }
                                 }
-                                else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, ignoreList))
+                                else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, isIncludeObsolete, ignoreList))
                                 {
                                     Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
                                     result = false;
@@ -316,7 +335,7 @@ namespace System
                                         result = false;
                                     }
                                 }
-                                else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, ignoreList))
+                                else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, isIncludeObsolete, ignoreList))
                                 {
                                     Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
                                     result = false;
@@ -366,7 +385,7 @@ namespace System
         ///   <c>true</c> if this value instances of the specified type can be directly compared; otherwise, <c>false</c>.
         /// </returns>
         /// <see cref="https://www.cyotek.com/blog/comparing-the-properties-of-two-objects-via-reflection"/>
-        private static bool CanDirectlyCompare(Type type)
+        public static bool CanDirectlyCompare(this Type type)
         {
             return typeof(IComparable).IsAssignableFrom(type) || type.IsPrimitive || type.IsValueType || type == typeof(string);
         }
