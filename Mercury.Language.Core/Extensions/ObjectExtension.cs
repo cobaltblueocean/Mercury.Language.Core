@@ -148,7 +148,7 @@ namespace System
                     objectTypeA = objectA.GetType();
                     objectTypeB = objectB.GetType();
 
-                    if (CanDirectlyCompare(objectTypeA))
+                    if (CanDirectlyCompare(objectTypeA) && !IsList(objectA))
                     {
                         return objectA.Equals(objectB);
                     }
@@ -182,7 +182,7 @@ namespace System
                             if (!IsKeyValuePair(objectA))
                             {
                                 // if it is a primitive type, value type or implements IComparable, just directly try and compare the value
-                                if (CanDirectlyCompare(propertyInfo.PropertyType))
+                                if (CanDirectlyCompare(propertyInfo.PropertyType) && !IsList(objectA))
                                 {
                                     if (!AreValuesEqual(valueA, valueB))
                                     {
@@ -288,6 +288,101 @@ namespace System
                                         }
                                     }
                                 }
+                                else if (IsList(objectA))
+                                {
+                                    int listItemsCount1;
+                                    int listItemsCount2;
+
+                                    // null check
+                                    if (valueA == null && valueB != null || valueA != null && valueB == null)
+                                    {
+                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                        result = false;
+                                    }
+                                    else if (valueA != null && valueB != null)
+                                    {
+                                        var ToArrayMethodA = objectA.GetType().GetMethod("ToArray");
+                                        var ToArrayMethodB = objectB.GetType().GetMethod("ToArray");
+                                        var listItemsArrayA = (System.Array)ToArrayMethodA.Invoke(objectA, null);
+                                        var listItemsArrayB = (System.Array)ToArrayMethodB.Invoke(objectB, null);
+
+                                        listItemsCount1 = listItemsArrayA.Length;
+                                        listItemsCount2 = listItemsArrayA.Length;
+
+                                        // check the counts to ensure they match
+                                        if (listItemsCount1 != listItemsCount2)
+                                        {
+                                            Console.WriteLine(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name);
+                                            result = false;
+                                        }
+                                        // and if they do, compare each item... this assumes both collections have the same order
+                                        else
+                                        {
+                                            for (int i = 0; i < listItemsCount1; i++)
+                                            {
+                                                object listItem1;
+                                                object listItem2;
+                                                Type listItemType;
+
+                                                listItem1 = listItemsArrayA.GetValue(i);
+                                                listItem2 = listItemsArrayB.GetValue(i);
+                                                listItemType = listItem1.GetType();
+                                                if (!IsKeyValuePair(listItem1))
+                                                {
+                                                    if (CanDirectlyCompare(listItemType))
+                                                    {
+                                                        if (!AreValuesEqual(listItem1, listItem2))
+                                                        {
+                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            result = false;
+                                                        }
+                                                    }
+                                                    else if (!AreObjectsEqual(listItem1, listItem2, ignoreList))
+                                                    {
+                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        result = false;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    var listItem1Key = GetPropertyValue(listItem1, "Key");
+                                                    var listItem2Key = GetPropertyValue(listItem2, "Key");
+                                                    var listItemKeyType = listItem1Key.GetType();
+                                                    if (CanDirectlyCompare(listItemKeyType))
+                                                    {
+                                                        if (!AreValuesEqual(listItem1Key, listItem2Key))
+                                                        {
+                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            result = false;
+                                                        }
+                                                    }
+                                                    else if (!AreObjectsEqual(listItem1Key, listItem2Key, ignoreList))
+                                                    {
+                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        result = false;
+                                                    }
+
+                                                    var listItem1Value = GetPropertyValue(listItem1, "Value");
+                                                    var listItem2Value = GetPropertyValue(listItem2, "Value");
+                                                    var listItemValueType = listItem1Value.GetType();
+                                                    if (CanDirectlyCompare(listItemValueType))
+                                                    {
+                                                        if (!AreValuesEqual(listItem1Value, listItem2Value))
+                                                        {
+                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            result = false;
+                                                        }
+                                                    }
+                                                    else if (!AreObjectsEqual(listItem1Value, listItem2Value, ignoreList))
+                                                    {
+                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        result = false;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                                 else if (propertyInfo.PropertyType.IsClass || propertyInfo.PropertyType.IsInterface)
                                 {
                                     if (!AreObjectsEqual(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), isIncludeObsolete, ignoreList))
@@ -375,6 +470,14 @@ namespace System
             }
 
             return result;
+        }
+
+        public static bool IsList(object o)
+        {
+            if (o == null) return false;
+            return o is IList &&
+                   o.GetType().IsGenericType &&
+                   o.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>));
         }
 
         /// <summary>

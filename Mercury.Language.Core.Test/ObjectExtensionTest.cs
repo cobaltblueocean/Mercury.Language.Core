@@ -24,6 +24,9 @@ namespace Mercury.Language.Core.Test
                 data.Add(i, rnd.NextDouble());
             }
 
+            var t1 = new Tuple<double?, double?>(3.2575342465753425, 112367173.16659279);
+            var t2 = new Tuple<double?, double?>(3.2575342465753425, -141799015.05124027);
+
             SampleReferenceObject ref1 = new SampleReferenceObject() { Name = "Sample" };
             TestReferenceObject ref2 = new TestReferenceObject() { Name = "Test" };
             TestReferenceObject ref3 = new TestReferenceObject() { Name = "Sample" };
@@ -52,6 +55,15 @@ namespace Mercury.Language.Core.Test
                 objectB.AddChild(item.Key, item.Value);
                 objectC.AddChild(item.Key, item.Value);
             }
+
+            objectA.AddItem(t1);
+            objectA.AddItem(t2);
+
+            objectB.AddItem(t1);
+            objectB.AddItem(t2);
+
+            objectC.AddItem(t1);
+            objectC.AddItem(t2);
 
             Assert.IsTrue(objectA.AreObjectsEqual(objectB));
             Assert.IsFalse(objectA.AreObjectsEqual(objectC));

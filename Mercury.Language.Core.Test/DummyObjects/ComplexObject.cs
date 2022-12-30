@@ -28,7 +28,9 @@ namespace Mercury.Language.Core.Test.DummyObjects
     {
         private List<ChildObject> _children;
         private Function<Double, Double> _function;
-        
+        private List<Tuple<double?, double?>> _list;
+
+
         public int Id { get; set; }
         public string Name { get; set; }
         public double?[] Value { get; set; }
@@ -37,12 +39,15 @@ namespace Mercury.Language.Core.Test.DummyObjects
 
         public ChildObject[] Children { get { return _children.ToArray(); } }
 
+        public List<Tuple<double?, double?>> Item { get { return _list; } }
+
         public IRefObject ReferenceObject { get; set; }
         public Function<Double, Double> Function { get; set; }
 
         public ComplexObject()
         {
             _children = new List<ChildObject>();
+            _list = new List<Tuple<double?, double?>>();
         }
 
         public void AddChild(int key, double? value)
@@ -53,6 +58,11 @@ namespace Mercury.Language.Core.Test.DummyObjects
         public void AddRange(double?[] values)
         {
             throw new NotSupportedException();
+        }
+
+        public void AddItem(Tuple<double?, double?> item)
+        {
+            _list.Add(item);
         }
     }
 }
