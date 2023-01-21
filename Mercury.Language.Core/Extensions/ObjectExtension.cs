@@ -161,9 +161,9 @@ namespace System
 
                     PropertyInfo[] properties;
                     if (isIncludeObsolete)
-                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name)).ToArray();
+                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name) && p.GetCustomAttributes(typeof(IgnoreObjectCompareAttribute), true).Length == 0).ToArray();
                     else
-                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && p.GetCustomAttributes(typeof(ObsoleteAttribute), true).Length == 0 && !ignoreList.Contains(p.Name)).ToArray();
+                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name) && p.GetCustomAttributes(typeof(IgnoreObjectCompareAttribute), true).Length == 0 && p.GetCustomAttributes(typeof(ObsoleteAttribute), true).Length == 0).ToArray();
 
                     foreach (PropertyInfo propertyInfo in properties)
                     {
@@ -557,6 +557,38 @@ namespace System
         {
             var class0 = baseObj.GetType();
             return class0.GetInterfaces().Contains(type);
+        }
+
+        public static bool IsGenericParameterImplementType(this Object objBase, Type type)
+        {
+            return objBase.GetType().IsGenericParameterImplementType(type);
+        }
+
+        public static bool IsGenericParameterImplementType(this Type typeBase, Type type)
+        {
+            List<Type> result = new List<Type>();
+
+            if (typeBase.IsGenericType)
+            {
+                result = typeBase.GetGenericTypeParameter().SelectMany(x => x.GetInterfaces()).ToList();
+            }
+            return result.Contains(type);
+        }
+
+        public static bool IsGenericParameterImplementBaseClass(this Object objBase, Type type)
+        {
+            return objBase.GetType().IsGenericParameterImplementBaseClass(type);
+        }
+
+        public static bool IsGenericParameterImplementBaseClass(this Type typeBase, Type type)
+        {
+            List<Type> result = new List<Type>();
+
+            if (typeBase.IsGenericType)
+            {
+                result = typeBase.GetGenericTypeParameter().Select(x => x.BaseType).ToList();
+            }
+            return result.Contains(type);
         }
 
         public static List<Type> GetGenericTypeParameter(this Type type)

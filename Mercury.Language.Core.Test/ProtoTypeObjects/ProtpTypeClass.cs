@@ -23,23 +23,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mercury.Language.Core.Test.DummyObjects
+namespace Mercury.Language.Core.Test.ProtoTypeObjects
 {
-    public interface IComplexObject
+    /// <summary>
+    /// ProtpTypeClass Description
+    /// </summary>
+    public class ProtpTypeClass<T> where T: ProtoTypeBaseInterface
     {
-        int Id { get; set; }
-        String Name { get; set; }
-        double?[] Value { get; set; }
 
-        [IgnoreObjectCompare]
-        string Description { get; set; }
-
-        ChildObject[] Children { get; }
-
-        IRefObject ReferenceObject { get; set; }
-
-        void AddChild(int key, double? value);
-
-        void AddRange(double?[] values);
+        public virtual string Name => "ProtoType";
     }
 }

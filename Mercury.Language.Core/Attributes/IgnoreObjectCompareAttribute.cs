@@ -23,23 +23,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mercury.Language.Core.Test.DummyObjects
+namespace System
 {
-    public interface IComplexObject
+    /// <summary>
+    /// IgnoreObjectCompareAttribute Description
+    /// </summary>
+    public class IgnoreObjectCompareAttribute:Attribute
     {
-        int Id { get; set; }
-        String Name { get; set; }
-        double?[] Value { get; set; }
 
-        [IgnoreObjectCompare]
-        string Description { get; set; }
-
-        ChildObject[] Children { get; }
-
-        IRefObject ReferenceObject { get; set; }
-
-        void AddChild(int key, double? value);
-
-        void AddRange(double?[] values);
     }
 }

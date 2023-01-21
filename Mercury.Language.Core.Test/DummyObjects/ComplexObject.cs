@@ -43,6 +43,9 @@ namespace Mercury.Language.Core.Test.DummyObjects
 
         public IRefObject ReferenceObject { get; set; }
         public Function<Double, Double> Function { get; set; }
+        
+        [IgnoreObjectCompare]
+        public string Description { get; set; }
 
         public ComplexObject()
         {
