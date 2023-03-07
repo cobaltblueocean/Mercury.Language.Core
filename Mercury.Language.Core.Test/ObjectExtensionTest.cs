@@ -14,7 +14,7 @@ namespace Mercury.Language.Core.Test
         [Test]
         public void Test1()
         {
-            var objectA = new ComplexObject();
+            var ObjectA = new ComplexObject();
             var objectB = new ComplexObject();
             var objectC = new ComplexObject();
 
@@ -28,7 +28,7 @@ namespace Mercury.Language.Core.Test
             var t1 = new Tuple<double?, double?>(3.2575342465753425, 112367173.16659279);
             var t2 = new Tuple<double?, double?>(3.2575342465753425, -141799015.05124027);
 
-            objectA.Description = "Description of ObjectA";
+            ObjectA.Description = "Description of ObjectA";
             objectB.Description = "Description of ObjectB";
             objectC.Description = "Description of ObjectC";
 
@@ -36,11 +36,11 @@ namespace Mercury.Language.Core.Test
             TestReferenceObject ref2 = new TestReferenceObject() { Name = "Test" };
             TestReferenceObject ref3 = new TestReferenceObject() { Name = "Sample" };
 
-            objectA.Id = 1;
-            objectA.Name = "Dummy";
-            objectA.Value = values;
-            objectA.ReferenceObject = ref1;
-            objectA.Function = new SimpleFunction();
+            ObjectA.Id = 1;
+            ObjectA.Name = "Dummy";
+            ObjectA.Value = values;
+            ObjectA.ReferenceObject = ref1;
+            ObjectA.Function = new SimpleFunction();
 
             objectB.Id = 1;
             objectB.Name = "Dummy";
@@ -56,13 +56,13 @@ namespace Mercury.Language.Core.Test
 
             foreach (var item in data)
             {
-                objectA.AddChild(item.Key, item.Value);
+                ObjectA.AddChild(item.Key, item.Value);
                 objectB.AddChild(item.Key, item.Value);
                 objectC.AddChild(item.Key, item.Value);
             }
 
-            objectA.AddItem(t1);
-            objectA.AddItem(t2);
+            ObjectA.AddItem(t1);
+            ObjectA.AddItem(t2);
 
             objectB.AddItem(t1);
             objectB.AddItem(t2);
@@ -70,8 +70,8 @@ namespace Mercury.Language.Core.Test
             objectC.AddItem(t1);
             objectC.AddItem(t2);
 
-            Assert.IsTrue(objectA.AreObjectsEqual(objectB));
-            Assert.IsFalse(objectA.AreObjectsEqual(objectC));
+            Assert.IsTrue(ObjectA.AreObjectsEqual(objectB));
+            Assert.IsFalse(ObjectA.AreObjectsEqual(objectC));
 
             objectB.ReferenceObject = ref3;
             Assert.IsFalse(objectB.AreObjectsEqual(objectC));

@@ -27,3 +27,5 @@ Mercury.Language.Core/obj/Mercury.Language.Core.csproj.nuget.g.props
 Mercury.Language.Core/obj/Mercury.Language.Core.csproj.nuget.g.targets
 Mercury.Language.Core/obj/project.assets.json
 *.nuspec
+/.vs/Mercury.Language.Core/FileContentIndex
+*.2
