@@ -31,3 +31,6 @@ Mercury.Language.Core/obj/project.assets.json
 *.2
 /Mercury.Language.Core/obj
 /Mercury.Language.Core.Test/obj
+.vs/Mercury.Language.Core/v17/.suo
+.vs/ProjectEvaluation/mercury.language.core.metadata.v6.1
+.vs/ProjectEvaluation/mercury.language.core.projects.v6.1
