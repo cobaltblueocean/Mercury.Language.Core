@@ -29,3 +29,5 @@ Mercury.Language.Core/obj/project.assets.json
 *.nuspec
 /.vs/Mercury.Language.Core/FileContentIndex
 *.2
+/Mercury.Language.Core/obj
+/Mercury.Language.Core.Test/obj
