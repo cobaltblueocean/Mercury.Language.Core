@@ -118,5 +118,10 @@ namespace Mercury.Language.Core
         {
             get { return Resources.CoreSourceDestinationObjectsAreNull; }
         }
+
+        public String Exception_FromToSize
+        {
+            get { return Resources.Exception_FromToSize; }
+        }
     }
 }

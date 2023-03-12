@@ -129,6 +129,9 @@
   <data name="CoreSourceDestinationObjectsAreNull" xml:space="preserve">
     <value>Source or/and Destination Objects are null</value>
   </data>
+  <data name="Exception_FromToSize" xml:space="preserve">
+    <value>from: {0}, to: {1}, size={2}</value>
+  </data>
   <data name="ItemInPropertyCollectionDoesNotMatch" xml:space="preserve">
     <value>Item {0} in property collection '{1}.{2}' does not match.</value>
   </data>

@@ -19,7 +19,7 @@ namespace Mercury.Language.Core.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -93,6 +93,15 @@ namespace Mercury.Language.Core.Properties {
         internal static string CoreSourceDestinationObjectsAreNull {
             get {
                 return ResourceManager.GetString("CoreSourceDestinationObjectsAreNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to from: {0}, to: {1}, size={2}.
+        /// </summary>
+        internal static string Exception_FromToSize {
+            get {
+                return ResourceManager.GetString("Exception_FromToSize", resourceCulture);
             }
         }
         

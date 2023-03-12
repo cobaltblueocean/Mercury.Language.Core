@@ -129,6 +129,9 @@
   <data name="CoreSourceDestinationObjectsAreNull" xml:space="preserve">
     <value>ソース、もしくはコピー先のオブジェクトがNULLです。</value>
   </data>
+  <data name="Exception_FromToSize" xml:space="preserve">
+    <value>{0} から {1} へ、サイズは {2} です。</value>
+  </data>
   <data name="ItemInPropertyCollectionDoesNotMatch" xml:space="preserve">
     <value>プロパティ・コレクション '{1}.{2}' 中のアイテム {0} が違います。</value>
   </data>
