@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Version>0.8.1.7</Version>
+    <Version>0.8.1.9</Version>
     <Authors>Kei Nakai</Authors>
     <Company>Mercury</Company>
     <Description>Supplemental Extension Methods for Object comparison and Premitive classes</Description>
@@ -16,7 +16,15 @@
 - Removed check "IsValueType" from CanDirectlyCompare() method
 - Added ConvertTo() method
 - Change CanDirectlyCompare() method from private to public extension method</PackageReleaseNotes>
+    <ApplicationIcon>Mercury.ico</ApplicationIcon>
+    <PackageIcon>Mercury.jpg</PackageIcon>
+    <RepositoryUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Mercury.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -35,6 +43,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Mercury.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

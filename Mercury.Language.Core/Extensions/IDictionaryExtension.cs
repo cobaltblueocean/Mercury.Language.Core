@@ -18,7 +18,7 @@ namespace System.Collections.Generic
                 {
                     foreach (var item in addingDictionary)
                     {
-                        addingDictionary.AddOrUpdate(item.Key, item.Value);
+                        originalDictionary.AddOrUpdate(item.Key, item.Value);
                     }
                 }
             }
@@ -66,6 +66,20 @@ namespace System.Collections.Generic
             }
         }
 
+        public static Boolean TryGetValueAtKey<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 key, out T2 value)
+        {
+            try
+            {
+                value = originalDictionary.GetValueAtKey(key);
+                return true;
+            }
+            catch
+            {
+                value = default(T2);
+                return false;
+            }
+        }
+
         public static T2 GetValueAtKey<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 key)
         {
             if (key != null)
@@ -82,6 +96,20 @@ namespace System.Collections.Generic
             else
             {
                 throw new ArgumentNullException();
+            }
+        }
+
+        public static Boolean TryGetKeyAtIndex<T1, T2>(this IDictionary<T1, T2> originalDictionary, int index, out T1 key)
+        {
+            try
+            {
+                key = originalDictionary.GetKeyAtIndex(index);
+                return true;
+            }
+            catch
+            {
+                key = default(T1);
+                return false;
             }
         }
 

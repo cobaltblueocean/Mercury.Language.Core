@@ -54,5 +54,25 @@ namespace Mercury.Language.Core.Test
 
             Assert.AreEqual(9, key2);
         }
+
+        [Test]
+        public void DictionaryOperationTest()
+        {
+            IDictionary<int, string> dict1 = new Dictionary<int, string>();
+            IDictionary<int, string> dict2 = new Dictionary<int, string>();
+
+            dict1.Add(0, "A");
+            dict1.Add(1, "B");
+            dict1.Add(2, "C");
+
+            dict2.AddRange(dict1);
+
+            Assert.AreEqual(dict1.Count, dict2.Count);
+
+            foreach(var item in dict1)
+            {
+                Assert.AreEqual(item.Value, dict2[item.Key]);
+            }
+        }
     }
 }
