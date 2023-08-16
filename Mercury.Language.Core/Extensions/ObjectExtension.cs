@@ -136,7 +136,7 @@ namespace System
         /// <returns><c>true</c> if all property values are equal, otherwise <c>false</c>.</returns>
         public static bool AreObjectsEqual(this object objectA, object objectB, Boolean isIncludeObsolete, params string[] ignoreList)
         {
-            bool result;
+            Boolean result = true;
 
             try
             {
@@ -150,11 +150,18 @@ namespace System
 
                     if (CanDirectlyCompare(objectTypeA) && !IsList(objectA))
                     {
-                        return objectA.Equals(objectB);
+                        result = objectA.Equals(objectB);
+                        if (!result)
+                            Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectA.GetType().Name, objectB.GetType().Name));
+
+                        return result;
                     }
                     else if (objectTypeA != objectTypeB)
                     {
-                        return false;
+                        result = false;
+                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectA.GetType().Name, objectB.GetType().Name));
+
+                        return result;
                     }
 
                     result = true; // assume by default they are equal
@@ -177,8 +184,10 @@ namespace System
 
                             // check if any property returned the object itself
                             if ((valueA != null) && (valueA.Equals(objectA)))
-                                return true;
-
+                            {
+                                result = true;
+                                return result;
+                            }
                             if (!IsKeyValuePair(objectA))
                             {
                                 // if it is a primitive type, value type or implements IComparable, just directly try and compare the value
@@ -188,7 +197,7 @@ namespace System
                                     {
                                         if (!AreObjectsEqual(valueA, valueB, isIncludeObsolete, ignoreList))
                                         {
-                                            Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                            Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                             result = false;
                                         }
                                     }
@@ -204,7 +213,7 @@ namespace System
                                     // null check
                                     if (valueA == null && valueB != null || valueA != null && valueB == null)
                                     {
-                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                         result = false;
                                     }
                                     else if (valueA != null && valueB != null)
@@ -217,7 +226,7 @@ namespace System
                                         // check the counts to ensure they match
                                         if (collectionItemsCount1 != collectionItemsCount2)
                                         {
-                                            Console.WriteLine(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name);
+                                            Console.WriteLine(String.Format(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name));
                                             result = false;
                                         }
                                         // and if they do, compare each item... this assumes both collections have the same order
@@ -238,13 +247,13 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(collectionItem1, collectionItem2))
                                                         {
-                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
                                                     else if (!AreObjectsEqual(collectionItem1, collectionItem2, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -257,13 +266,13 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(collectionItem1Key, collectionItem2Key))
                                                         {
-                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
                                                     else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
 
@@ -274,13 +283,13 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(collectionItem1Value, collectionItem2Value))
                                                         {
-                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
                                                     else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -296,7 +305,7 @@ namespace System
                                     // null check
                                     if (valueA == null && valueB != null || valueA != null && valueB == null)
                                     {
-                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                         result = false;
                                     }
                                     else if (valueA != null && valueB != null)
@@ -312,7 +321,7 @@ namespace System
                                         // check the counts to ensure they match
                                         if (listItemsCount1 != listItemsCount2)
                                         {
-                                            Console.WriteLine(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name);
+                                            Console.WriteLine(String.Format(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name));
                                             result = false;
                                         }
                                         // and if they do, compare each item... this assumes both collections have the same order
@@ -333,13 +342,13 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(listItem1, listItem2))
                                                         {
-                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
                                                     else if (!AreObjectsEqual(listItem1, listItem2, ignoreList))
                                                     {
-                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -352,13 +361,13 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(listItem1Key, listItem2Key))
                                                         {
-                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
                                                     else if (!AreObjectsEqual(listItem1Key, listItem2Key, ignoreList))
                                                     {
-                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
 
@@ -369,13 +378,13 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(listItem1Value, listItem2Value))
                                                         {
-                                                            Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
                                                     else if (!AreObjectsEqual(listItem1Value, listItem2Value, ignoreList))
                                                     {
-                                                        Console.WriteLine(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name);
+                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -387,13 +396,13 @@ namespace System
                                 {
                                     if (!AreObjectsEqual(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), isIncludeObsolete, ignoreList))
                                     {
-                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                         result = false;
                                     }
                                 }
                                 else
                                 {
-                                    Console.WriteLine(LocalizedResources.Instance().CannotCompareProperty, objectTypeA.FullName, propertyInfo.Name);
+                                    Console.WriteLine(String.Format(LocalizedResources.Instance().CannotCompareProperty, objectTypeA.FullName, propertyInfo.Name));
                                     result = false;
                                 }
                             }
@@ -408,14 +417,14 @@ namespace System
                                     {
                                         if (!AreObjectsEqual(valueA, valueB, isIncludeObsolete, ignoreList))
                                         {
-                                            Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                            Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                             result = false;
                                         }
                                     }
                                 }
                                 else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, isIncludeObsolete, ignoreList))
                                 {
-                                    Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                    Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                     result = false;
                                 }
 
@@ -426,13 +435,13 @@ namespace System
                                 {
                                     if (!AreValuesEqual(collectionItem1Value, collectionItem2Value))
                                     {
-                                        Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                         result = false;
                                     }
                                 }
                                 else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, isIncludeObsolete, ignoreList))
                                 {
-                                    Console.WriteLine(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name);
+                                    Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                     result = false;
                                 }
                             }
@@ -455,17 +464,24 @@ namespace System
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(LocalizedResources.Instance().CannotCompareValues, ex.Message);
+                            Console.WriteLine(String.Format(LocalizedResources.Instance().CannotCompareValues, ex.Message));
                             result = false;
                         }
                     }
                 }
+                else if (objectA == null && objectB == null)
+                {
+                    result = true;
+                }
                 else
+                {
+                    Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectA.GetType().Name, objectB.GetType().Name));
                     result = object.Equals(objectA, objectB);
+                }
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(LocalizedResources.Instance().CannotCompareValues, ex.Message);
+                Console.WriteLine(String.Format(LocalizedResources.Instance().CannotCompareValues, ex.Message));
                 result = false;
             }
 
