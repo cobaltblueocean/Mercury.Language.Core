@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Version>0.8.1.13</Version>
+    <Version>0.8.1.14</Version>
     <Authors>Kei Nakai</Authors>
     <Company>Mercury</Company>
     <Description>Supplemental Extension Methods for Object comparison and Premitive classes</Description>
@@ -17,7 +17,8 @@
 - Added ConvertTo() method
 - Change CanDirectlyCompare() method from private to public extension method
 - Modified AreObjectsEqual() method to write a console log only error happened
-- Revoked orevious AreObjectEqual() method change of logging</PackageReleaseNotes>
+- Revoked orevious AreObjectEqual() method change of logging
+- Added HasValue() method to check if the variable has value or not</PackageReleaseNotes>
     <ApplicationIcon>Mercury.ico</ApplicationIcon>
     <PackageIcon>Mercury.jpg</PackageIcon>
     <RepositoryUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</RepositoryUrl>

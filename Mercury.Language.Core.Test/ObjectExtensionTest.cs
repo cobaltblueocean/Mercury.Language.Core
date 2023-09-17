@@ -70,6 +70,8 @@ namespace Mercury.Language.Core.Test
             objectC.AddItem(t1);
             objectC.AddItem(t2);
 
+            Assert.IsTrue(objectA.HasValue());
+
             Assert.IsTrue(objectA.AreObjectsEqual(objectB));
             Assert.IsFalse(objectA.AreObjectsEqual(objectC));
 
@@ -78,8 +80,20 @@ namespace Mercury.Language.Core.Test
 
             objectB.ReferenceObject.Name = "Test";
             objectB.Function = new MultiplyFunction();
+
+            Assert.IsTrue(objectB.Name.AreObjectsEqual(objectC.Name));
+            Assert.IsTrue(objectB.Id.AreObjectsEqual(objectC.Id));
+
             Assert.IsTrue(objectB.AreObjectsEqual(objectC));
             Assert.IsFalse(objectA.AreObjectsEqual(objectC));
+
+            double? dummy1 = null;
+            double? dummy2 = 1234.5678;
+            double dummy3 = 1234.5678;
+
+            Assert.IsFalse(dummy1.HasValue());
+            Assert.IsTrue(dummy2.HasValue());
+            Assert.IsTrue(dummy3.HasValue());
 
             //Assert.Pass();
         }

@@ -544,6 +544,29 @@ namespace System
             return false; // value-type
         }
 
+        public static bool HasValue(this Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                Type type = obj.GetType();
+
+                // ValueType always has value, not null
+                if (type.IsValueType)
+                {
+                    return true;
+                }
+                // Other types
+                else //if (Nullable.GetUnderlyingType(type) != null)
+                {
+                    return obj != null;
+                }
+            }
+        }
+
         public static T CastType<T>(this object input)
         {
             T result = default(T);
