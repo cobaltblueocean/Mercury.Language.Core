@@ -39,13 +39,26 @@ namespace Mercury.Language.Core.Test.DummyObjects
 
         public ChildObject[] Children { get { return _children.ToArray(); } }
 
-        public List<Tuple<double?, double?>> Item { get { return _list; } }
+        public List<Tuple<double?, double?>> ItemList { get { return _list; } }
+
+        public Object ObsolatedReference
+        {
+            get { throw new NotImplementedException(); }
+        }
 
         public IRefObject ReferenceObject { get; set; }
         public Function<Double, Double> Function { get; set; }
         
         [IgnoreObjectCompare]
         public string Description { get; set; }
+
+        public Double? this[int index]
+        {
+            get
+            {
+                return Value[index];
+            }
+        }
 
         public ComplexObject()
         {

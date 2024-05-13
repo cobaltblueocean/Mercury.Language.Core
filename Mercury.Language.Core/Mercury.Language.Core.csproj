@@ -2,27 +2,73 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Version>0.8.1.14</Version>
+    <Version>0.8.2.3</Version>
     <Authors>Kei Nakai</Authors>
     <Company>Mercury</Company>
     <Description>Supplemental Extension Methods for Object comparison and Premitive classes</Description>
-    <PackageReleaseNotes>- Added IgnoreObjectCompareAttribute and modified method to compare.
+    <PackageReleaseNotes>[8.1.1]
+- Added IgnoreObjectCompareAttribute and modified method to compare.
 - Added IsGenericParameterImplementBaseClass() method
 - Added IsGenericParameterImplementType() method
+
+[8.1.2]
 - Bug fix for a property that type is List&lt;Tuple&lt;Double?, Double?&gt; type
+
+[0.8.1.3]
 - Property base object compare methods and premitive class
 - Bug fixed AreObjectsEqual method
 - Bug fixed when a property returned the pbject itself
+
+[0.8.1.4]
 - Removed check "IsValueType" from CanDirectlyCompare() method
+
+[0.8.1.5]
 - Added ConvertTo() method
+
+[0.8.1.6]
 - Change CanDirectlyCompare() method from private to public extension method
+
+[0.8.1.7]
 - Modified AreObjectsEqual() method to write a console log only error happened
 - Revoked orevious AreObjectEqual() method change of logging
-- Added HasValue() method to check if the variable has value or not</PackageReleaseNotes>
+
+[0.8.1.8]
+- Added HasValue() method to check if the variable has value or not
+
+[0.8.1.9 ~ 19]
+- Update References
+
+[0.8.1.20]
+- Refactored and resturctured AreObjectsEqual() method
+- Prevent re-evaluate object that already evaluated in AreObjectsEqual() method
+
+[0.8.1.21]
+- Bug fix for referencing premitive type object hascode in AreObjectsEqual() method
+
+[0.8.1.22]
+- Bug fix for this[] property treatment
+- Bug fix for treating property/method that not implemented.
+
+[0.8.1.23]
+- Changed how to identify the target object is already appeared in the iteration.
+
+[0..8.2.0]
+- Ported standard and enhanced Classes and Extension methods into this Core libraries
+- Updated the way to identify the target objects are the same even casted or boxed.
+
+[0..8.2.1]
+- Bug fix for ported classes
+
+[0..8.2.2]
+- More porting classes
+
+[0..8.2.3]
+- Bug fix for IFormatProvider extension methods and GlocalizationHelper class</PackageReleaseNotes>
     <ApplicationIcon>Mercury.ico</ApplicationIcon>
     <PackageIcon>Mercury.jpg</PackageIcon>
     <RepositoryUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,6 +77,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.Diagnostics.EventLog" Version="8.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.4" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +105,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utility\" />
   </ItemGroup>
 
 </Project>

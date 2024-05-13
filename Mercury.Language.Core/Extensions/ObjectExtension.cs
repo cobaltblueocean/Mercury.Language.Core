@@ -123,6 +123,7 @@ namespace System
         /// <returns><c>true</c> if all property values are equal, otherwise <c>false</c>.</returns>
         public static bool AreObjectsEqual(this object objectA, object objectB, params string[] ignoreList)
         {
+
             return AreObjectsEqual(objectA, objectB, false, ignoreList);
         }
 
@@ -136,6 +137,23 @@ namespace System
         /// <returns><c>true</c> if all property values are equal, otherwise <c>false</c>.</returns>
         public static bool AreObjectsEqual(this object objectA, object objectB, Boolean isIncludeObsolete, params string[] ignoreList)
         {
+            List<long> objectHashList = new List<long>();
+
+            return EvaluateObjectsComparison(objectA, objectB, objectHashList, isIncludeObsolete, ignoreList);
+        }
+
+        /// <summary>
+        /// Compares the properties of two objects of the same type and returns if all properties are equal.
+        /// Check evaluatedObject's hash to prevent cercular evaluation
+        /// </summary>
+        /// <param name="objectA">The first object to compare.</param>
+        /// <param name="objectB">The second object to compre.</param>
+        /// <param name="objectHashList">A list of object's hash to check that already evaluated.</param>
+        /// <param name="isIncludeObsolete">Compare including Obsoleted property or not</param>
+        /// <param name="ignoreList">A list of property names to ignore from the comparison.</param>
+        /// <returns><c>true</c> if all property values are equal, otherwise <c>false</c>.</returns>
+        private static bool EvaluateObjectsComparison(object objectA, object objectB, List<long> objectHashList, Boolean isIncludeObsolete, params string[] ignoreList)
+        {
             Boolean result = true;
 
             try
@@ -148,62 +166,24 @@ namespace System
                     objectTypeA = objectA.GetType();
                     objectTypeB = objectB.GetType();
 
-                    if (CanDirectlyCompare(objectTypeA) && !IsList(objectA))
+                    if (!objectHashList.Contains(objectA.GetHashCode()))
                     {
-                        result = objectA.Equals(objectB);
-                        if (!result)
-                            Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectA.GetType().Name, objectB.GetType().Name));
+                        objectHashList = MarkAsPrevioiuslyAppreared(objectHashList, objectA);
 
-                        return result;
-                    }
-                    else if (objectTypeA != objectTypeB)
-                    {
-                        result = false;
-                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectA.GetType().Name, objectB.GetType().Name));
-
-                        return result;
-                    }
-
-                    result = true; // assume by default they are equal
-
-                    PropertyInfo[] properties;
-                    if (isIncludeObsolete)
-                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name) && p.GetCustomAttributes(typeof(IgnoreObjectCompareAttribute), true).Length == 0).ToArray();
-                    else
-                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name) && p.GetCustomAttributes(typeof(IgnoreObjectCompareAttribute), true).Length == 0 && p.GetCustomAttributes(typeof(ObsoleteAttribute), true).Length == 0).ToArray();
-
-                    foreach (PropertyInfo propertyInfo in properties)
-                    {
-                        object valueA;
-                        object valueB;
-
-                        try
+                        if (IsTypeSame(objectA.GetType(), objectB.GetType()))
                         {
-                            valueA = propertyInfo.GetValue(objectA, null);
-                            valueB = propertyInfo.GetValue(objectB, null);
-
-                            // check if any property returned the object itself
-                            if ((valueA != null) && (valueA.Equals(objectA)))
-                            {
-                                result = true;
-                                return result;
-                            }
                             if (!IsKeyValuePair(objectA))
                             {
-                                // if it is a primitive type, value type or implements IComparable, just directly try and compare the value
-                                if (CanDirectlyCompare(propertyInfo.PropertyType) && !IsList(objectA))
+                                if (CanDirectlyCompare(objectTypeA) && !IsList(objectA))
                                 {
-                                    if (!AreValuesEqual(valueA, valueB))
-                                    {
-                                        if (!AreObjectsEqual(valueA, valueB, isIncludeObsolete, ignoreList))
-                                        {
-                                            Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
-                                            result = false;
-                                        }
-                                    }
+                                    result = objectA.Equals(objectB);
+                                    if (!result)
+                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectA.GetType().Name, objectB.GetType().Name));
+
+                                    return result;
                                 }
                                 // if it implements IEnumerable, then scan any items
-                                else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType))
+                                else if (typeof(IEnumerable).IsAssignableFrom(objectTypeA))
                                 {
                                     IEnumerable<object> collectionItems1;
                                     IEnumerable<object> collectionItems2;
@@ -211,22 +191,20 @@ namespace System
                                     int collectionItemsCount2;
 
                                     // null check
-                                    if (valueA == null && valueB != null || valueA != null && valueB == null)
+                                    if (objectA == null && objectB != null || objectA != null && objectB == null)
                                     {
-                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                         result = false;
                                     }
-                                    else if (valueA != null && valueB != null)
+                                    else if (objectA != null && objectB != null)
                                     {
-                                        collectionItems1 = ((IEnumerable)valueA).Cast<object>();
-                                        collectionItems2 = ((IEnumerable)valueB).Cast<object>();
+                                        collectionItems1 = ((IEnumerable)objectA).Cast<object>();
+                                        collectionItems2 = ((IEnumerable)objectB).Cast<object>();
                                         collectionItemsCount1 = collectionItems1.Count();
                                         collectionItemsCount2 = collectionItems2.Count();
 
                                         // check the counts to ensure they match
                                         if (collectionItemsCount1 != collectionItemsCount2)
                                         {
-                                            Console.WriteLine(String.Format(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name));
                                             result = false;
                                         }
                                         // and if they do, compare each item... this assumes both collections have the same order
@@ -247,13 +225,11 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(collectionItem1, collectionItem2))
                                                         {
-                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(collectionItem1, collectionItem2, isIncludeObsolete, ignoreList))
+                                                    else if (!EvaluateObjectsComparison(collectionItem1, collectionItem2, objectHashList, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -266,13 +242,11 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(collectionItem1Key, collectionItem2Key))
                                                         {
-                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, isIncludeObsolete, ignoreList))
+                                                    else if (!EvaluateObjectsComparison(collectionItem1Key, collectionItem2Key, objectHashList, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
 
@@ -283,13 +257,11 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(collectionItem1Value, collectionItem2Value))
                                                         {
-                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, isIncludeObsolete, ignoreList))
+                                                    else if (!EvaluateObjectsComparison(collectionItem1Value, collectionItem2Value, objectHashList, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -303,12 +275,11 @@ namespace System
                                     int listItemsCount2;
 
                                     // null check
-                                    if (valueA == null && valueB != null || valueA != null && valueB == null)
+                                    if (objectA == null && objectB != null || objectA != null && objectB == null)
                                     {
-                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                         result = false;
                                     }
-                                    else if (valueA != null && valueB != null)
+                                    else if (objectA != null && objectB != null)
                                     {
                                         var ToArrayMethodA = objectA.GetType().GetMethod("ToArray");
                                         var ToArrayMethodB = objectB.GetType().GetMethod("ToArray");
@@ -321,7 +292,6 @@ namespace System
                                         // check the counts to ensure they match
                                         if (listItemsCount1 != listItemsCount2)
                                         {
-                                            Console.WriteLine(String.Format(LocalizedResources.Instance().CollectionCountsForPropertyDoNotMatch, objectTypeA.FullName, propertyInfo.Name));
                                             result = false;
                                         }
                                         // and if they do, compare each item... this assumes both collections have the same order
@@ -342,13 +312,11 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(listItem1, listItem2))
                                                         {
-                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(listItem1, listItem2, ignoreList))
+                                                    else if (!EvaluateObjectsComparison(listItem1, listItem2, objectHashList, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -361,13 +329,11 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(listItem1Key, listItem2Key))
                                                         {
-                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(listItem1Key, listItem2Key, ignoreList))
+                                                    else if (!EvaluateObjectsComparison(listItem1Key, listItem2Key, objectHashList, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
 
@@ -378,13 +344,11 @@ namespace System
                                                     {
                                                         if (!AreValuesEqual(listItem1Value, listItem2Value))
                                                         {
-                                                            Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                             result = false;
                                                         }
                                                     }
-                                                    else if (!AreObjectsEqual(listItem1Value, listItem2Value, ignoreList))
+                                                    else if (!EvaluateObjectsComparison(listItem1Value, listItem2Value, objectHashList, isIncludeObsolete, ignoreList))
                                                     {
-                                                        Console.WriteLine(String.Format(LocalizedResources.Instance().ItemInPropertyCollectionDoesNotMatch, i, objectTypeA.FullName, propertyInfo.Name));
                                                         result = false;
                                                     }
                                                 }
@@ -392,86 +356,69 @@ namespace System
                                         }
                                     }
                                 }
-                                else if (propertyInfo.PropertyType.IsClass || propertyInfo.PropertyType.IsInterface)
+                                else if (objectA.GetType().IsClass || objectA.GetType().IsInterface)
                                 {
-                                    if (!AreObjectsEqual(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), isIncludeObsolete, ignoreList))
+                                    PropertyInfo[] properties;
+                                    if (isIncludeObsolete)
+                                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name) && p.GetCustomAttributes(typeof(IgnoreObjectCompareAttribute), true).Length == 0).ToArray();
+                                    else
+                                        properties = objectTypeA.GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanRead && !ignoreList.Contains(p.Name) && p.GetCustomAttributes(typeof(IgnoreObjectCompareAttribute), true).Length == 0 && p.GetCustomAttributes(typeof(ObsoleteAttribute), true).Length == 0).ToArray();
+
+                                    foreach (PropertyInfo propertyInfo in properties)
                                     {
-                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
-                                        result = false;
-                                    }
-                                }
-                                else
-                                {
-                                    Console.WriteLine(String.Format(LocalizedResources.Instance().CannotCompareProperty, objectTypeA.FullName, propertyInfo.Name));
-                                    result = false;
-                                }
-                            }
-                            else
-                            {
-                                var collectionItem1Key = GetPropertyValue(objectA, "Key");
-                                var collectionItem2Key = GetPropertyValue(objectB, "Key");
-                                var collectionItemKeyType = collectionItem1Key.GetType();
-                                if (CanDirectlyCompare(collectionItemKeyType))
-                                {
-                                    if (!AreValuesEqual(collectionItem1Key, collectionItem2Key))
-                                    {
-                                        if (!AreObjectsEqual(valueA, valueB, isIncludeObsolete, ignoreList))
+                                        Object valueTypeA;
+                                        try
                                         {
-                                            Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
-                                            result = false;
+                                            valueTypeA = propertyInfo.GetValue(objectA, null);
+                                            if (objectA != valueTypeA)
+                                            {
+                                                if (!EvaluateObjectsComparison(propertyInfo.GetValue(objectA, null), propertyInfo.GetValue(objectB, null), objectHashList, isIncludeObsolete, ignoreList))
+                                                {
+                                                    Console.WriteLine(String.Format(LocalizedResources.Instance().CannotCompareProperty, valueTypeA.GetType().FullName, propertyInfo.Name));
+                                                    result = false;
+                                                }
+                                            }
+                                        }
+                                        catch (TargetParameterCountException ex)
+                                        {
+                                            // If "this[]" property, ignore it.
+                                            if (propertyInfo.Name != "Item")
+                                            {
+                                                Console.WriteLine(String.Format(LocalizedResources.Instance().CannotCompareProperty, objectA.GetType().FullName, propertyInfo.Name));
+                                            }
+                                        }
+                                        catch (TargetInvocationException te)
+                                        {
+                                            Console.WriteLine(String.Format(LocalizedResources.Instance().PropertyOrMethodNotImplemented, propertyInfo.Name));
+                                        }
+                                        catch (NotImplementedException ne)
+                                        {
+                                            Console.WriteLine(String.Format(LocalizedResources.Instance().PropertyOrMethodNotImplemented, propertyInfo.Name));
                                         }
                                     }
                                 }
-                                else if (!AreObjectsEqual(collectionItem1Key, collectionItem2Key, isIncludeObsolete, ignoreList))
+                                else if (objectTypeA != objectTypeB)
                                 {
-                                    Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                     result = false;
+                                    return result;
                                 }
-
-                                var collectionItem1Value = GetPropertyValue(objectA, "Value");
-                                var collectionItem2Value = GetPropertyValue(objectB, "Value");
-                                var collectionItemValueType = collectionItem1Value.GetType();
-                                if (CanDirectlyCompare(collectionItemValueType))
+                                else
                                 {
-                                    if (!AreValuesEqual(collectionItem1Value, collectionItem2Value))
-                                    {
-                                        Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
-                                        result = false;
-                                    }
-                                }
-                                else if (!AreObjectsEqual(collectionItem1Value, collectionItem2Value, isIncludeObsolete, ignoreList))
-                                {
-                                    Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectTypeA.FullName, propertyInfo.Name));
                                     result = false;
                                 }
                             }
                         }
-                        catch (NotImplementedException)
+                        else
                         {
-                            continue;
-                        }
-                        catch (System.Reflection.TargetParameterCountException)
-                        {
-                            continue;
-                        }
-                        catch (Exception ex) when (ex.InnerException is NotImplementedException)
-                        {
-                            continue;
-                        }
-                        catch (Exception ex) when (ex.InnerException is NotSupportedException)
-                        {
-                            continue;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(String.Format(LocalizedResources.Instance().CannotCompareValues, ex.Message));
+                            Console.WriteLine(String.Format(LocalizedResources.Instance().MismatchWithPropertyFound, objectA.GetType().Name, objectB.GetType().Name));
                             result = false;
                         }
                     }
                 }
                 else if (objectA == null && objectB == null)
                 {
-                    result = true;
+                    // Do nothing
+                    // result = true;
                 }
                 else
                 {
@@ -488,12 +435,106 @@ namespace System
             return result;
         }
 
+        private static List<long> MarkAsPrevioiuslyAppreared(List<long> objectHashList, Object objectA)
+        {
+            if ((!objectA.GetType().IsPrimitive) &&(!objectA.GetType().IsValueType))
+            {
+                objectHashList.Add(objectA.GetHashCode());
+            }
+            return objectHashList;
+        }
+
+        private static Boolean IsTypeSame(Type objectTypeA, Type objectTypeB)
+        {
+            Boolean result = false;
+
+            if (objectTypeA.Equals(objectTypeB))
+            {
+                result = true;
+            }
+            else if (objectTypeB.GetBaseTypes().Contains(objectTypeA))
+            {
+                result = true;
+            }
+            else if (objectTypeA.GetBaseTypes().Contains(objectTypeB))
+            {
+                result = true;
+            }
+            else if (typeof(IEnumerable).IsAssignableFrom(objectTypeA))
+            {
+                Type elementTypeA = objectTypeA.GetElementType();
+                Type elementTypeB = objectTypeB.GetElementType();
+
+                result = IsTypeSame(elementTypeA, elementTypeB);
+            }
+            else if (objectTypeA.IsGenericType && objectTypeA.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                Type elementTypeA = objectTypeA.GetGenericArguments()[0];
+                Type elementTypeB = objectTypeB.GetGenericArguments()[0];
+
+                result = IsTypeSame(elementTypeA, elementTypeB);
+            }
+
+            return result;
+        }
+
+        private static Boolean IsLeftObjectBasedOnTypeRight(Object objectA, Object objectB)
+        {
+            Type objectTypeA = objectA.GetType();
+            Type objectTypeB = objectB.GetType();
+
+            if (objectTypeA.GetType().GetBaseTypes().Contains(objectTypeB))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static bool IsList(object o)
         {
             if (o == null) return false;
             return o is IList &&
                    o.GetType().IsGenericType &&
                    o.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>));
+        }
+
+        private static Boolean IsTypeSame(Object objectA, Object objectB)
+        {
+            Boolean result = false;
+            Type objectTypeA = objectA.GetType();
+            Type objectTypeB = objectB.GetType();
+
+            if (objectTypeA.Equals(objectTypeB))
+            {
+                result = true;
+            }
+            else if (objectTypeB.GetBaseTypes().Contains(objectTypeA))
+            {
+                result = true;
+            }
+            else if (objectTypeA.GetBaseTypes().Contains(objectTypeB))
+            {
+                result = true;
+            }
+            else if (typeof(IEnumerable).IsAssignableFrom(objectTypeA))
+            {
+                Type elementTypeA = objectTypeA.GetElementType();
+                Type elementTypeB = objectTypeB.GetElementType();
+
+                result = IsTypeSame(elementTypeA, elementTypeB);
+            }
+            else if (objectTypeA.IsGenericType && objectTypeA.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                Type elementTypeA = objectTypeA.GetGenericArguments()[0];
+                Type elementTypeB = objectTypeB.GetGenericArguments()[0];
+
+                result = IsTypeSame(elementTypeA, elementTypeB);
+            }
+
+            return result;
         }
 
         /// <summary>

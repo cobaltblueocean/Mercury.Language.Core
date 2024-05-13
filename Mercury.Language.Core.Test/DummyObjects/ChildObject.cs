@@ -32,8 +32,10 @@ namespace Mercury.Language.Core.Test.DummyObjects
             Value = value;
             CreatedDateTime = DateTime.Now;
         }
-        int Key { get; set; }
-        double? Value { get; set; }
-        DateTime CreatedDateTime { get; set; }
+        public int Key { get; set; }
+        public double? Value { get; set; }
+
+        [IgnoreObjectCompare]
+        public DateTime CreatedDateTime { get; private set; }
     }
 }

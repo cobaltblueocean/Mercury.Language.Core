@@ -42,7 +42,7 @@ namespace Mercury.Language.Core.Test
 
             var key = _temp.GetKeyAtIndex(1);
 
-            Assert.AreEqual(4, key);
+            Assert.That(4 == key);
 
             SortedDictionary<double?, double?> _temp2 = new SortedDictionary<double?, double?>();
 
@@ -52,7 +52,7 @@ namespace Mercury.Language.Core.Test
 
             var key2 = _temp2.GetKeyAtIndex(2);
 
-            Assert.AreEqual(9, key2);
+            Assert.That(9 == key2);
         }
 
         [Test]
@@ -67,12 +67,14 @@ namespace Mercury.Language.Core.Test
 
             dict2.AddRange(dict1);
 
-            Assert.AreEqual(dict1.Count, dict2.Count);
+            Assert.That(dict1.Count.Equals(dict2.Count));
 
             foreach(var item in dict1)
             {
-                Assert.AreEqual(item.Value, dict2[item.Key]);
+                Assert.That(item.Value.Equals(dict2[item.Key]));
             }
+
+            Assert.That(dict1.AreObjectsEqual(dict2));
         }
     }
 }

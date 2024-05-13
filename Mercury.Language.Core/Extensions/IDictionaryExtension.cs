@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,47 @@ namespace System.Collections.Generic
         {
             return new HashSet<TValue>(originalDictionary.Values.ToList());
         }
+
+        #region Extension for IDictionary<TKey, TValue>
+        public static ReadOnlyDictionary<TKey, TValue> ToReadOnlyDictionary<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary) where TKey : notnull
+        {
+            return new ReadOnlyDictionary<TKey, TValue>(originalDictionary);
+        }
+
+        public static TValue PutIfAbsent<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key, TValue value)
+        {
+            if (!originalDictionary.ContainsKey(key))
+            {
+                originalDictionary.Add(key, value);
+            }
+
+            return originalDictionary[key];
+        }
+
+        public static IDictionary<TKey, TValue> Sort<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
+        {
+            return Sort(originalDictionary, SortOrder.Asending);
+        }
+
+        public static IDictionary<TKey, TValue> Sort<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, SortOrder order)
+        {
+            var data = (order == SortOrder.Asending) ? originalDictionary.OrderBy(pair => pair.Key) : originalDictionary.OrderByDescending(pair => pair.Key);
+            var buf = new List<KeyValuePair<TKey, TValue>>();
+
+            foreach (var item in data)
+            {
+                buf.Add(new KeyValuePair<TKey, TValue>(item.Key, item.Value));
+            }
+
+            originalDictionary.RemoveAll();
+            originalDictionary.Clear();
+
+            originalDictionary.AddOrUpdateAll(buf);
+
+            return originalDictionary;
+        }
+
+        #endregion
 
         #region Extension for IDictionary<T1, T2>
         public static Boolean IsEmpty<T1, T2>(this IDictionary<T1, T2> originalDictionary)
@@ -263,6 +305,57 @@ namespace System.Collections.Generic
             }
         }
 
+        /// <summary>
+        /// Ensures that the receiver can hold at least the specified number of elements without needing to allocate new internal memory.
+        /// If necessary, allocates new internal memory and increases the capacity of the receiver.
+        /// <p>
+        /// This method never need be called; it is for performance tuning only.
+        /// Calling this method before<tt>put()</tt>ing a large number of associations boosts performance,
+        /// because the receiver will grow only once instead of potentially many times.
+        /// <p>
+        /// <b>This default implementation does nothing.</b> Override this method if necessary.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="dic">Target <see cref="IDictionary{TKey, TValue}"/> object</param>
+        /// <param name="minCapacity">the desired minimum capacity.</param>
+        /// <returns><see cref="IDictionary{TKey, TValue}"/> object that allocated size</returns>
+        public static IDictionary<TKey, TValue> EnsureCapacity<TKey, TValue>(this IDictionary<TKey, TValue> dic, int minCapacity)
+        {
+            if (dic.Count >= minCapacity)
+                return dic;
+            else
+            {
+                Dictionary<TKey, TValue> newDic = new Dictionary<TKey, TValue>(minCapacity);
+                foreach (KeyValuePair<TKey, TValue> pair in dic)
+                {
+                    newDic.Add(pair.Key, pair.Value);
+                }
+
+                return (IDictionary<TKey, TValue>)newDic;
+            }
+        }
+
+        /// <summary>
+        /// Trim the excess items from the Dictionary
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="dic"></param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> TrimExcess<TKey, TValue>(this IDictionary<TKey, TValue> dic)
+        {
+            var kv = new KeyValuePair<TKey, TValue>[dic.Count];
+            dic.CopyTo(kv, 0);
+            List<KeyValuePair<TKey, TValue>> l = kv.ToList();
+            l.TrimExcess();
+            var newDic = new Dictionary<TKey, TValue>(l.Count);
+            AutoParallel.AutoParallelForEach(l, (p) =>
+            {
+                newDic.Add(p.Key, p.Value);
+            });
+            return newDic;
+        }
         #endregion
     }
 }
