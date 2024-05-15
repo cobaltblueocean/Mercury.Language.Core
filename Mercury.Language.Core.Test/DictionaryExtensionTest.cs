@@ -29,6 +29,7 @@ namespace Mercury.Language.Core.Test
     /// <summary>
     /// DictionaryExtensionTest Description
     /// </summary>
+    [Parallelizable(ParallelScope.ContextMask)]
     public class DictionaryExtensionTest
     {
         [Test]

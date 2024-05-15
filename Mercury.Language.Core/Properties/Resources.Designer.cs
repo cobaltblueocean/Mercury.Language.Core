@@ -61,6 +61,33 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All vectors must have the same dimensionality..
+        /// </summary>
+        internal static string ALL_VECTORS_MUST_HAVE_THE_SAME_DIMENSIONALITY {
+            get {
+                return ResourceManager.GetString("ALL_VECTORS_MUST_HAVE_THE_SAME_DIMENSIONALITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Period does not accept floating point Not-a-Number values..
+        /// </summary>
+        internal static string ARG_CANNOT_BE_NaN {
+            get {
+                return ResourceManager.GetString("ARG_CANNOT_BE_NaN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object must be of type Period..
+        /// </summary>
+        internal static string ARG_MUST_BE_PERIOD {
+            get {
+                return ResourceManager.GetString("ARG_MUST_BE_PERIOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Argument cannot be negative..
         /// </summary>
         internal static string ARGUMENT_CANNOT_BE_NEGATIVE {
@@ -196,11 +223,56 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to eigen decomposition of assymetric matrices not supported yet.
+        /// </summary>
+        internal static string ASSYMETRIC_EIGEN_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("ASSYMETRIC_EIGEN_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to matrix must have at least one column.
+        /// </summary>
+        internal static string AT_LEAST_ONE_COLUMN {
+            get {
+                return ResourceManager.GetString("AT_LEAST_ONE_COLUMN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to matrix must have at least one row.
+        /// </summary>
+        internal static string AT_LEAST_ONE_ROW {
+            get {
+                return ResourceManager.GetString("AT_LEAST_ONE_ROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The threshold value cannot be negative or zero..
         /// </summary>
-        internal static string AutoParallel_ThresholdValueNegative {
+        internal static string AUTOPARALLEL_THRESHOLD_VALUE_NEGATIVE {
             get {
-                return ResourceManager.GetString("AutoParallel_ThresholdValueNegative", resourceCulture);
+                return ResourceManager.GetString("AUTOPARALLEL_THRESHOLD_VALUE_NEGATIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bandwidth ({0}).
+        /// </summary>
+        internal static string BANDWIDTH {
+            get {
+                return ResourceManager.GetString("BANDWIDTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bandwidth must be in the interval [0,1], but got {0}.
+        /// </summary>
+        internal static string BANDWIDTH_OUT_OF_INTERVAL {
+            get {
+                return ResourceManager.GetString("BANDWIDTH_OUT_OF_INTERVAL", resourceCulture);
             }
         }
         
@@ -210,6 +282,24 @@ namespace Mercury.Language.Core.Properties {
         internal static string BASE {
             get {
                 return ResourceManager.GetString("BASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bessel function of order {0} cannot be computed for x = {1}.
+        /// </summary>
+        internal static string BESSEL_FUNCTION_BAD_ARGUMENT {
+            get {
+                return ResourceManager.GetString("BESSEL_FUNCTION_BAD_ARGUMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bessel function of order {0} failed to converge for x = {1}.
+        /// </summary>
+        internal static string BESSEL_FUNCTION_FAILED_CONVERGENCE {
+            get {
+                return ResourceManager.GetString("BESSEL_FUNCTION_FAILED_CONVERGENCE", resourceCulture);
             }
         }
         
@@ -286,6 +376,33 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to the difference between the upper and lower bound must be larger than twice the initial trust region radius ({0}).
+        /// </summary>
+        internal static string BOBYQA_BOUND_DIFFERENCE_CONDITION {
+            get {
+                return ResourceManager.GetString("BOBYQA_BOUND_DIFFERENCE_CONDITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can only do {0} factorization for dense matrices at the moment..
+        /// </summary>
+        internal static string CAN_ONLY_DO_FACTORIZATION_FOR_DENSE_MATRICES_AT_THE_MOMENT {
+            get {
+                return ResourceManager.GetString("CAN_ONLY_DO_FACTORIZATION_FOR_DENSE_MATRICES_AT_THE_MOMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can only do {0} factorization for dense vectors at the moment..
+        /// </summary>
+        internal static string CAN_ONLY_DO_FACTORIZATION_FOR_DENSE_VECTORS_AT_THE_MOMENT {
+            get {
+                return ResourceManager.GetString("CAN_ONLY_DO_FACTORIZATION_FOR_DENSE_VECTORS_AT_THE_MOMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot calculate square root from a negative number.
         /// </summary>
         internal static string CANNOT_CALCULATE_SQUARE_ROOT_FROM_A_NEGATIVE_NUMBER {
@@ -295,38 +412,461 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to statistics constructed from external moments cannot be cleared.
+        /// </summary>
+        internal static string CANNOT_CLEAR_STATISTIC_CONSTRUCTED_FROM_EXTERNAL_MOMENTS {
+            get {
+                return ResourceManager.GetString("CANNOT_CLEAR_STATISTIC_CONSTRUCTED_FROM_EXTERNAL_MOMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot compare property &apos;{0}.{1}&apos;..
         /// </summary>
-        internal static string CannotCompareProperty {
+        internal static string CANNOT_COMPARE_PROPERTY {
             get {
-                return ResourceManager.GetString("CannotCompareProperty", resourceCulture);
+                return ResourceManager.GetString("CANNOT_COMPARE_PROPERTY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Cannot compare values. {0}.
         /// </summary>
-        internal static string CannotCompareValues {
+        internal static string CANNOT_COMPARE_VALUES {
             get {
-                return ResourceManager.GetString("CannotCompareValues", resourceCulture);
+                return ResourceManager.GetString("CANNOT_COMPARE_VALUES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot compute 0-th root of unity, indefinite result.
+        /// </summary>
+        internal static string CANNOT_COMPUTE_0TH_ROOT_OF_UNITY {
+            get {
+                return ResourceManager.GetString("CANNOT_COMPUTE_0TH_ROOT_OF_UNITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot compute beta density at 0 when alpha = {0,number}.
+        /// </summary>
+        internal static string CANNOT_COMPUTE_BETA_DENSITY_AT_0_FOR_SOME_ALPHA {
+            get {
+                return ResourceManager.GetString("CANNOT_COMPUTE_BETA_DENSITY_AT_0_FOR_SOME_ALPHA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot compute beta density at 1 when beta = %.3g.
+        /// </summary>
+        internal static string CANNOT_COMPUTE_BETA_DENSITY_AT_1_FOR_SOME_BETA {
+            get {
+                return ResourceManager.GetString("CANNOT_COMPUTE_BETA_DENSITY_AT_1_FOR_SOME_BETA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot compute nth root for null or negative n: {0}.
+        /// </summary>
+        internal static string CANNOT_COMPUTE_NTH_ROOT_FOR_NEGATIVE_N {
+            get {
+                return ResourceManager.GetString("CANNOT_COMPUTE_NTH_ROOT_FOR_NEGATIVE_N", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot discard a negative number of elements ({0}).
+        /// </summary>
+        internal static string CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS {
+            get {
+                return ResourceManager.GetString("CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot format a {0} instance as a 3D vector.
+        /// </summary>
+        internal static string CANNOT_FORMAT_INSTANCE_AS_3D_VECTOR {
+            get {
+                return ResourceManager.GetString("CANNOT_FORMAT_INSTANCE_AS_3D_VECTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot format a {0} instance as a complex number.
+        /// </summary>
+        internal static string CANNOT_FORMAT_INSTANCE_AS_COMPLEX {
+            get {
+                return ResourceManager.GetString("CANNOT_FORMAT_INSTANCE_AS_COMPLEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot format a {0} instance as a real vector.
+        /// </summary>
+        internal static string CANNOT_FORMAT_INSTANCE_AS_REAL_VECTOR {
+            get {
+                return ResourceManager.GetString("CANNOT_FORMAT_INSTANCE_AS_REAL_VECTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot format given object as a fraction number.
+        /// </summary>
+        internal static string CANNOT_FORMAT_OBJECT_TO_FRACTION {
+            get {
+                return ResourceManager.GetString("CANNOT_FORMAT_OBJECT_TO_FRACTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to statistics constructed from external moments cannot be incremented.
+        /// </summary>
+        internal static string CANNOT_INCREMENT_STATISTIC_CONSTRUCTED_FROM_EXTERNAL_MOMENTS {
+            get {
+                return ResourceManager.GetString("CANNOT_INCREMENT_STATISTIC_CONSTRUCTED_FROM_EXTERNAL_MOMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot normalize a zero norm vector.
+        /// </summary>
+        internal static string CANNOT_NORMALIZE_A_ZERO_NORM_VECTOR {
+            get {
+                return ResourceManager.GetString("CANNOT_NORMALIZE_A_ZERO_NORM_VECTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to string \&quot;{0}\&quot; unparseable (from position {1}).
+        /// </summary>
+        internal static string CANNOT_PARSE {
+            get {
+                return ResourceManager.GetString("CANNOT_PARSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to string \&quot;{0}\&quot; unparseable (from position {1}) as an object of type {2}.
+        /// </summary>
+        internal static string CANNOT_PARSE_AS_TYPE {
+            get {
+                return ResourceManager.GetString("CANNOT_PARSE_AS_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to elements cannot be retrieved from a negative array index {0}.
+        /// </summary>
+        internal static string CANNOT_RETRIEVE_AT_NEGATIVE_INDEX {
+            get {
+                return ResourceManager.GetString("CANNOT_RETRIEVE_AT_NEGATIVE_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot set an element at a negative index {0}.
+        /// </summary>
+        internal static string CANNOT_SET_AT_NEGATIVE_INDEX {
+            get {
+                return ResourceManager.GetString("CANNOT_SET_AT_NEGATIVE_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot substitute an element from an empty array.
+        /// </summary>
+        internal static string CANNOT_SUBSTITUTE_ELEMENT_FROM_EMPTY_ARRAY {
+            get {
+                return ResourceManager.GetString("CANNOT_SUBSTITUTE_ELEMENT_FROM_EMPTY_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversion Exception in Transformation: {0}.
+        /// </summary>
+        internal static string CANNOT_TRANSFORM_TO_DOUBLE {
+            get {
+                return ResourceManager.GetString("CANNOT_TRANSFORM_TO_DOUBLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cardan angles singularity.
+        /// </summary>
+        internal static string CARDAN_ANGLES_SINGULARITY {
+            get {
+                return ResourceManager.GetString("CARDAN_ANGLES_SINGULARITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to class ({0}) does not implement Comparable.
+        /// </summary>
+        internal static string CLASS_DOESNT_IMPLEMENT_COMPARABLE {
+            get {
+                return ResourceManager.GetString("CLASS_DOESNT_IMPLEMENT_COMPARABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the closest orthogonal matrix has a negative determinant {0}.
+        /// </summary>
+        internal static string CLOSEST_ORTHOGONAL_MATRIX_HAS_NEGATIVE_DETERMINANT {
+            get {
+                return ResourceManager.GetString("CLOSEST_ORTHOGONAL_MATRIX_HAS_NEGATIVE_DETERMINANT", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Collection counts for property &apos;{0}.{1}&apos; do not match..
         /// </summary>
-        internal static string CollectionCountsForPropertyDoNotMatch {
+        internal static string COLLECTION_COUNTS_FOR_PROPERTY_DO_NOT_MATCH {
             get {
-                return ResourceManager.GetString("CollectionCountsForPropertyDoNotMatch", resourceCulture);
+                return ResourceManager.GetString("COLLECTION_COUNTS_FOR_PROPERTY_DO_NOT_MATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to column index ({0}).
+        /// </summary>
+        internal static string COLUMN_INDEX {
+            get {
+                return ResourceManager.GetString("COLUMN_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to column index {0} out of allowed range [{1}, {2}].
+        /// </summary>
+        internal static string COLUMN_INDEX_OUT_OF_RANGE {
+            get {
+                return ResourceManager.GetString("COLUMN_INDEX_OUT_OF_RANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to constraint.
+        /// </summary>
+        internal static string CONSTRAINT {
+            get {
+                return ResourceManager.GetString("CONSTRAINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continued fraction convergents diverged to +/- infinity for value {0}.
+        /// </summary>
+        internal static string CONTINUED_FRACTION_INFINITY_DIVERGENCE {
+            get {
+                return ResourceManager.GetString("CONTINUED_FRACTION_INFINITY_DIVERGENCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continued fraction diverged to NaN for value {0}.
+        /// </summary>
+        internal static string CONTINUED_FRACTION_NAN_DIVERGENCE {
+            get {
+                return ResourceManager.GetString("CONTINUED_FRACTION_NAN_DIVERGENCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to contraction criteria ({0}) smaller than the expansion factor ({1}).  This would lead to a never ending loop of expansion and contraction as a newly expanded internal storage array would immediately satisfy the criteria for contraction..
+        /// </summary>
+        internal static string CONTRACTION_CRITERIA_SMALLER_THAN_EXPANSION_FACTOR {
+            get {
+                return ResourceManager.GetString("CONTRACTION_CRITERIA_SMALLER_THAN_EXPANSION_FACTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to contraction criteria smaller than one ({0}).  This would lead to a never ending loop of expansion and contraction as an internal storage array length equal to the number of elements would satisfy the contraction criteria..
+        /// </summary>
+        internal static string CONTRACTION_CRITERIA_SMALLER_THAN_ONE {
+            get {
+                return ResourceManager.GetString("CONTRACTION_CRITERIA_SMALLER_THAN_ONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to convergence failed.
+        /// </summary>
+        internal static string CONVERGENCE_FAILED {
+            get {
+                return ResourceManager.GetString("CONVERGENCE_FAILED", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Source or/and Destination Objects are null.
         /// </summary>
-        internal static string CoreSourceDestinationObjectsAreNull {
+        internal static string CORE_SOURCE_DESTINATION_OBJECTS_ARE_NULL {
             get {
-                return ResourceManager.GetString("CoreSourceDestinationObjectsAreNull", resourceCulture);
+                return ResourceManager.GetString("CORE_SOURCE_DESTINATION_OBJECTS_ARE_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not get business day tenor for {0}..
+        /// </summary>
+        internal static string COULD_NOT_GET_BUSINESS_DAY_TENOR_FOR {
+            get {
+                return ResourceManager.GetString("COULD_NOT_GET_BUSINESS_DAY_TENOR_FOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not get period for {0}..
+        /// </summary>
+        internal static string COULD_NOT_GET_PERIOD_FOR {
+            get {
+                return ResourceManager.GetString("COULD_NOT_GET_PERIOD_FOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to covariance matrix.
+        /// </summary>
+        internal static string COVARIANCE_MATRIX {
+            get {
+                return ResourceManager.GetString("COVARIANCE_MATRIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to some outline boundary loops cross each other.
+        /// </summary>
+        internal static string CROSSING_BOUNDARY_LOOPS {
+            get {
+                return ResourceManager.GetString("CROSSING_BOUNDARY_LOOPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to crossover rate ({0}).
+        /// </summary>
+        internal static string CROSSOVER_RATE {
+            get {
+                return ResourceManager.GetString("CROSSOVER_RATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cumulative probability function returned NaN for argument {0} p = {1}.
+        /// </summary>
+        internal static string CUMULATIVE_PROBABILITY_RETURNED_NAN {
+            get {
+                return ResourceManager.GetString("CUMULATIVE_PROBABILITY_RETURNED_NAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The data array is too big..
+        /// </summary>
+        internal static string DATA_ARRAY_IS_TOO_BIG {
+            get {
+                return ResourceManager.GetString("DATA_ARRAY_IS_TOO_BIG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date was null.
+        /// </summary>
+        internal static string DATE_WAS_NULL {
+            get {
+                return ResourceManager.GetString("DATE_WAS_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot operate with this condition. {0}.
+        /// </summary>
+        internal static string DECIMAL_COMPLEX_CANNOT_OPERATE_WITH_THIS_CONDITION {
+            get {
+                return ResourceManager.GetString("DECIMAL_COMPLEX_CANNOT_OPERATE_WITH_THIS_CONDITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The decomposition has been destroyed..
+        /// </summary>
+        internal static string DECOMPOSITION_DESTROYED {
+            get {
+                return ResourceManager.GetString("DECOMPOSITION_DESTROYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The decomposition is undefined (zero in diagonal)..
+        /// </summary>
+        internal static string DECOMPOSITION_UNDEFINED {
+            get {
+                return ResourceManager.GetString("DECOMPOSITION_UNDEFINED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to degrees of freedom ({0}).
+        /// </summary>
+        internal static string DEGREES_OF_FREEDOM {
+            get {
+                return ResourceManager.GetString("DEGREES_OF_FREEDOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to denominator.
+        /// </summary>
+        internal static string DENOMINATOR {
+            get {
+                return ResourceManager.GetString("DENOMINATOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to denominator format.
+        /// </summary>
+        internal static string DENOMINATOR_FORMAT {
+            get {
+                return ResourceManager.GetString("DENOMINATOR_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Row count and/or Column count not match with loading data matrix..
+        /// </summary>
+        internal static string DENSE_MATRIX_ROW_COUNT_COLUMN_COUNT_NOT_MATCH {
+            get {
+                return ResourceManager.GetString("DENSE_MATRIX_ROW_COUNT_COLUMN_COUNT_NOT_MATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to original and permuted data must contain the same elements.
+        /// </summary>
+        internal static string DIFFERENT_ORIG_AND_PERMUTED_DATA {
+            get {
+                return ResourceManager.GetString("DIFFERENT_ORIG_AND_PERMUTED_DATA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to some rows have length {0} while others have length {1}.
+        /// </summary>
+        internal static string DIFFERENT_ROWS_LENGTHS {
+            get {
+                return ResourceManager.GetString("DIFFERENT_ROWS_LENGTHS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to digest not initialized.
+        /// </summary>
+        internal static string DIGEST_NOT_INITIALIZED {
+            get {
+                return ResourceManager.GetString("DIGEST_NOT_INITIALIZED", resourceCulture);
             }
         }
         
@@ -367,11 +907,200 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discrete cumulative probability function returned NaN for argument {0}.
+        /// </summary>
+        internal static string DISCRETE_CUMULATIVE_PROBABILITY_RETURNED_NAN {
+            get {
+                return ResourceManager.GetString("DISCRETE_CUMULATIVE_PROBABILITY_RETURNED_NAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to distribution not loaded.
+        /// </summary>
+        internal static string DISTRIBUTION_NOT_LOADED {
+            get {
+                return ResourceManager.GetString("DISTRIBUTION_NOT_LOADED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not have an amount with currency: {0}.
+        /// </summary>
+        internal static string DO_NOT_HAVE_AN_AMOUNT_WITH_CURRENCY {
+            get {
+                return ResourceManager.GetString("DO_NOT_HAVE_AN_AMOUNT_WITH_CURRENCY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Positive.
+        /// </summary>
+        internal static string DSCOMPLIER_NOT_POSITIVE {
+            get {
+                return ResourceManager.GetString("DSCOMPLIER_NOT_POSITIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abscissa {0} is duplicated at both indices {1} and {2}.
+        /// </summary>
+        internal static string DUPLICATED_ABSCISSA {
+            get {
+                return ResourceManager.GetString("DUPLICATED_ABSCISSA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to duplicated abscissa {0} causes division by zero.
+        /// </summary>
+        internal static string DUPLICATED_ABSCISSA_DIVISION_BY_ZERO {
+            get {
+                return ResourceManager.GetString("DUPLICATED_ABSCISSA_DIVISION_BY_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to elitism rate ({0}).
+        /// </summary>
+        internal static string ELITISM_RATE {
+            get {
+                return ResourceManager.GetString("ELITISM_RATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to empty cluster in k-means.
+        /// </summary>
+        internal static string EMPTY_CLUSTER_IN_K_MEANS {
+            get {
+                return ResourceManager.GetString("EMPTY_CLUSTER_IN_K_MEANS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sample for interpolation is empty.
+        /// </summary>
+        internal static string EMPTY_INTERPOLATION_SAMPLE {
+            get {
+                return ResourceManager.GetString("EMPTY_INTERPOLATION_SAMPLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to empty polynomials coefficients array.
+        /// </summary>
+        internal static string EMPTY_POLYNOMIALS_COEFFICIENTS_ARRAY {
+            get {
+                return ResourceManager.GetString("EMPTY_POLYNOMIALS_COEFFICIENTS_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to empty selected column index array.
+        /// </summary>
+        internal static string EMPTY_SELECTED_COLUMN_INDEX_ARRAY {
+            get {
+                return ResourceManager.GetString("EMPTY_SELECTED_COLUMN_INDEX_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to empty selected row index array.
+        /// </summary>
+        internal static string EMPTY_SELECTED_ROW_INDEX_ARRAY {
+            get {
+                return ResourceManager.GetString("EMPTY_SELECTED_ROW_INDEX_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to empty string for imaginary character.
+        /// </summary>
+        internal static string EMPTY_STRING_FOR_IMAGINARY_CHARACTER {
+            get {
+                return ResourceManager.GetString("EMPTY_STRING_FOR_IMAGINARY_CHARACTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date was null.
+        /// </summary>
+        internal static string END_DATE_WAS_NULL {
+            get {
+                return ResourceManager.GetString("END_DATE_WAS_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to endpoints do not specify an interval: [{0}, {1}].
+        /// </summary>
+        internal static string ENDPOINTS_NOT_AN_INTERVAL {
+            get {
+                return ResourceManager.GetString("ENDPOINTS_NOT_AN_INTERVAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to equal vertices {0} and {1} in simplex configuration.
+        /// </summary>
+        internal static string EQUAL_VERTICES_IN_SIMPLEX {
+            get {
+                return ResourceManager.GetString("EQUAL_VERTICES_IN_SIMPLEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Euler angles singularity.
+        /// </summary>
+        internal static string EULER_ANGLES_SINGULARITY {
+            get {
+                return ResourceManager.GetString("EULER_ANGLES_SINGULARITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to evaluation.
+        /// </summary>
+        internal static string EVALUATION {
+            get {
+                return ResourceManager.GetString("EVALUATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to evaluation failed for argument = {0}.
+        /// </summary>
+        internal static string EVALUATION_FAILED_FOR_ARGUMENT {
+            get {
+                return ResourceManager.GetString("EVALUATION_FAILED_FOR_ARGUMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to evaluations.
+        /// </summary>
+        internal static string EVALUATIONS {
+            get {
+                return ResourceManager.GetString("EVALUATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to from: {0}, to: {1}, size={2}.
         /// </summary>
-        internal static string Exception_FromToSize {
+        internal static string EXCEPTION_FROM_TO_SIZE {
             get {
-                return ResourceManager.GetString("Exception_FromToSize", resourceCulture);
+                return ResourceManager.GetString("EXCEPTION_FROM_TO_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to expansion factor smaller than one ({0}).
+        /// </summary>
+        internal static string EXPANSION_FACTOR_SMALLER_THAN_ONE {
+            get {
+                return ResourceManager.GetString("EXPANSION_FACTOR_SMALLER_THAN_ONE", resourceCulture);
             }
         }
         
@@ -394,6 +1123,123 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to number of iterations={4}, maximum iterations={5}, initial={6}, lower bound={7}, upper bound={8}, final a value={0}, final b value={1}, f(a)={2}, f(b)={3}.
+        /// </summary>
+        internal static string FAILED_BRACKETING {
+            get {
+                return ResourceManager.GetString("FAILED_BRACKETING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to convert {0} to fraction after {1} iterations.
+        /// </summary>
+        internal static string FAILED_FRACTION_CONVERSION {
+            get {
+                return ResourceManager.GetString("FAILED_FRACTION_CONVERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field too large for an int: {0}.
+        /// </summary>
+        internal static string FIELD_TOO_LARGE_FOR_AN_INT {
+            get {
+                return ResourceManager.GetString("FIELD_TOO_LARGE_FOR_AN_INT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to first {0} columns are not initialized yet.
+        /// </summary>
+        internal static string FIRST_COLUMNS_NOT_INITIALIZED_YET {
+            get {
+                return ResourceManager.GetString("FIRST_COLUMNS_NOT_INITIALIZED_YET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to first element is not 0: {0}.
+        /// </summary>
+        internal static string FIRST_ELEMENT_NOT_ZERO {
+            get {
+                return ResourceManager.GetString("FIRST_ELEMENT_NOT_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to first {0} rows are not initialized yet.
+        /// </summary>
+        internal static string FIRST_ROWS_NOT_INITIALIZED_YET {
+            get {
+                return ResourceManager.GetString("FIRST_ROWS_NOT_INITIALIZED_YET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fraction.
+        /// </summary>
+        internal static string FRACTION {
+            get {
+                return ResourceManager.GetString("FRACTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overflow trying to convert {0} to fraction ({1}/{2}).
+        /// </summary>
+        internal static string FRACTION_CONVERSION_OVERFLOW {
+            get {
+                return ResourceManager.GetString("FRACTION_CONVERSION_OVERFLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to function.
+        /// </summary>
+        internal static string FUNCTION {
+            get {
+                return ResourceManager.GetString("FUNCTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Function computation resulted in arithmetic overflow..
+        /// </summary>
+        internal static string FUNCTION_COMPUTATION_RESULTED_IN_ARITHMETIC_OVERFLOW {
+            get {
+                return ResourceManager.GetString("FUNCTION_COMPUTATION_RESULTED_IN_ARITHMETIC_OVERFLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Given data is empty..
+        /// </summary>
+        internal static string FUNCTION_GIVEN_DATA_IS_EMPTY {
+            get {
+                return ResourceManager.GetString("FUNCTION_GIVEN_DATA_IS_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to function is not differentiable.
+        /// </summary>
+        internal static string FUNCTION_NOT_DIFFERENTIABLE {
+            get {
+                return ResourceManager.GetString("FUNCTION_NOT_DIFFERENTIABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to function is not polynomial.
+        /// </summary>
+        internal static string FUNCTION_NOT_POLYNOMIAL {
+            get {
+                return ResourceManager.GetString("FUNCTION_NOT_POLYNOMIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to overflow: gcd({0}, {1}) is 2^31.
         /// </summary>
         internal static string GCD_OVERFLOW_32_BITS {
@@ -408,6 +1254,51 @@ namespace Mercury.Language.Core.Properties {
         internal static string GCD_OVERFLOW_64_BITS {
             get {
                 return ResourceManager.GetString("GCD_OVERFLOW_64_BITS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} wide hole between models time ranges.
+        /// </summary>
+        internal static string HOLE_BETWEEN_MODELS_TIME_RANGES {
+            get {
+                return ResourceManager.GetString("HOLE_BETWEEN_MODELS_TIME_RANGES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to condition number {1} is too high .
+        /// </summary>
+        internal static string ILL_CONDITIONED_OPERATOR {
+            get {
+                return ResourceManager.GetString("ILL_CONDITIONED_OPERATOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to illegal state.
+        /// </summary>
+        internal static string ILLEGAL_STATE {
+            get {
+                return ResourceManager.GetString("ILLEGAL_STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to imaginary format.
+        /// </summary>
+        internal static string IMAGINARY_FORMAT {
+            get {
+                return ResourceManager.GetString("IMAGINARY_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to inconsistent state at 2\u03c0 wrapping.
+        /// </summary>
+        internal static string INCONSISTENT_STATE_AT_2_PI_WRAPPING {
+            get {
+                return ResourceManager.GetString("INCONSISTENT_STATE_AT_2_PI_WRAPPING", resourceCulture);
             }
         }
         
@@ -448,11 +1339,308 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Array contains an infinite element, {0} at index {1}.
+        /// </summary>
+        internal static string INFINITE_ARRAY_ELEMENT {
+            get {
+                return ResourceManager.GetString("INFINITE_ARRAY_ELEMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to interval bounds must be finite.
+        /// </summary>
+        internal static string INFINITE_BOUND {
+            get {
+                return ResourceManager.GetString("INFINITE_BOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot convert infinite value.
+        /// </summary>
+        internal static string INFINITE_VALUE_CONVERSION {
+            get {
+                return ResourceManager.GetString("INFINITE_VALUE_CONVERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to initial capacity ({0}) is not positive.
+        /// </summary>
+        internal static string INITIAL_CAPACITY_NOT_POSITIVE {
+            get {
+                return ResourceManager.GetString("INITIAL_CAPACITY_NOT_POSITIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to initial column {1} after final column {0}.
+        /// </summary>
+        internal static string INITIAL_COLUMN_AFTER_FINAL_COLUMN {
+            get {
+                return ResourceManager.GetString("INITIAL_COLUMN_AFTER_FINAL_COLUMN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to initial row {1} after final row {0}.
+        /// </summary>
+        internal static string INITIAL_ROW_AFTER_FINAL_ROW {
+            get {
+                return ResourceManager.GetString("INITIAL_ROW_AFTER_FINAL_ROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Injected input parameter &apos;{0}&apos; must not be null.
+        /// </summary>
+        internal static string INJECTED_INPUT_PARAMETER_MUST_NOT_BE_NULL {
+            get {
+                return ResourceManager.GetString("INJECTED_INPUT_PARAMETER_MUST_NOT_BE_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to input array.
         /// </summary>
         internal static string INPUT_ARRAY {
             get {
                 return ResourceManager.GetString("INPUT_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to input data comes from unsupported datasource: {0}, supported sources: {1}, {2}.
+        /// </summary>
+        internal static string INPUT_DATA_FROM_UNSUPPORTED_DATASOURCE {
+            get {
+                return ResourceManager.GetString("INPUT_DATA_FROM_UNSUPPORTED_DATASOURCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter 2D array &apos;{0}&apos; must not contain null at index {1}.
+        /// </summary>
+        internal static string INPUT_PARAMETER_2D_ARRAY_MUST_NOT_CONTAIN_NULL_AT_INDEX {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_2D_ARRAY_MUST_NOT_CONTAIN_NULL_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter array &apos;{0}&apos; must not be empty.
+        /// </summary>
+        internal static string INPUT_PARAMETER_ARRAY_MUST_NOT_BE_EMPTY {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_ARRAY_MUST_NOT_BE_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter array &apos;{0}&apos; must not contain null at index {1}.
+        /// </summary>
+        internal static string INPUT_PARAMETER_ARRAY_MUST_NOT_CONTAIN_NULL_AT_INDEX {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_ARRAY_MUST_NOT_CONTAIN_NULL_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter collection &apos;{0}&apos; must not be empty.
+        /// </summary>
+        internal static string INPUT_PARAMETER_COLLECTION_MUST_NOT_BE_EMPTY {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_COLLECTION_MUST_NOT_BE_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter dictionary &apos;{0}&apos; must not contain null value or key at index {1}.
+        /// </summary>
+        internal static string INPUT_PARAMETER_DICTIONARY_MUST_NOT_CONTAIN_NULL_ENTRY_AT_INDEX {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_DICTIONARY_MUST_NOT_CONTAIN_NULL_ENTRY_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter dictionary &apos;{0}&apos; must not contain null key at index {1}.
+        /// </summary>
+        internal static string INPUT_PARAMETER_DICTIONARY_MUST_NOT_CONTAIN_NULL_KEY_AT_INDEX {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_DICTIONARY_MUST_NOT_CONTAIN_NULL_KEY_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter dictionary &apos;{0}&apos; must not contain null value at index {1}.
+        /// </summary>
+        internal static string INPUT_PARAMETER_DICTIONARY_MUST_NOT_CONTAIN_NULL_VALUE_AT_INDEX {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_DICTIONARY_MUST_NOT_CONTAIN_NULL_VALUE_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter enumerable &apos;{0}&apos; must not contain null at index {1}.
+        /// </summary>
+        internal static string INPUT_PARAMETER_ENUMERABLE_MUST_NOT_CONTAIN_NULL_AT_INDEX {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_ENUMERABLE_MUST_NOT_CONTAIN_NULL_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter iterable &apos;{0}&apos; must not be empty.
+        /// </summary>
+        internal static string INPUT_PARAMETER_ITERABLE_MUST_NOT_BE_EMPTY {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_ITERABLE_MUST_NOT_BE_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter list &apos;{0}&apos; must not contain null at index {1}.
+        /// </summary>
+        internal static string INPUT_PARAMETER_LIST_MUST_NOT_CONTAIN_NULL_AT_INDEX {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_LIST_MUST_NOT_CONTAIN_NULL_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must be before &apos;{1}&apos;.
+        /// </summary>
+        internal static string INPUT_PARAMETER_MUST_BE_BEFORE {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_MUST_BE_BEFORE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must be greater than zero.
+        /// </summary>
+        internal static string INPUT_PARAMETER_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be empty.
+        /// </summary>
+        internal static string INPUT_PARAMETER_MUST_NOT_BE_EMPTY {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_MUST_NOT_BE_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be negative.
+        /// </summary>
+        internal static string INPUT_PARAMETER_MUST_NOT_BE_NEGATIVE {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_MUST_NOT_BE_NEGATIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be negative or zero.
+        /// </summary>
+        internal static string INPUT_PARAMETER_MUST_NOT_BE_NEGATIVE_OR_ZERO {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_MUST_NOT_BE_NEGATIVE_OR_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be null.
+        /// </summary>
+        internal static string INPUT_PARAMETER_MUST_NOT_BE_NULL {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_MUST_NOT_BE_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be zero.
+        /// </summary>
+        internal static string INPUT_PARAMETER_MUST_NOT_BE_ZERO {
+            get {
+                return ResourceManager.GetString("INPUT_PARAMETER_MUST_NOT_BE_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to instance of class {0} not comparable to existing values.
+        /// </summary>
+        internal static string INSTANCES_NOT_COMPARABLE_TO_EXISTING_VALUES {
+            get {
+                return ResourceManager.GetString("INSTANCES_NOT_COMPARABLE_TO_EXISTING_VALUES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insufficient data.
+        /// </summary>
+        internal static string INSUFFICIENT_DATA {
+            get {
+                return ResourceManager.GetString("INSUFFICIENT_DATA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insufficient data for t statistic, needs at least 2, got {0}.
+        /// </summary>
+        internal static string INSUFFICIENT_DATA_FOR_T_STATISTIC {
+            get {
+                return ResourceManager.GetString("INSUFFICIENT_DATA_FOR_T_STATISTIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insufficient dimension {0}, must be at least {1}.
+        /// </summary>
+        internal static string INSUFFICIENT_DIMENSION {
+            get {
+                return ResourceManager.GetString("INSUFFICIENT_DIMENSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sample contains {0} observed points, at least {1} are required.
+        /// </summary>
+        internal static string INSUFFICIENT_OBSERVED_POINTS_IN_SAMPLE {
+            get {
+                return ResourceManager.GetString("INSUFFICIENT_OBSERVED_POINTS_IN_SAMPLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insufficient data: only {0} rows and {1} columns..
+        /// </summary>
+        internal static string INSUFFICIENT_ROWS_AND_COLUMNS {
+            get {
+                return ResourceManager.GetString("INSUFFICIENT_ROWS_AND_COLUMNS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to multistep method needs at least {0} previous steps, got {1}.
+        /// </summary>
+        internal static string INTEGRATION_METHOD_NEEDS_AT_LEAST_TWO_PREVIOUS_POINTS {
+            get {
+                return ResourceManager.GetString("INTEGRATION_METHOD_NEEDS_AT_LEAST_TWO_PREVIOUS_POINTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to internal error, please fill a bug report at {0}.
+        /// </summary>
+        internal static string INTERNAL_ERROR {
+            get {
+                return ResourceManager.GetString("INTERNAL_ERROR", resourceCulture);
             }
         }
         
@@ -466,6 +1654,60 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to binary mutation works on BinaryChromosome only.
+        /// </summary>
+        internal static string INVALID_BINARY_CHROMOSOME {
+            get {
+                return ResourceManager.GetString("INVALID_BINARY_CHROMOSOME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid binary digit: {0}.
+        /// </summary>
+        internal static string INVALID_BINARY_DIGIT {
+            get {
+                return ResourceManager.GetString("INVALID_BINARY_DIGIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid bracketing parameters:  lower bound={0},  initial={1}, upper bound={2}.
+        /// </summary>
+        internal static string INVALID_BRACKETING_PARAMETERS {
+            get {
+                return ResourceManager.GetString("INVALID_BRACKETING_PARAMETERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid currency code: {0}.
+        /// </summary>
+        internal static string INVALID_CURRENCY_CODE {
+            get {
+                return ResourceManager.GetString("INVALID_CURRENCY_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid date &apos;DayOfYear 366&apos; as &apos;{0}&apos; is not a leap year.
+        /// </summary>
+        internal static string INVALID_DATE_DAYOFYEAR366_IS_NOT_A_LEAP_YEAR {
+            get {
+                return ResourceManager.GetString("INVALID_DATE_DAYOFYEAR366_IS_NOT_A_LEAP_YEAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to one-point crossover only works with _fixed-length chromosomes.
+        /// </summary>
+        internal static string INVALID_FIXED_LENGTH_CHROMOSOME {
+            get {
+                return ResourceManager.GetString("INVALID_FIXED_LENGTH_CHROMOSOME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to required functionality is missing in {0}.
         /// </summary>
         internal static string INVALID_IMPLEMENTATION {
@@ -475,11 +1717,38 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}に必要な機能がありません。.
+        ///   Looks up a localized string similar to Invalid int value for {0}: {1}.
         /// </summary>
-        internal static string INVALID_IMPLEMENTATION1 {
+        internal static string INVALID_INT_VALUE_FOR_FIELD {
             get {
-                return ResourceManager.GetString("INVALID_IMPLEMENTATION1", resourceCulture);
+                return ResourceManager.GetString("INVALID_INT_VALUE_FOR_FIELD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid interval, initial value parameters:  lower={0}, initial={1}, upper={2}.
+        /// </summary>
+        internal static string INVALID_INTERVAL_INITIAL_VALUE_PARAMETERS {
+            get {
+                return ResourceManager.GetString("INVALID_INTERVAL_INITIAL_VALUE_PARAMETERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid iteration limits: min={0}, max={1}.
+        /// </summary>
+        internal static string INVALID_ITERATIONS_LIMITS {
+            get {
+                return ResourceManager.GetString("INVALID_ITERATIONS_LIMITS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bad value for maximum iterations number: {0}.
+        /// </summary>
+        internal static string INVALID_MAX_ITERATIONS {
+            get {
+                return ResourceManager.GetString("INVALID_MAX_ITERATIONS", resourceCulture);
             }
         }
         
@@ -502,11 +1771,92 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to input data array length = {0} does not match the number of observations = {1} and the number of regressors = {2}.
+        /// </summary>
+        internal static string INVALID_REGRESSION_ARRAY {
+            get {
+                return ResourceManager.GetString("INVALID_REGRESSION_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to length of regressor array = {0} does not match the number of variables = {1} in the model.
+        /// </summary>
+        internal static string INVALID_REGRESSION_OBSERVATION {
+            get {
+                return ResourceManager.GetString("INVALID_REGRESSION_OBSERVATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid rounding method {0}, valid methods: {1} ({2}), {3} ({4}), {5} ({6}), {7} ({8}), {9} ({10}), {11} ({12}), {13} ({14}), {15} ({16}).
+        /// </summary>
+        internal static string INVALID_ROUNDING_METHOD {
+            get {
+                return ResourceManager.GetString("INVALID_ROUNDING_METHOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value: {0} {1}.
+        /// </summary>
+        internal static string INVALID_VALUE {
+            get {
+                return ResourceManager.GetString("INVALID_VALUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for {0} (valid values {1}): {2}.
+        /// </summary>
+        internal static string INVALID_VALUE_FOR_FIELD_VALID_VALUE_RANGE {
+            get {
+                return ResourceManager.GetString("INVALID_VALUE_FOR_FIELD_VALID_VALUE_RANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value (valid values {0}): {1}.
+        /// </summary>
+        internal static string INVALID_VALUE_VALID_RANGE {
+            get {
+                return ResourceManager.GetString("INVALID_VALUE_VALID_RANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item {0} in property collection &apos;{1}.{2}&apos; does not match..
         /// </summary>
-        internal static string ItemInPropertyCollectionDoesNotMatch {
+        internal static string ITEM_IN_PROPERTY_COLLECTION_DOES_NOT_MATCH {
             get {
-                return ResourceManager.GetString("ItemInPropertyCollectionDoesNotMatch", resourceCulture);
+                return ResourceManager.GetString("ITEM_IN_PROPERTY_COLLECTION_DOES_NOT_MATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to iterations.
+        /// </summary>
+        internal static string ITERATIONS {
+            get {
+                return ResourceManager.GetString("ITERATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to iterator exhausted.
+        /// </summary>
+        internal static string ITERATOR_EXHAUSTED {
+            get {
+                return ResourceManager.GetString("ITERATOR_EXHAUSTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kernel size must be odd and higher than 2..
+        /// </summary>
+        internal static string KERNEL_SIZE_MUST_BE_ODD_AND_HIGHER_THAN_2 {
+            get {
+                return ResourceManager.GetString("KERNEL_SIZE_MUST_BE_ODD_AND_HIGHER_THAN_2", resourceCulture);
             }
         }
         
@@ -588,6 +1938,51 @@ namespace Mercury.Language.Core.Properties {
         internal static string LINKEDHASHSET_OTHER_CANNOT_BE_NULL {
             get {
                 return ResourceManager.GetString("LINKEDHASHSET_OTHER_CANNOT_BE_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to list of chromosomes bigger than maxPopulationSize.
+        /// </summary>
+        internal static string LIST_OF_CHROMOSOMES_BIGGER_THAN_POPULATION_SIZE {
+            get {
+                return ResourceManager.GetString("LIST_OF_CHROMOSOMES_BIGGER_THAN_POPULATION_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loess expects at least 1 point.
+        /// </summary>
+        internal static string LOESS_EXPECTS_AT_LEAST_ONE_POINT {
+            get {
+                return ResourceManager.GetString("LOESS_EXPECTS_AT_LEAST_ONE_POINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to lower bound ({0}) must be strictly less than upper bound ({1}).
+        /// </summary>
+        internal static string LOWER_BOUND_NOT_BELOW_UPPER_BOUND {
+            get {
+                return ResourceManager.GetString("LOWER_BOUND_NOT_BELOW_UPPER_BOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to lower endpoint ({0}) must be less than or equal to upper endpoint ({1}).
+        /// </summary>
+        internal static string LOWER_ENDPOINT_ABOVE_UPPER_ENDPOINT {
+            get {
+                return ResourceManager.GetString("LOWER_ENDPOINT_ABOVE_UPPER_ENDPOINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to map has been modified while iterating.
+        /// </summary>
+        internal static string MAP_MODIFIED_WHILE_ITERATING {
+            get {
+                return ResourceManager.GetString("MAP_MODIFIED_WHILE_ITERATING", resourceCulture);
             }
         }
         
@@ -745,6 +2140,15 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Matrix type can be either LowerTriangular or UpperTrianguler..
+        /// </summary>
+        internal static string MATRIX_TYPE_CAN_BE_EITHER_LOWER_TRIANGULAR_OR_UPPER_TRIANGULER {
+            get {
+                return ResourceManager.GetString("MATRIX_TYPE_CAN_BE_EITHER_LOWER_TRIANGULAR_OR_UPPER_TRIANGULER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to maximal count ({0}) exceeded.
         /// </summary>
         internal static string MAX_COUNT_EXCEEDED {
@@ -759,6 +2163,15 @@ namespace Mercury.Language.Core.Properties {
         internal static string MAX_ITERATIONS_EXCEEDED {
             get {
                 return ResourceManager.GetString("MAX_ITERATIONS_EXCEEDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mean ({0}).
+        /// </summary>
+        internal static string MEAN {
+            get {
+                return ResourceManager.GetString("MEAN", resourceCulture);
             }
         }
         
@@ -844,20 +2257,47 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value must not be null.
+        ///   Looks up a localized string similar to Micro second base is not supported.
         /// </summary>
-        internal static string METHOD_VALUE_MUST_NOT_BE_NULL1 {
+        internal static string MICRO_SECOND_BASE_IS_NOT_SUPPORTED {
             get {
-                return ResourceManager.GetString("METHOD_VALUE_MUST_NOT_BE_NULL1", resourceCulture);
+                return ResourceManager.GetString("MICRO_SECOND_BASE_IS_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal number of days is invalid..
+        /// </summary>
+        internal static string MINIMAL_NUMBER_OF_DAYS_IS_INVALID {
+            get {
+                return ResourceManager.GetString("MINIMAL_NUMBER_OF_DAYS_IS_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minimal step size ({1,number,0.00E00}) reached, integration needs {0,number,0.00E00}.
+        /// </summary>
+        internal static string MINIMAL_STEPSIZE_REACHED_DURING_INTEGRATION {
+            get {
+                return ResourceManager.GetString("MINIMAL_STEPSIZE_REACHED_DURING_INTEGRATION", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Mismatch with property &apos;{0}.{1}&apos; found..
         /// </summary>
-        internal static string MismatchWithPropertyFound {
+        internal static string MISMATCH_WITH_PROPERTY_FOUND {
             get {
-                return ResourceManager.GetString("MismatchWithPropertyFound", resourceCulture);
+                return ResourceManager.GetString("MISMATCH_WITH_PROPERTY_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loess expects the abscissa and ordinate arrays to be of the same size, but got {0} abscissae and {1} ordinatae.
+        /// </summary>
+        internal static string MISMATCHED_LOESS_ABSCISSA_ORDINATE_ARRAYS {
+            get {
+                return ResourceManager.GetString("MISMATCHED_LOESS_ABSCISSA_ORDINATE_ARRAYS", resourceCulture);
             }
         }
         
@@ -880,6 +2320,15 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to mutation rate ({0}).
+        /// </summary>
+        internal static string MUTATION_RATE {
+            get {
+                return ResourceManager.GetString("MUTATION_RATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to n must be greater than 0.
         /// </summary>
         internal static string n_MUST_BE_GREATER_THAN_ZERO {
@@ -894,6 +2343,321 @@ namespace Mercury.Language.Core.Properties {
         internal static string n_MUST_BE_POSITIVE_INT {
             get {
                 return ResourceManager.GetString("n_MUST_BE_POSITIVE_INT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} points Legendre-Gauss integrator not supported, number of points must be in the {1}-{2} range.
+        /// </summary>
+        internal static string N_POINTS_GAUSS_LEGENDRE_INTEGRATOR_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("N_POINTS_GAUSS_LEGENDRE_INTEGRATOR_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to element {0} is NaN.
+        /// </summary>
+        internal static string NAN_ELEMENT_AT_INDEX {
+            get {
+                return ResourceManager.GetString("NAN_ELEMENT_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NaN is not allowed.
+        /// </summary>
+        internal static string NAN_NOT_ALLOWED {
+            get {
+                return ResourceManager.GetString("NAN_NOT_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot convert NaN value.
+        /// </summary>
+        internal static string NAN_VALUE_CONVERSION {
+            get {
+                return ResourceManager.GetString("NAN_VALUE_CONVERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nano second base is not supported.
+        /// </summary>
+        internal static string NANO_SECOND_BASE_IS_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("NANO_SECOND_BASE_IS_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Native Provider disabled by an application switch.
+        /// </summary>
+        internal static string NATIVE_PROVIDER_DISABLED_BY_AN_APPLICATION_SWITCH {
+            get {
+                return ResourceManager.GetString("NATIVE_PROVIDER_DISABLED_BY_AN_APPLICATION_SWITCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Native Provider Probing failed to resolve creator.
+        /// </summary>
+        internal static string NATIVE_PROVIDER_PROBING_FAILED_TO_RESOLVE_CREATOR {
+            get {
+                return ResourceManager.GetString("NATIVE_PROVIDER_PROBING_FAILED_TO_RESOLVE_CREATOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Native Provider Probing is disabled by an application switch.
+        /// </summary>
+        internal static string NATIVE_PROVIDER_PROBING_IS_DISABLED_BY_AN_APPLICATION_SWITCH {
+            get {
+                return ResourceManager.GetString("NATIVE_PROVIDER_PROBING_IS_DISABLED_BY_AN_APPLICATION_SWITCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to brightness exponent should be positive or null, but got {0}.
+        /// </summary>
+        internal static string NEGATIVE_BRIGHTNESS_EXPONENT {
+            get {
+                return ResourceManager.GetString("NEGATIVE_BRIGHTNESS_EXPONENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to negative complex module {0}.
+        /// </summary>
+        internal static string NEGATIVE_COMPLEX_MODULE {
+            get {
+                return ResourceManager.GetString("NEGATIVE_COMPLEX_MODULE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to element ({0}, {1}) is negative: {2}.
+        /// </summary>
+        internal static string NEGATIVE_ELEMENT_AT_2D_INDEX {
+            get {
+                return ResourceManager.GetString("NEGATIVE_ELEMENT_AT_2D_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to element {0} is negative: {1}.
+        /// </summary>
+        internal static string NEGATIVE_ELEMENT_AT_INDEX {
+            get {
+                return ResourceManager.GetString("NEGATIVE_ELEMENT_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of successes must be non-negative ({0}).
+        /// </summary>
+        internal static string NEGATIVE_NUMBER_OF_SUCCESSES {
+            get {
+                return ResourceManager.GetString("NEGATIVE_NUMBER_OF_SUCCESSES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of trials must be non-negative ({0}).
+        /// </summary>
+        internal static string NEGATIVE_NUMBER_OF_TRIALS {
+            get {
+                return ResourceManager.GetString("NEGATIVE_NUMBER_OF_TRIALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the number of robustness iterations must be non-negative, but got {0}.
+        /// </summary>
+        internal static string NEGATIVE_ROBUSTNESS_ITERATIONS {
+            get {
+                return ResourceManager.GetString("NEGATIVE_ROBUSTNESS_ITERATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no bin selected.
+        /// </summary>
+        internal static string NO_BIN_SELECTED {
+            get {
+                return ResourceManager.GetString("NO_BIN_SELECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to none of the {0} start points lead to convergence.
+        /// </summary>
+        internal static string NO_CONVERGENCE_WITH_ANY_START_POINT {
+            get {
+                return ResourceManager.GetString("NO_CONVERGENCE_WITH_ANY_START_POINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no data.
+        /// </summary>
+        internal static string NO_DATA {
+            get {
+                return ResourceManager.GetString("NO_DATA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no degrees of freedom ({0} measurements, {1} parameters).
+        /// </summary>
+        internal static string NO_DEGREES_OF_FREEDOM {
+            get {
+                return ResourceManager.GetString("NO_DEGREES_OF_FREEDOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This distribution does not have a density function implemented.
+        /// </summary>
+        internal static string NO_DENSITY_FOR_THIS_DISTRIBUTION {
+            get {
+                return ResourceManager.GetString("NO_DENSITY_FOR_THIS_DISTRIBUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no feasible solution.
+        /// </summary>
+        internal static string NO_FEASIBLE_SOLUTION {
+            get {
+                return ResourceManager.GetString("NO_FEASIBLE_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no optimum computed yet.
+        /// </summary>
+        internal static string NO_OPTIMUM_COMPUTED_YET {
+            get {
+                return ResourceManager.GetString("NO_OPTIMUM_COMPUTED_YET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regression model must include at least one regressor.
+        /// </summary>
+        internal static string NO_REGRESSORS {
+            get {
+                return ResourceManager.GetString("NO_REGRESSORS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no result available.
+        /// </summary>
+        internal static string NO_RESULT_AVAILABLE {
+            get {
+                return ResourceManager.GetString("NO_RESULT_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no entry at indices ({0}, {1}) in a {2}x{3} matrix.
+        /// </summary>
+        internal static string NO_SUCH_MATRIX_ENTRY {
+            get {
+                return ResourceManager.GetString("NO_SUCH_MATRIX_ENTRY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continued fraction convergents failed to converge (in less than {0} iterations) for value {1}.
+        /// </summary>
+        internal static string NON_CONVERGENT_CONTINUED_FRACTION {
+            get {
+                return ResourceManager.GetString("NON_CONVERGENT_CONTINUED_FRACTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to non-invertible affine transform collapses some lines into single points.
+        /// </summary>
+        internal static string NON_INVERTIBLE_TRANSFORM {
+            get {
+                return ResourceManager.GetString("NON_INVERTIBLE_TRANSFORM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to not positive definite matrix: diagonal element at ({1},{1}) is smaller than {2} ({0}).
+        /// </summary>
+        internal static string NON_POSITIVE_DEFINITE_MATRIX {
+            get {
+                return ResourceManager.GetString("NON_POSITIVE_DEFINITE_MATRIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to non positive definite linear operator.
+        /// </summary>
+        internal static string NON_POSITIVE_DEFINITE_OPERATOR {
+            get {
+                return ResourceManager.GetString("NON_POSITIVE_DEFINITE_OPERATOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of microsphere elements must be positive, but got {0}.
+        /// </summary>
+        internal static string NON_POSITIVE_MICROSPHERE_ELEMENTS {
+            get {
+                return ResourceManager.GetString("NON_POSITIVE_MICROSPHERE_ELEMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to polynomial degree must be positive: degree={0}.
+        /// </summary>
+        internal static string NON_POSITIVE_POLYNOMIAL_DEGREE {
+            get {
+                return ResourceManager.GetString("NON_POSITIVE_POLYNOMIAL_DEGREE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to all abscissae must be finite real numbers, but {0}-th is {1}.
+        /// </summary>
+        internal static string NON_REAL_FINITE_ABSCISSA {
+            get {
+                return ResourceManager.GetString("NON_REAL_FINITE_ABSCISSA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to all ordinatae must be finite real numbers, but {0}-th is {1}.
+        /// </summary>
+        internal static string NON_REAL_FINITE_ORDINATE {
+            get {
+                return ResourceManager.GetString("NON_REAL_FINITE_ORDINATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to all weights must be finite real numbers, but {0}-th is {1}.
+        /// </summary>
+        internal static string NON_REAL_FINITE_WEIGHT {
+            get {
+                return ResourceManager.GetString("NON_REAL_FINITE_WEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to non self-adjoint linear operator.
+        /// </summary>
+        internal static string NON_SELF_ADJOINT_OPERATOR {
+            get {
+                return ResourceManager.GetString("NON_SELF_ADJOINT_OPERATOR", resourceCulture);
             }
         }
         
@@ -925,6 +2689,51 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Norm ({0}).
+        /// </summary>
+        internal static string NORM {
+            get {
+                return ResourceManager.GetString("NORM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot normalize to an infinite value.
+        /// </summary>
+        internal static string NORMALIZE_INFINITE {
+            get {
+                return ResourceManager.GetString("NORMALIZE_INFINITE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot normalize to NaN.
+        /// </summary>
+        internal static string NORMALIZE_NAN {
+            get {
+                return ResourceManager.GetString("NORMALIZE_NAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}x{1} and {2}x{3} matrices are not addition compatible.
+        /// </summary>
+        internal static string NOT_ADDITION_COMPATIBLE_MATRICES {
+            get {
+                return ResourceManager.GetString("NOT_ADDITION_COMPATIBLE_MATRICES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vertices do not form a convex hull in CCW winding.
+        /// </summary>
+        internal static string NOT_CONVEX {
+            get {
+                return ResourceManager.GetString("NOT_CONVEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to points {0} and {1} are not decreasing ({2} &lt; {3}).
         /// </summary>
         internal static string NOT_DECREASING_NUMBER_OF_POINTS {
@@ -943,6 +2752,42 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to not enough data ({0} rows) for this many predictors ({1} predictors).
+        /// </summary>
+        internal static string NOT_ENOUGH_DATA_FOR_NUMBER_OF_PREDICTORS {
+            get {
+                return ResourceManager.GetString("NOT_ENOUGH_DATA_FOR_NUMBER_OF_PREDICTORS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the number of observations is not sufficient to conduct regression.
+        /// </summary>
+        internal static string NOT_ENOUGH_DATA_REGRESSION {
+            get {
+                return ResourceManager.GetString("NOT_ENOUGH_DATA_REGRESSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to spline partition must have at least {0} points, got {1}.
+        /// </summary>
+        internal static string NOT_ENOUGH_POINTS_IN_SPLINE_PARTITION {
+            get {
+                return ResourceManager.GetString("NOT_ENOUGH_POINTS_IN_SPLINE_PARTITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not a finite number.
+        /// </summary>
+        internal static string NOT_FINITE_NUMBER {
+            get {
+                return ResourceManager.GetString("NOT_FINITE_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to points {0} and {1} are not increasing ({2} &gt; {3}).
         /// </summary>
         internal static string NOT_INCREASING_NUMBER_OF_POINTS {
@@ -957,6 +2802,195 @@ namespace Mercury.Language.Core.Properties {
         internal static string NOT_INCREASING_SEQUENCE {
             get {
                 return ResourceManager.GetString("NOT_INCREASING_SEQUENCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}x{1} and {2}x{3} matrices are not multiplication compatible.
+        /// </summary>
+        internal static string NOT_MULTIPLICATION_COMPATIBLE_MATRICES {
+            get {
+                return ResourceManager.GetString("NOT_MULTIPLICATION_COMPATIBLE_MATRICES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to not positive definite matrix.
+        /// </summary>
+        internal static string NOT_POSITIVE_DEFINITE_MATRIX {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_DEFINITE_MATRIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to degrees of freedom must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_DEGREES_OF_FREEDOM {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_DEGREES_OF_FREEDOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to element {0} is not positive: {1}.
+        /// </summary>
+        internal static string NOT_POSITIVE_ELEMENT_AT_INDEX {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_ELEMENT_AT_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid exponent {0} (must be positive).
+        /// </summary>
+        internal static string NOT_POSITIVE_EXPONENT {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_EXPONENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to length must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_LENGTH {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mean must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_MEAN {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_MEAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of sample is not positive: {0}.
+        /// </summary>
+        internal static string NOT_POSITIVE_NUMBER_OF_SAMPLES {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_NUMBER_OF_SAMPLES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to permutation k ({0}) must be positive.
+        /// </summary>
+        internal static string NOT_POSITIVE_PERMUTATION {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_PERMUTATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the Poisson mean must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_POISSON_MEAN {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_POISSON_MEAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to population size must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_POPULATION_SIZE {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_POPULATION_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid row dimension: {0} (must be positive).
+        /// </summary>
+        internal static string NOT_POSITIVE_ROW_DIMENSION {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_ROW_DIMENSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sample size must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_SAMPLE_SIZE {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_SAMPLE_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scale must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_SCALE {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_SCALE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_SHAPE {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_SHAPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to standard deviation must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_STANDARD_DEVIATION {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_STANDARD_DEVIATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to upper bound must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_UPPER_BOUND {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_UPPER_BOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to window size must be positive ({0}).
+        /// </summary>
+        internal static string NOT_POSITIVE_WINDOW_SIZE {
+            get {
+                return ResourceManager.GetString("NOT_POSITIVE_WINDOW_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not a power of 2.
+        /// </summary>
+        internal static string NOT_POWER_OF_TWO {
+            get {
+                return ResourceManager.GetString("NOT_POWER_OF_TWO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not a power of 2, consider padding for fix.
+        /// </summary>
+        internal static string NOT_POWER_OF_TWO_CONSIDER_PADDING {
+            get {
+                return ResourceManager.GetString("NOT_POWER_OF_TWO_CONSIDER_PADDING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not a power of 2 plus one.
+        /// </summary>
+        internal static string NOT_POWER_OF_TWO_PLUS_ONE {
+            get {
+                return ResourceManager.GetString("NOT_POWER_OF_TWO_PLUS_ONE", resourceCulture);
             }
         }
         
@@ -1006,6 +3040,105 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}x{1} and {2}x{3} matrices are not subtraction compatible.
+        /// </summary>
+        internal static string NOT_SUBTRACTION_COMPATIBLE_MATRICES {
+            get {
+                return ResourceManager.GetString("NOT_SUBTRACTION_COMPATIBLE_MATRICES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to method not supported in dimension {0}.
+        /// </summary>
+        internal static string NOT_SUPPORTED_IN_DIMENSION_N {
+            get {
+                return ResourceManager.GetString("NOT_SUPPORTED_IN_DIMENSION_N", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to not symmetric matrix.
+        /// </summary>
+        internal static string NOT_SYMMETRIC_MATRIX {
+            get {
+                return ResourceManager.GetString("NOT_SYMMETRIC_MATRIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to null is not allowed.
+        /// </summary>
+        internal static string NULL_NOT_ALLOWED {
+            get {
+                return ResourceManager.GetString("NULL_NOT_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of elements should be positive ({0}).
+        /// </summary>
+        internal static string NUMBER_OF_ELEMENTS_SHOULD_BE_POSITIVE {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_ELEMENTS_SHOULD_BE_POSITIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of interpolation points ({0}).
+        /// </summary>
+        internal static string NUMBER_OF_INTERPOLATION_POINTS {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_INTERPOLATION_POINTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of points ({0}).
+        /// </summary>
+        internal static string NUMBER_OF_POINTS {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_POINTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of samples ({0}).
+        /// </summary>
+        internal static string NUMBER_OF_SAMPLES {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_SAMPLES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of successes ({0}) must be less than or equal to population size ({1}).
+        /// </summary>
+        internal static string NUMBER_OF_SUCCESS_LARGER_THAN_POPULATION_SIZE {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_SUCCESS_LARGER_THAN_POPULATION_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of successes ({0}).
+        /// </summary>
+        internal static string NUMBER_OF_SUCCESSES {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_SUCCESSES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of trials ({0}).
+        /// </summary>
+        internal static string NUMBER_OF_TRIALS {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_TRIALS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is larger than the maximum ({1}).
         /// </summary>
         internal static string NUMBER_TOO_LARGE {
@@ -1047,6 +3180,97 @@ namespace Mercury.Language.Core.Properties {
         internal static string NUMBERS_OF_KEYS_AND_VALUE_NOT_MATCH {
             get {
                 return ResourceManager.GetString("NUMBERS_OF_KEYS_AND_VALUE_NOT_MATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to numerator.
+        /// </summary>
+        internal static string NUMERATOR {
+            get {
+                return ResourceManager.GetString("NUMERATOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to numerator format.
+        /// </summary>
+        internal static string NUMERATOR_FORMAT {
+            get {
+                return ResourceManager.GetString("NUMERATOR_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to overflow, numerator too large after multiply: {0}.
+        /// </summary>
+        internal static string NUMERATOR_OVERFLOW_AFTER_MULTIPLY {
+            get {
+                return ResourceManager.GetString("NUMERATOR_OVERFLOW_AFTER_MULTIPLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object is not an Instant..
+        /// </summary>
+        internal static string OBJECT_IS_NOT_AN_INSTANT {
+            get {
+                return ResourceManager.GetString("OBJECT_IS_NOT_AN_INSTANT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to conversion exception in transformation.
+        /// </summary>
+        internal static string OBJECT_TRANSFORMATION {
+            get {
+                return ResourceManager.GetString("OBJECT_TRANSFORMATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to observed counts are all 0 in observed array {0}.
+        /// </summary>
+        internal static string OBSERVED_COUNTS_ALL_ZERO {
+            get {
+                return ResourceManager.GetString("OBSERVED_COUNTS_ALL_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to observed counts are both zero for entry {0}.
+        /// </summary>
+        internal static string OBSERVED_COUNTS_BOTTH_ZERO_FOR_ENTRY {
+            get {
+                return ResourceManager.GetString("OBSERVED_COUNTS_BOTTH_ZERO_FOR_ENTRY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only LowerTriangular, UpperTriangular and Diagonal matrices are supported at this time..
+        /// </summary>
+        internal static string ONLY_LOWER_TRIANGULAR_UPPER_TRIANGULAR_AND_DIAGONAL_MATRICES_ARE_SUPPORTED_AT_THIS_TIME {
+            get {
+                return ResourceManager.GetString("ONLY_LOWER_TRIANGULAR_UPPER_TRIANGULAR_AND_DIAGONAL_MATRICES_ARE_SUPPORTED_AT_THI" +
+                        "S_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only square matrices can be transposed in place..
+        /// </summary>
+        internal static string ONLY_SQUARE_MATRICES_CAN_BE_TRANSPOSED_IN_PLACE {
+            get {
+                return ResourceManager.GetString("ONLY_SQUARE_MATRICES_CAN_BE_TRANSPOSED_IN_PLACE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Optimization Exception.
+        /// </summary>
+        internal static string OPTIMIZATION_EXCEPTION {
+            get {
+                return ResourceManager.GetString("OPTIMIZATION_EXCEPTION", resourceCulture);
             }
         }
         
@@ -1128,6 +3352,15 @@ namespace Mercury.Language.Core.Properties {
         internal static string OUT_OF_RANGE_SIMPLE {
             get {
                 return ResourceManager.GetString("OUT_OF_RANGE_SIMPLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to an outline boundary loop is open.
+        /// </summary>
+        internal static string OUTLINE_BOUNDARY_LOOP_OPEN {
+            get {
+                return ResourceManager.GetString("OUTLINE_BOUNDARY_LOOP_OPEN", resourceCulture);
             }
         }
         
@@ -1231,6 +3464,96 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cannot access {0} method in percentile implementation {1}.
+        /// </summary>
+        internal static string PERCENTILE_IMPLEMENTATION_CANNOT_ACCESS_METHOD {
+            get {
+                return ResourceManager.GetString("PERCENTILE_IMPLEMENTATION_CANNOT_ACCESS_METHOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to percentile implementation {0} does not support {1}.
+        /// </summary>
+        internal static string PERCENTILE_IMPLEMENTATION_UNSUPPORTED_METHOD {
+            get {
+                return ResourceManager.GetString("PERCENTILE_IMPLEMENTATION_UNSUPPORTED_METHOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to permutation size ({0}) exceeds permuation domain ({1}).
+        /// </summary>
+        internal static string PERMUTATION_EXCEEDS_N {
+            get {
+                return ResourceManager.GetString("PERMUTATION_EXCEEDS_N", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to permutation size ({0}.
+        /// </summary>
+        internal static string PERMUTATION_SIZE {
+            get {
+                return ResourceManager.GetString("PERMUTATION_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permutations in diagonal matrix are not allowed.
+        /// </summary>
+        internal static string PERMUTATIONS_IN_DIAGONAL_MATRIX_ARE_NOT_ALLOWED {
+            get {
+                return ResourceManager.GetString("PERMUTATIONS_IN_DIAGONAL_MATRIX_ARE_NOT_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to polynomial.
+        /// </summary>
+        internal static string POLYNOMIAL {
+            get {
+                return ResourceManager.GetString("POLYNOMIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of polynomial interpolants must match the number of segments ({0} != {1} - 1).
+        /// </summary>
+        internal static string POLYNOMIAL_INTERPOLANTS_MISMATCH_SEGMENTS {
+            get {
+                return ResourceManager.GetString("POLYNOMIAL_INTERPOLANTS_MISMATCH_SEGMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to population limit has to be positive.
+        /// </summary>
+        internal static string POPULATION_LIMIT_NOT_POSITIVE {
+            get {
+                return ResourceManager.GetString("POPULATION_LIMIT_NOT_POSITIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to population size ({0}).
+        /// </summary>
+        internal static string POPULATION_SIZE {
+            get {
+                return ResourceManager.GetString("POPULATION_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot raise an integral value to a negative power ({0}^{1}).
+        /// </summary>
+        internal static string POWER_NEGATIVE_PARAMETERS {
+            get {
+                return ResourceManager.GetString("POWER_NEGATIVE_PARAMETERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Print Error.
         /// </summary>
         internal static string PRINT_ERROR {
@@ -1249,11 +3572,20 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to propagation direction mismatch.
+        /// </summary>
+        internal static string PROPAGATION_DIRECTION_MISMATCH {
+            get {
+                return ResourceManager.GetString("PROPAGATION_DIRECTION_MISMATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This Property or Method {0} is not implemented..
         /// </summary>
-        internal static string PropertyOrMethodNotImplemented {
+        internal static string PROPERTY_OR_METHOD_NOT_IMPLEMENTED {
             get {
-                return ResourceManager.GetString("PropertyOrMethodNotImplemented", resourceCulture);
+                return ResourceManager.GetString("PROPERTY_OR_METHOD_NOT_IMPLEMENTED", resourceCulture);
             }
         }
         
@@ -1285,6 +3617,24 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to real format.
+        /// </summary>
+        internal static string REAL_FORMAT {
+            get {
+                return ResourceManager.GetString("REAL_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The requested matrix does not exist..
+        /// </summary>
+        internal static string REQUESTED_MATRIX_DOES_NOT_EXIST {
+            get {
+                return ResourceManager.GetString("REQUESTED_MATRIX_DOES_NOT_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to result too large to represent in a long integer.
         /// </summary>
         internal static string RESULT_TOO_LARGE_REPRESENT_IN_A_LONG_INTEGER {
@@ -1294,11 +3644,128 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to number of robustness iterations ({0}).
+        /// </summary>
+        internal static string ROBUSTNESS_ITERATIONS {
+            get {
+                return ResourceManager.GetString("ROBUSTNESS_ITERATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to roots of unity have not been computed yet.
+        /// </summary>
+        internal static string ROOTS_OF_UNITY_NOT_COMPUTED_YET {
+            get {
+                return ResourceManager.GetString("ROOTS_OF_UNITY_NOT_COMPUTED_YET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to a {0}x{1} matrix cannot be a rotation matrix.
+        /// </summary>
+        internal static string ROTATION_MATRIX_DIMENSIONS {
+            get {
+                return ResourceManager.GetString("ROTATION_MATRIX_DIMENSIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to row index ({0}).
+        /// </summary>
+        internal static string ROW_INDEX {
+            get {
+                return ResourceManager.GetString("ROW_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to row index {0} out of allowed range [{1}, {2}].
+        /// </summary>
+        internal static string ROW_INDEX_OUT_OF_RANGE {
+            get {
+                return ResourceManager.GetString("ROW_INDEX_OUT_OF_RANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to function values at endpoints do not have different signs, endpoints: [{0}, {1}], values: [{2}, {3}].
+        /// </summary>
+        internal static string SAME_SIGN_AT_ENDPOINTS {
+            get {
+                return ResourceManager.GetString("SAME_SIGN_AT_ENDPOINTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sample size ({0}) exceeds collection size ({1}).
+        /// </summary>
+        internal static string SAMPLE_SIZE_EXCEEDS_COLLECTION_SIZE {
+            get {
+                return ResourceManager.GetString("SAMPLE_SIZE_EXCEEDS_COLLECTION_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sample size ({0}) must be less than or equal to population size ({1}).
+        /// </summary>
+        internal static string SAMPLE_SIZE_LARGER_THAN_POPULATION_SIZE {
+            get {
+                return ResourceManager.GetString("SAMPLE_SIZE_LARGER_THAN_POPULATION_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to scale ({0}).
+        /// </summary>
+        internal static string SCALE {
+            get {
+                return ResourceManager.GetString("SCALE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set is a read only set..
         /// </summary>
         internal static string SET_IS_A_READ_ONLY {
             get {
                 return ResourceManager.GetString("SET_IS_A_READ_ONLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to shape ({0}).
+        /// </summary>
+        internal static string SHAPE {
+            get {
+                return ResourceManager.GetString("SHAPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to significance level ({0}).
+        /// </summary>
+        internal static string SIGNIFICANCE_LEVEL {
+            get {
+                return ResourceManager.GetString("SIGNIFICANCE_LEVEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}.
+        /// </summary>
+        internal static string SIMPLE_MESSAGE {
+            get {
+                return ResourceManager.GetString("SIMPLE_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to simplex must contain at least one point.
+        /// </summary>
+        internal static string SIMPLEX_NEED_ONE_POINT {
+            get {
+                return ResourceManager.GetString("SIMPLEX_NEED_ONE_POINT", resourceCulture);
             }
         }
         
@@ -1339,6 +3806,33 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specific Native Provider disabled by an application switch.
+        /// </summary>
+        internal static string SPECIFIC_NATIVE_PROVIDER_DISABLED_BY_AN_APPLICATION_SWITCH {
+            get {
+                return ResourceManager.GetString("SPECIFIC_NATIVE_PROVIDER_DISABLED_BY_AN_APPLICATION_SWITCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to standard deviation ({0}).
+        /// </summary>
+        internal static string STANDARD_DEVIATION {
+            get {
+                return ResourceManager.GetString("STANDARD_DEVIATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start date was null.
+        /// </summary>
+        internal static string START_DATE_WAS_NULL {
+            get {
+                return ResourceManager.GetString("START_DATE_WAS_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to start position ({0}).
         /// </summary>
         internal static string START_POSITION {
@@ -1357,11 +3851,164 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The array arguments must have the same length..
+        /// </summary>
+        internal static string THE_ARRAY_ARGUMENTS_MUST_HAVE_THE_SAME_LENGTH {
+            get {
+                return ResourceManager.GetString("THE_ARRAY_ARGUMENTS_MUST_HAVE_THE_SAME_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The data array is too big..
+        /// </summary>
+        internal static string THE_DATA_ARRAY_IS_TOO_BIG {
+            get {
+                return ResourceManager.GetString("THE_DATA_ARRAY_IS_TOO_BIG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The destination matrix must be big enough to accommodate the results..
         /// </summary>
         internal static string THE_DESTINATION_MATRIX_MUST_BE_BIG_ENOUGH {
             get {
                 return ResourceManager.GetString("THE_DESTINATION_MATRIX_MUST_BE_BIG_ENOUGH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given array has the wrong length. Should be {0} * {1}..
+        /// </summary>
+        internal static string THE_GIVEN_ARRAY_HAS_THE_WRONG_LENGTH {
+            get {
+                return ResourceManager.GetString("THE_GIVEN_ARRAY_HAS_THE_WRONG_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given array is too small. It must be at least min(m,n) long..
+        /// </summary>
+        internal static string THE_GIVEN_ARRAY_IS_TOO_SMALL {
+            get {
+                return ResourceManager.GetString("THE_GIVEN_ARRAY_IS_TOO_SMALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given object must inherit from System.Array..
+        /// </summary>
+        internal static string THE_GIVEN_OBJECT_MUST_INHERIT_FROM_SYSTEM_ARRAY {
+            get {
+                return ResourceManager.GetString("THE_GIVEN_OBJECT_MUST_INHERIT_FROM_SYSTEM_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The input parameter {0} must be positive..
+        /// </summary>
+        internal static string THE_INPUT_PARAMETER_MUST_BE_POSITIVE {
+            get {
+                return ResourceManager.GetString("THE_INPUT_PARAMETER_MUST_BE_POSITIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of rows must greater than or equal to the number of columns..
+        /// </summary>
+        internal static string THE_NUMBER_OF_ROWS_MUST_GREATER_THAN_OR_EQUAL_TO_THE_NUMBER_OF_COLUMNS {
+            get {
+                return ResourceManager.GetString("THE_NUMBER_OF_ROWS_MUST_GREATER_THAN_OR_EQUAL_TO_THE_NUMBER_OF_COLUMNS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value array must be same length of the target array&apos;s row..
+        /// </summary>
+        internal static string THE_VALUE_ARRAY_MUST_BE_SAME_LENGTH_OF_THE_TARGET_ARRAYS_ROW {
+            get {
+                return ResourceManager.GetString("THE_VALUE_ARRAY_MUST_BE_SAME_LENGTH_OF_THE_TARGET_ARRAYS_ROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cutoff singular value is {0}, should be at most {1}.
+        /// </summary>
+        internal static string TOO_LARGE_CUTOFF_SINGULAR_VALUE {
+            get {
+                return ResourceManager.GetString("TOO_LARGE_CUTOFF_SINGULAR_VALUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tournament arity ({0}) cannot be bigger than population size ({1}).
+        /// </summary>
+        internal static string TOO_LARGE_TOURNAMENT_ARITY {
+            get {
+                return ResourceManager.GetString("TOO_LARGE_TOURNAMENT_ARITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cannot discard {0} elements from a {1} elements array.
+        /// </summary>
+        internal static string TOO_MANY_ELEMENTS_TO_DISCARD_FROM_ARRAY {
+            get {
+                return ResourceManager.GetString("TOO_MANY_ELEMENTS_TO_DISCARD_FROM_ARRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to too many regressors ({0}) specified, only {1} in the model.
+        /// </summary>
+        internal static string TOO_MANY_REGRESSORS {
+            get {
+                return ResourceManager.GetString("TOO_MANY_REGRESSORS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the bandwidth must be large enough to accomodate at least 2 points. There are {0}  data points, and bandwidth must be at least {1}  but it is only {2}.
+        /// </summary>
+        internal static string TOO_SMALL_BANDWIDTH {
+            get {
+                return ResourceManager.GetString("TOO_SMALL_BANDWIDTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cost relative tolerance is too small ({0}), no further reduction in the sum of squares is possible.
+        /// </summary>
+        internal static string TOO_SMALL_COST_RELATIVE_TOLERANCE {
+            get {
+                return ResourceManager.GetString("TOO_SMALL_COST_RELATIVE_TOLERANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to too small integration interval: length = {0}.
+        /// </summary>
+        internal static string TOO_SMALL_INTEGRATION_INTERVAL {
+            get {
+                return ResourceManager.GetString("TOO_SMALL_INTEGRATION_INTERVAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to orthogonality tolerance is too small ({0}), solution is orthogonal to the jacobian.
+        /// </summary>
+        internal static string TOO_SMALL_ORTHOGONALITY_TOLERANCE {
+            get {
+                return ResourceManager.GetString("TOO_SMALL_ORTHOGONALITY_TOLERANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to parameters relative tolerance is too small ({0}), no further improvement in the approximate solution is possible.
+        /// </summary>
+        internal static string TOO_SMALL_PARAMETERS_RELATIVE_TOLERANCE {
+            get {
+                return ResourceManager.GetString("TOO_SMALL_PARAMETERS_RELATIVE_TOLERANCE", resourceCulture);
             }
         }
         
@@ -1384,6 +4031,186 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to trust region step has failed to reduce Q.
+        /// </summary>
+        internal static string TRUST_REGION_STEP_FAILED {
+            get {
+                return ResourceManager.GetString("TRUST_REGION_STEP_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to two or more categories required, got {0}.
+        /// </summary>
+        internal static string TWO_OR_MORE_CATEGORIES_REQUIRED {
+            get {
+                return ResourceManager.GetString("TWO_OR_MORE_CATEGORIES_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to two or more values required in each category, one has {0}.
+        /// </summary>
+        internal static string TWO_OR_MORE_VALUES_IN_CATEGORY_REQUIRED {
+            get {
+                return ResourceManager.GetString("TWO_OR_MORE_VALUES_IN_CATEGORY_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to bracket optimum in line search.
+        /// </summary>
+        internal static string UNABLE_TO_BRACKET_OPTIMUM_IN_LINE_SEARCH {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_BRACKET_OPTIMUM_IN_LINE_SEARCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to compute covariances: singular problem.
+        /// </summary>
+        internal static string UNABLE_TO_COMPUTE_COVARIANCE_SINGULAR_PROBLEM {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_COMPUTE_COVARIANCE_SINGULAR_PROBLEM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to first guess the harmonic coefficients.
+        /// </summary>
+        internal static string UNABLE_TO_FIRST_GUESS_HARMONIC_COEFFICIENTS {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_FIRST_GUESS_HARMONIC_COEFFICIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to orthogonalize matrix in {0} iterations.
+        /// </summary>
+        internal static string UNABLE_TO_ORTHOGONOLIZE_MATRIX {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_ORTHOGONOLIZE_MATRIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to parse amount: {0}.
+        /// </summary>
+        internal static string UNABLE_TO_PARSE_AMOUNT {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_PARSE_AMOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to parse amount, invalid format: {0}.
+        /// </summary>
+        internal static string UNABLE_TO_PARSE_AMOUNT_INVALID_FORMAT {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_PARSE_AMOUNT_INVALID_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to perform Q.R decomposition on the {0}x{1} jacobian matrix.
+        /// </summary>
+        internal static string UNABLE_TO_PERFORM_QR_DECOMPOSITION_ON_JACOBIAN {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_PERFORM_QR_DECOMPOSITION_ON_JACOBIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unable to solve: singular problem.
+        /// </summary>
+        internal static string UNABLE_TO_SOLVE_SINGULAR_PROBLEM {
+            get {
+                return ResourceManager.GetString("UNABLE_TO_SOLVE_SINGULAR_PROBLEM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unbounded solution.
+        /// </summary>
+        internal static string UNBOUNDED_SOLUTION {
+            get {
+                return ResourceManager.GetString("UNBOUNDED_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unknown mode {0}, known modes: {1} ({2}), {3} ({4}), {5} ({6}), {7} ({8}), {9} ({10}) and {11} ({12}).
+        /// </summary>
+        internal static string UNKNOWN_MODE {
+            get {
+                return ResourceManager.GetString("UNKNOWN_MODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unknown parameter {0}.
+        /// </summary>
+        internal static string UNKNOWN_PARAMETER {
+            get {
+                return ResourceManager.GetString("UNKNOWN_PARAMETER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ode does not match the main ode set in the extended set.
+        /// </summary>
+        internal static string UNMATCHED_ODE_IN_EXPANDED_SET {
+            get {
+                return ResourceManager.GetString("UNMATCHED_ODE_IN_EXPANDED_SET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unparseable 3D vector: \&quot;{0}\&quot;.
+        /// </summary>
+        internal static string UNPARSEABLE_3D_VECTOR {
+            get {
+                return ResourceManager.GetString("UNPARSEABLE_3D_VECTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unparseable complex number: \&quot;{0}\&quot;.
+        /// </summary>
+        internal static string UNPARSEABLE_COMPLEX_NUMBER {
+            get {
+                return ResourceManager.GetString("UNPARSEABLE_COMPLEX_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unparseable real vector: \&quot;{0}\&quot;.
+        /// </summary>
+        internal static string UNPARSEABLE_REAL_VECTOR {
+            get {
+                return ResourceManager.GetString("UNPARSEABLE_REAL_VECTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unsupported expansion mode {0}, supported modes are {1} ({2}) and {3} ({4}).
+        /// </summary>
+        internal static string UNSUPPORTED_EXPANSION_MODE {
+            get {
+                return ResourceManager.GetString("UNSUPPORTED_EXPANSION_MODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported field: {0}.
+        /// </summary>
+        internal static string UNSUPPORTED_FIELD {
+            get {
+                return ResourceManager.GetString("UNSUPPORTED_FIELD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to unsupported operation.
         /// </summary>
         internal static string UNSUPPORTED_OPERATION {
@@ -1393,213 +4220,110 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter array &apos;{0}&apos; must not be empty.
+        ///   Looks up a localized string similar to unsupported operation.
         /// </summary>
-        internal static string Utility_ArgumentChecker_Array_NotEmpty_InputParameterArrayMustNotBeEmpty {
+        internal static string UNSUPPORTED_OPERATION1 {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Array_NotEmpty_InputParameterArrayMustNotBeEmpty", resourceCulture);
+                return ResourceManager.GetString("UNSUPPORTED_OPERATION1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter collection &apos;{0}&apos; must not be empty.
+        ///   Looks up a localized string similar to Unsupported unit: {0}.
         /// </summary>
-        internal static string Utility_ArgumentChecker_Collection_NotEmpty_InputParameterCollectionMustNotBeEmpty {
+        internal static string UNSUPPORTED_UNIT {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Collection_NotEmpty_InputParameterCollectionMustNotBeEmpt" +
-                        "y", resourceCulture);
+                return ResourceManager.GetString("UNSUPPORTED_UNIT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must be greater than zero.
+        ///   Looks up a localized string similar to URL {0} contains no data.
         /// </summary>
-        internal static string Utility_ArgumentChecker_Double_AlmostNotNegative_InputParameterMustBeGreaterThanZero {
+        internal static string URL_CONTAINS_NO_DATA {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Double_AlmostNotNegative_InputParameterMustBeGreaterThanZ" +
-                        "ero", resourceCulture);
+                return ResourceManager.GetString("URL_CONTAINS_NO_DATA", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be zero.
+        ///   Looks up a localized string similar to exception generated in user code.
         /// </summary>
-        internal static string Utility_ArgumentChecker_Double_AlmostNotZero_InputParameterMustNotBeZero {
+        internal static string USER_EXCEPTION {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Double_AlmostNotZero_InputParameterMustNotBeZero", resourceCulture);
+                return ResourceManager.GetString("USER_EXCEPTION", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be negative or zero.
+        ///   Looks up a localized string similar to {0} values have been added before statistic is configured.
         /// </summary>
-        internal static string Utility_ArgumentChecker_Double_NotNegativeOrZero_InputParameterMustNotBeNegativeOrZero {
+        internal static string VALUES_ADDED_BEFORE_CONFIGURING_STATISTIC {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Double_NotNegativeOrZero_InputParameterMustNotBeNegativeO" +
-                        "rZero", resourceCulture);
+                return ResourceManager.GetString("VALUES_ADDED_BEFORE_CONFIGURING_STATISTIC", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter array &apos;{0}&apos; must not contain null at index {1}.
+        ///   Looks up a localized string similar to vector length mismatch: got {0} but expected {1}.
         /// </summary>
-        internal static string Utility_ArgumentChecker_DynamicArray_NoNulls_InputParameterArrayMustNotContainNullAtIndex {
+        internal static string VECTOR_LENGTH_MISMATCH {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_DynamicArray_NoNulls_InputParameterArrayMustNotContainNul" +
-                        "lAtIndex", resourceCulture);
+                return ResourceManager.GetString("VECTOR_LENGTH_MISMATCH", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter list &apos;{0}&apos; must not contain null at index {1}.
+        ///   Looks up a localized string similar to vector must have at least one element.
         /// </summary>
-        internal static string Utility_ArgumentChecker_DynamicList_NoNulls_InputParameterListMustNotContainNullAtIndex {
+        internal static string VECTOR_MUST_HAVE_AT_LEAST_ONE_ELEMENT {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_DynamicList_NoNulls_InputParameterListMustNotContainNullA" +
-                        "tIndex", resourceCulture);
+                return ResourceManager.GetString("VECTOR_MUST_HAVE_AT_LEAST_ONE_ELEMENT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter iterable &apos;{0}&apos; must not be empty.
+        ///   Looks up a localized string similar to The vector should have the same length as rows in the decomposition..
         /// </summary>
-        internal static string Utility_ArgumentChecker_Enumerable_NotEmpty_InputParameterIterableMustNotBeEmpty {
+        internal static string VECTOR_SHOULD_HAVE_THE_SAME_LENGTH_AS_ROW {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Enumerable_NotEmpty_InputParameterIterableMustNotBeEmpty", resourceCulture);
+                return ResourceManager.GetString("VECTOR_SHOULD_HAVE_THE_SAME_LENGTH_AS_ROW", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must be before &apos;{1}&apos;.
+        ///   Looks up a localized string similar to weigth array must contain at least one non-zero value.
         /// </summary>
-        internal static string Utility_ArgumentChecker_Generic_InOrderOrEqual_InputParameterMustBeBefore {
+        internal static string WEIGHT_AT_LEAST_ONE_NON_ZERO {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Generic_InOrderOrEqual_InputParameterMustBeBefore", resourceCulture);
+                return ResourceManager.GetString("WEIGHT_AT_LEAST_ONE_NON_ZERO", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be null.
+        ///   Looks up a localized string similar to whole format.
         /// </summary>
-        internal static string Utility_ArgumentChecker_Generic_NotNull_InputParameterMustNotBeNull {
+        internal static string WHOLE_FORMAT {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Generic_NotNull_InputParameterMustNotBeNull", resourceCulture);
+                return ResourceManager.GetString("WHOLE_FORMAT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Injected input parameter &apos;{0}&apos; must not be null.
+        ///   Looks up a localized string similar to wrong array shape (block length = {0}, expected {1}).
         /// </summary>
-        internal static string Utility_ArgumentChecker_Generic_NotNullInjected_InjectedInputParameterMustNotBeNull {
+        internal static string WRONG_BLOCK_LENGTH {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Generic_NotNullInjected_InjectedInputParameterMustNotBeNu" +
-                        "ll", resourceCulture);
+                return ResourceManager.GetString("WRONG_BLOCK_LENGTH", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input parameter array &apos;{0}&apos; must not contain null at index {1}.
+        ///   Looks up a localized string similar to {0} points are required, got only {1}.
         /// </summary>
-        internal static string Utility_ArgumentChecker_GenericArray_NoNulls_InputParameterArrayMustNotContainNullAtIndex {
+        internal static string WRONG_NUMBER_OF_POINTS {
             get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_GenericArray_NoNulls_InputParameterArrayMustNotContainNul" +
-                        "lAtIndex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Input parameter 2D array &apos;{0}&apos; must not contain null at index {1}.
-        /// </summary>
-        internal static string Utility_ArgumentChecker_GenericArray2D_NoNulls_InputParameter2DArrayMustNotContainNullAtIndex {
-            get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_GenericArray2D_NoNulls_InputParameter2DArrayMustNotContai" +
-                        "nNullAtIndex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Input parameter enumerable &apos;{0}&apos; must not contain null at index {1}.
-        /// </summary>
-        internal static string Utility_ArgumentChecker_GenericEnumerable_NoNulls_InputParameterEnumerableMustNotContainNullAtIndex {
-            get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_GenericEnumerable_NoNulls_InputParameterEnumerableMustNot" +
-                        "ContainNullAtIndex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Input parameter list &apos;{0}&apos; must not contain null at index {1}.
-        /// </summary>
-        internal static string Utility_ArgumentChecker_GenericList_NoNulls_InputParameterListMustNotContainNullAtIndex {
-            get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_GenericList_NoNulls_InputParameterListMustNotContainNullA" +
-                        "tIndex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be negative or zero.
-        /// </summary>
-        internal static string Utility_ArgumentChecker_Long_NotNegativeOrZero_InputParameterMustNotBeNegativeOrZero {
-            get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_Long_NotNegativeOrZero_InputParameterMustNotBeNegativeOrZ" +
-                        "ero", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Input parameter &apos;{0}&apos; must not be empty.
-        /// </summary>
-        internal static string Utility_ArgumentChecker_String_NotEmpty_InputParameterMustNotBeEmpty {
-            get {
-                return ResourceManager.GetString("Utility_ArgumentChecker_String_NotEmpty_InputParameterMustNotBeEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Matrix type can be either LowerTriangular or UpperTrianguler..
-        /// </summary>
-        internal static string Utility_Extension_Array_GetSymmetric_MatrixTypeCanBeEitherLowerTriangularOrUpperTrianguler {
-            get {
-                return ResourceManager.GetString("Utility_Extension_Array_GetSymmetric_MatrixTypeCanBeEitherLowerTriangularOrUpperT" +
-                        "rianguler", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The value array must be same length of the target array&apos;s row..
-        /// </summary>
-        internal static string Utility_Extension_Array_SetRow_TheValueArrayMustBeSameLengthOfTheTargetArraysRow {
-            get {
-                return ResourceManager.GetString("Utility_Extension_Array_SetRow_TheValueArrayMustBeSameLengthOfTheTargetArraysRow", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only LowerTriangular, UpperTriangular and Diagonal matrices are supported at this time..
-        /// </summary>
-        internal static string Utility_Extension_Array_ToUpperTriangular_OnlyLowerTriangularUpperTriangularAndDiagonalMatricesAreSupportedAtThisTime {
-            get {
-                return ResourceManager.GetString("Utility_Extension_Array_ToUpperTriangular_OnlyLowerTriangularUpperTriangularAndDi" +
-                        "agonalMatricesAreSupportedAtThisTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only square matrices can be transposed in place..
-        /// </summary>
-        internal static string Utility_Extension_Array_Transpose_OnlySquareMatricesCanBeTransposedInPlace {
-            get {
-                return ResourceManager.GetString("Utility_Extension_Array_Transpose_OnlySquareMatricesCanBeTransposedInPlace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The given object must inherit from System.Array..
-        /// </summary>
-        internal static string Utility_Extension_Array_Transpose_TheGivenObjectMustInheritFromSystemArray {
-            get {
-                return ResourceManager.GetString("Utility_Extension_Array_Transpose_TheGivenObjectMustInheritFromSystemArray", resourceCulture);
+                return ResourceManager.GetString("WRONG_NUMBER_OF_POINTS", resourceCulture);
             }
         }
         
@@ -1631,11 +4355,47 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to zero norm.
+        /// </summary>
+        internal static string ZERO_NORM {
+            get {
+                return ResourceManager.GetString("ZERO_NORM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zero norm for rotation axis.
+        /// </summary>
+        internal static string ZERO_NORM_FOR_ROTATION_AXIS {
+            get {
+                return ResourceManager.GetString("ZERO_NORM_FOR_ROTATION_AXIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zero norm for rotation defining vector.
+        /// </summary>
+        internal static string ZERO_NORM_FOR_ROTATION_DEFINING_VECTOR {
+            get {
+                return ResourceManager.GetString("ZERO_NORM_FOR_ROTATION_DEFINING_VECTOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to zero not allowed here.
         /// </summary>
         internal static string ZERO_NOT_ALLOWED {
             get {
                 return ResourceManager.GetString("ZERO_NOT_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero pivot encountered on row {0} during ILU process..
+        /// </summary>
+        internal static string ZERO_PIVOT_ENCOUNTERED_ON_ROW_DURING_ILU_PROCESS {
+            get {
+                return ResourceManager.GetString("ZERO_PIVOT_ENCOUNTERED_ON_ROW_DURING_ILU_PROCESS", resourceCulture);
             }
         }
     }

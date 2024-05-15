@@ -7,6 +7,7 @@ using Mercury.Language.Core;
 
 namespace Mercury.Language.Core.Test.Core
 {
+    [Parallelizable(ParallelScope.ContextMask)]
     public class CoreTest
     {
 

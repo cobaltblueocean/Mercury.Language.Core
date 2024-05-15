@@ -29,9 +29,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Schedulers;
+using Mercury.Language;
 using Mercury.Language.Exceptions;
 using Mercury.Language.Log;
-using Mercury.Language.Core;
 
 namespace System.IO
 {

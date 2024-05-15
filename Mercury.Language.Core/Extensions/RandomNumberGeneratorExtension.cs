@@ -24,7 +24,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mercury.Language.Exceptions;
 using System.Security.Cryptography;
-using Mercury.Language.Core;
+using Mercury.Language;
 
 namespace System
 {

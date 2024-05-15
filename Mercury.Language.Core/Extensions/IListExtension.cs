@@ -371,7 +371,7 @@ namespace System.Collections.Generic
         {
             if (to == from - 1) return;
             if (from < 0 || from > to || to >= theSize)
-                throw new IndexOutOfRangeException(String.Format(Mercury.Language.Core.LocalizedResources.Instance().Exception_FromToSize, from, to, theSize));
+                throw new IndexOutOfRangeException(String.Format(Mercury.Language.LocalizedResources.Instance().EXCEPTION_FROM_TO_SIZE, from, to, theSize));
         }
     }
 }

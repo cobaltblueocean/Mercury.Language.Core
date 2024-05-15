@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace Mercury.Language.Core.Test
 {
+    [Parallelizable(ParallelScope.ContextMask)]
     public class ObjectExtensionTest
     {
         Random rnd = new Random();

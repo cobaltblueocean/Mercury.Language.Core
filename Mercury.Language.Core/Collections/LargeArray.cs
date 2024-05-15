@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Mercury.Language.Log;
-using Mercury.Language.Core;
+using Mercury.Language;
 
 namespace System
 {

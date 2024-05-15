@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mercury.Language.Core;
+using Mercury.Language;
 using Mercury.Language.Exceptions;
 using Mercury.Language.Math;
 
@@ -3447,7 +3447,7 @@ namespace System
         {
             if (x <= Zero)
             {
-                throw new ArgumentException(String.Format(LocalizedResources.Instance().Utility_ArgumentChecker_Double_AlmostNotNegative_InputParameterMustBeGreaterThanZero, "x"));
+                throw new ArgumentException(String.Format(LocalizedResources.Instance().INPUT_PARAMETER_MUST_BE_GREATER_THAN_ZERO, "x"));
             }
             var count = 0;
             while (x >= One)

@@ -18,7 +18,7 @@
 // limitations under the License.
 using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
-using Mercury.Language.Core;
+using Mercury.Language;
 
 namespace System.Threading.Tasks
 {
@@ -34,7 +34,7 @@ namespace System.Threading.Tasks
         public AutoParallelOptions(ParallelOptions options, long threshold)
         {
             if (threshold <= 0)
-                throw new ArgumentOutOfRangeException("threshold", LocalizedResources.Instance().AutoParallel_ThresholdValueNegative);
+                throw new ArgumentOutOfRangeException("threshold", LocalizedResources.Instance().AUTOPARALLEL_THRESHOLD_VALUE_NEGATIVE);
 
             Threshold = threshold;
         }

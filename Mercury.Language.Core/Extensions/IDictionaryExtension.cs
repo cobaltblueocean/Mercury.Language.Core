@@ -11,6 +11,16 @@ namespace System.Collections.Generic
     public static class IDictionaryExtension
     {
 
+
+        #region Extension for IDictionary<TKey, TValue>
+        /// <summary>
+        /// Add a dictionary's KeyValuePair entries from another dictionary
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="addingDictionary">Dictionary to add</param>
+        /// <exception cref="NullReferenceException"></exception>
         public static void AddRange<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, IDictionary<TKey, TValue> addingDictionary)
         {
             if ((originalDictionary != null) && (addingDictionary != null))
@@ -29,22 +39,87 @@ namespace System.Collections.Generic
             }
         }
 
+        /// <summary>
+        /// Safe way to evaluate if the Key exists in the dictionary
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="key">Key to find</param>
+        /// <returns>Returns true if the key exists, otherwise returns false</returns>
+        public static Boolean ContainsKeyEx<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key)
+        {
+            return originalDictionary.Keys.Any(x => x.AreObjectsEqual(key));
+        }
+
+        /// <summary>
+        /// Get a HashSet of Key
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns>A HashSet of Key</returns>
         public static HashSet<TKey> KeysToHashSet<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
         {
             return new HashSet<TKey>(originalDictionary.Keys.ToList());
         }
 
+        /// <summary>
+        /// Get a HashSet of the Value
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns>A HashSet of the Value</returns>
         public static HashSet<TValue> ValuesToHashSet<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
         {
             return new HashSet<TValue>(originalDictionary.Values.ToList());
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns></returns>
+        public static List<TKey> KeysToList<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
+        {
+            return new List<TKey>(originalDictionary.Keys);
+        }
 
-        #region Extension for IDictionary<TKey, TValue>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns></returns>
+        public static List<TValue> ValuesToList<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
+        {
+            return new List<TValue>(originalDictionary.Values);
+        }
+
+        /// <summary>
+        /// Return a ReadOnlyDictionary from the original Dictionary
+        /// </summary>
+        /// <typeparam name="TKey">Key type</typeparam>
+        /// <typeparam name="TValue">Value type</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns>A ReadOnlyDictionary contains same entries from original Dictionary</returns>
         public static ReadOnlyDictionary<TKey, TValue> ToReadOnlyDictionary<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary) where TKey : notnull
         {
             return new ReadOnlyDictionary<TKey, TValue>(originalDictionary);
         }
 
+        /// <summary>
+        /// Add the Key and Value if the key doesn't exist
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Target Dictionary</param>
+        /// <param name="key">Key to add</param>
+        /// <param name="value">Value to supply</param>
+        /// <returns>The value added</returns>
         public static TValue PutIfAbsent<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key, TValue value)
         {
             if (!originalDictionary.ContainsKey(key))
@@ -55,11 +130,26 @@ namespace System.Collections.Generic
             return originalDictionary[key];
         }
 
+        /// <summary>
+        /// Sort by Key
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns>Sorted Dictionary</returns>
         public static IDictionary<TKey, TValue> Sort<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
         {
             return Sort(originalDictionary, SortOrder.Asending);
         }
 
+        /// <summary>
+        /// Sorted by Key, and Order
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="order">Sort order</param>
+        /// <returns>Sorted Dictionary</returns>
         public static IDictionary<TKey, TValue> Sort<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, SortOrder order)
         {
             var data = (order == SortOrder.Asending) ? originalDictionary.OrderBy(pair => pair.Key) : originalDictionary.OrderByDescending(pair => pair.Key);
@@ -78,15 +168,28 @@ namespace System.Collections.Generic
             return originalDictionary;
         }
 
-        #endregion
 
-        #region Extension for IDictionary<T1, T2>
-        public static Boolean IsEmpty<T1, T2>(this IDictionary<T1, T2> originalDictionary)
+        /// <summary>
+        /// Check if the Dictionary is empty
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns>True if the dictionary is empty, otherwise false</returns>
+        public static Boolean IsEmpty<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
         {
             return originalDictionary.Count == 0 ? true : false;
         }
 
-        public static void AddOrUpdate<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 key, T2 value)
+        /// <summary>
+        /// Add the Key and Value to the Dictionary.  If the Key exists, update the value with new supplied value
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Target Dictionary</param>
+        /// <param name="key">Key to add or update</param>
+        /// <param name="value">Value to supply</param>
+        public static void AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key, TValue value)
         {
             if (key != null)
             {
@@ -97,7 +200,15 @@ namespace System.Collections.Generic
             }
         }
 
-        public static void AddOrUpdateAll<T1, T2>(this IDictionary<T1, T2> originalDictionary, IEnumerable<KeyValuePair<T1, T2>> items)
+        /// <summary>
+        /// Add the set of Key and Value pairs to the Dictionary.  If the Key exists, update the value with new supplied value
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Target Dictionary</param>
+        /// <param name="key">Key to add or update</param>
+        /// <param name="value">Value to supply</param>
+        public static void AddOrUpdateAll<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, IEnumerable<KeyValuePair<TKey, TValue>> items)
         {
             if (items != null)
             {
@@ -108,7 +219,15 @@ namespace System.Collections.Generic
             }
         }
 
-        public static Boolean TryGetValueAtKey<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 key, out T2 value)
+        /// <summary>
+        /// Safe way to get the value from the dictionary by given key
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="key">Key to find</param>
+        /// <returns>Returns the value if the key exists, otherwise returns null or default value</returns>
+        public static Boolean TryGetValueAtKey<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key, out TValue value)
         {
             try
             {
@@ -117,12 +236,20 @@ namespace System.Collections.Generic
             }
             catch
             {
-                value = default(T2);
+                value = default(TValue);
                 return false;
             }
         }
 
-        public static T2 GetValueAtKey<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 key)
+        /// <summary>
+        /// Get the value from the dictionary by given key
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="key">Key to find</param>
+        /// <returns>Returns the value if the key exists, otherwise throw an exception</returns>
+        public static TValue GetValueAtKey<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key)
         {
             if (key != null)
             {
@@ -141,7 +268,16 @@ namespace System.Collections.Generic
             }
         }
 
-        public static Boolean TryGetKeyAtIndex<T1, T2>(this IDictionary<T1, T2> originalDictionary, int index, out T1 key)
+        /// <summary>
+        /// Safe way to get the Key by index
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="index">Index to get the key</param>
+        /// <param name="key">Key that found at the index</param>
+        /// <returns>True if the index exists</returns>
+        public static Boolean TryGetKeyAtIndex<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, int index, out TKey key)
         {
             try
             {
@@ -150,12 +286,21 @@ namespace System.Collections.Generic
             }
             catch
             {
-                key = default(T1);
+                key = default(TKey);
                 return false;
             }
         }
 
-        public static T1 GetKeyAtIndex<T1, T2>(this IDictionary<T1, T2> originalDictionary, int index)
+        /// <summary>
+        /// Get the key at the index
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="index">Index to get the key</param>
+        /// <returns>Key at the index</returns>
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        public static TKey GetKeyAtIndex<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, int index)
         {
             var keys = originalDictionary.Keys.ToList();
 
@@ -169,10 +314,19 @@ namespace System.Collections.Generic
             }
         }
 
-        public static IDictionary<T1, T2> Head<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 key, Boolean inclusive = false)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="key"></param>
+        /// <param name="inclusive"></param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> Head<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key, Boolean inclusive = false)
         {
-            T1[] array = Enumerable.ToArray(originalDictionary.Keys);
-            List<T1> tmp = new List<T1>();
+            TKey[] array = Enumerable.ToArray(originalDictionary.Keys);
+            List<TKey> tmp = new List<TKey>();
             Comparer comparer = new Comparer(CultureInfo.InvariantCulture);
 
             int count = array.Count();
@@ -192,18 +346,27 @@ namespace System.Collections.Generic
 
             foreach (var k in tmp)
             {
-                T2 v;
+                TValue v;
                 _ = originalDictionary.TryGetValue(k, out v);
                 resultDictionary.Add(k, v);
             }
 
-            return (IDictionary<T1, T2>)resultDictionary;
+            return (IDictionary<TKey, TValue>)resultDictionary;
         }
 
-        public static IDictionary<T1, T2> Tail<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 key, Boolean inclusive = false)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="key"></param>
+        /// <param name="inclusive"></param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> Tail<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key, Boolean inclusive = false)
         {
-            T1[] array = Enumerable.ToArray(originalDictionary.Keys);
-            List<T1> tmp = new List<T1>();
+            TKey[] array = Enumerable.ToArray(originalDictionary.Keys);
+            List<TKey> tmp = new List<TKey>();
             Comparer comparer = new Comparer(CultureInfo.InvariantCulture);
 
             int count = array.Count();
@@ -223,15 +386,22 @@ namespace System.Collections.Generic
 
             foreach (var k in tmp)
             {
-                T2 v;
+                TValue v;
                 _ = originalDictionary.TryGetValue(k, out v);
                 resultDictionary.Add(k, v);
             }
 
-            return (IDictionary<T1, T2>)resultDictionary;
+            return (IDictionary<TKey, TValue>)resultDictionary;
         }
 
-        public static void Remove<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1[] keysRemove)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="keysRemove"></param>
+        public static void Remove<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey[] keysRemove)
         {
             foreach (var key in keysRemove)
             {
@@ -239,51 +409,81 @@ namespace System.Collections.Generic
             }
         }
 
-        public static IDictionary<T1, T2> SubDictionary<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 startKey, Boolean inclusiveStartKey, T1 endKey, Boolean inclusiveEndKey)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="startKey"></param>
+        /// <param name="inclusiveStartKey"></param>
+        /// <param name="endKey"></param>
+        /// <param name="inclusiveEndKey"></param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> SubDictionary<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey startKey, Boolean inclusiveStartKey, TKey endKey, Boolean inclusiveEndKey)
         {
             var head = originalDictionary.Head(startKey, inclusiveStartKey);
             var tail = originalDictionary.Tail(endKey, inclusiveEndKey);
             var tmp = originalDictionary.Clone();
 
-            tmp.Remove(head.Keys.ToArray<T1>());
-            tmp.Remove(tail.Keys.ToArray<T1>());
+            tmp.Remove(head.Keys.ToArray<TKey>());
+            tmp.Remove(tail.Keys.ToArray<TKey>());
 
             return tmp;
         }
 
-        public static IDictionary<T1, T2> SubDictionary<T1, T2>(this IDictionary<T1, T2> originalDictionary, T1 startKeyInclusive, T1 endKeyInclusive)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="startKeyInclusive"></param>
+        /// <param name="endKeyInclusive"></param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> SubDictionary<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey startKeyInclusive, TKey endKeyInclusive)
         {
             var head = originalDictionary.Head(startKeyInclusive, false);
             var tail = originalDictionary.Tail(endKeyInclusive, false);
             var tmp = originalDictionary.Clone();
 
-            tmp.Remove(head.Keys.ToArray<T1>());
-            tmp.Remove(tail.Keys.ToArray<T1>());
+            tmp.Remove(head.Keys.ToArray<TKey>());
+            tmp.Remove(tail.Keys.ToArray<TKey>());
 
             return tmp;
         }
 
-        public static IDictionary<T1, T2> Clone<T1, T2>(this IDictionary<T1, T2> originalDictionary)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> Clone<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
         {
             return originalDictionary.ToDictionary(entry => entry.Key, entry => entry.Value);
         }
 
-        public static IDictionary<T1, T2> DeepClone<T1, T2>(this IDictionary<T1, T2> originalDictionary) where T2 : ICloneable
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> DeepClone<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary) where TValue : ICloneable
         {
-            return originalDictionary.ToDictionary(entry => entry.Key, entry => (T2)entry.Value.Clone());
-        }
-
-        public static List<T1> ToKeysList<T1, T2>(this IDictionary<T1, T2> originalDictionary)
-        {
-            return new List<T1>(originalDictionary.Keys);
-        }
-
-        public static List<T2> ToValuesList<T1, T2>(this IDictionary<T1, T2> originalDictionary)
-        {
-            return new List<T2>(originalDictionary.Values);
+            return originalDictionary.ToDictionary(entry => entry.Key, entry => (TValue)entry.Value.Clone());
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
         public static void RemoveAll<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
         {
             var keys = originalDictionary.Keys.ToList();
@@ -293,6 +493,14 @@ namespace System.Collections.Generic
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static TValue GetSafe<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary, TKey key)
         {
             try
@@ -339,14 +547,14 @@ namespace System.Collections.Generic
         /// <summary>
         /// Trim the excess items from the Dictionary
         /// </summary>
-        /// <typeparam name="TKey"></typeparam>
-        /// <typeparam name="TValue"></typeparam>
-        /// <param name="dic"></param>
+        /// <typeparam name="TKey">Type of the Key</typeparam>
+        /// <typeparam name="TValue">Type of the Value</typeparam>
+        /// <param name="originalDictionary">Dictionary to evaluate</param>
         /// <returns></returns>
-        public static IDictionary<TKey, TValue> TrimExcess<TKey, TValue>(this IDictionary<TKey, TValue> dic)
+        public static IDictionary<TKey, TValue> TrimExcess<TKey, TValue>(this IDictionary<TKey, TValue> originalDictionary)
         {
-            var kv = new KeyValuePair<TKey, TValue>[dic.Count];
-            dic.CopyTo(kv, 0);
+            var kv = new KeyValuePair<TKey, TValue>[originalDictionary.Count];
+            originalDictionary.CopyTo(kv, 0);
             List<KeyValuePair<TKey, TValue>> l = kv.ToList();
             l.TrimExcess();
             var newDic = new Dictionary<TKey, TValue>(l.Count);

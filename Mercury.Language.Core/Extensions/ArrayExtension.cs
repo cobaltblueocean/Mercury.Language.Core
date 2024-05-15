@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Numerics;
-using Mercury.Language.Core;
+using Mercury.Language;
 using Mercury.Language.Comparers;
 using Mercury.Language.Exceptions;
 using Mercury.Language.Math;
@@ -2029,6 +2029,12 @@ namespace System
             return c;
         }
 
+        /// <summary>
+        /// To fill the array with supplied value
+        /// </summary>
+        /// <typeparam name="T">Target Type</typeparam>
+        /// <param name="originalArray">Original array</param>
+        /// <param name="with">Filling value</param>
         public static void Fill<T>(this T[] originalArray, T with)
         {
             for (int i = 0; i < originalArray.Length; i++)
@@ -2111,7 +2117,7 @@ namespace System
             }
             else
             {
-                throw new IndexOutOfRangeException(LocalizedResources.Instance().Utility_Extension_Array_SetRow_TheValueArrayMustBeSameLengthOfTheTargetArraysRow);
+                throw new IndexOutOfRangeException(LocalizedResources.Instance().THE_VALUE_ARRAY_MUST_BE_SAME_LENGTH_OF_THE_TARGET_ARRAYS_ROW);
             }
         }
 
@@ -2149,7 +2155,7 @@ namespace System
             }
             else
             {
-                throw new IndexOutOfRangeException(LocalizedResources.Instance().Utility_Extension_Array_SetRow_TheValueArrayMustBeSameLengthOfTheTargetArraysRow);
+                throw new IndexOutOfRangeException(LocalizedResources.Instance().THE_VALUE_ARRAY_MUST_BE_SAME_LENGTH_OF_THE_TARGET_ARRAYS_ROW);
             }
         }
 
@@ -2165,7 +2171,7 @@ namespace System
             }
             else
             {
-                throw new IndexOutOfRangeException(LocalizedResources.Instance().Utility_Extension_Array_SetRow_TheValueArrayMustBeSameLengthOfTheTargetArraysRow);
+                throw new IndexOutOfRangeException(LocalizedResources.Instance().THE_VALUE_ARRAY_MUST_BE_SAME_LENGTH_OF_THE_TARGET_ARRAYS_ROW);
             }
         }
 
@@ -2249,7 +2255,7 @@ namespace System
                     break;
 
                 default:
-                    throw new ArgumentException(LocalizedResources.Instance().Utility_Extension_Array_ToUpperTriangular_OnlyLowerTriangularUpperTriangularAndDiagonalMatricesAreSupportedAtThisTime, "matrixType");
+                    throw new ArgumentException(LocalizedResources.Instance().ONLY_LOWER_TRIANGULAR_UPPER_TRIANGULAR_AND_DIAGONAL_MATRICES_ARE_SUPPORTED_AT_THIS_TIME, "matrixType");
             }
 
             return result;
@@ -2474,7 +2480,7 @@ namespace System
                             result[i, j] = result[j, i] = matrix[i, j];
                     break;
                 default:
-                    throw new System.Exception(LocalizedResources.Instance().Utility_Extension_Array_Transpose_OnlySquareMatricesCanBeTransposedInPlace);
+                    throw new System.Exception(LocalizedResources.Instance().ONLY_SQUARE_MATRICES_CAN_BE_TRANSPOSED_IN_PLACE);
             }
 
             return result;
@@ -4011,7 +4017,7 @@ namespace System
             if (inPlace)
             {
                 if (rows != cols)
-                    throw new ArgumentException(LocalizedResources.Instance().Utility_Extension_Array_Transpose_OnlySquareMatricesCanBeTransposedInPlace, "matrix");
+                    throw new ArgumentException(LocalizedResources.Instance().ONLY_SQUARE_MATRICES_CAN_BE_TRANSPOSED_IN_PLACE, "matrix");
 
                 for (int i = 0; i < rows; i++)
                 {
@@ -4087,7 +4093,7 @@ namespace System
             Array arr = array as Array;
 
             if (arr == null)
-                throw new ArgumentException(LocalizedResources.Instance().Utility_Extension_Array_Transpose_TheGivenObjectMustInheritFromSystemArray, "array");
+                throw new ArgumentException(LocalizedResources.Instance().THE_GIVEN_OBJECT_MUST_INHERIT_FROM_SYSTEM_ARRAY, "array");
 
             return Transpose(arr, order) as T;
         }

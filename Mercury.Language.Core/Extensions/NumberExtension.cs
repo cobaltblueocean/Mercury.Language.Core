@@ -23,9 +23,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mercury.Language;
 using Mercury.Language.Math;
 using Mercury.Language.Log;
-using Mercury.Language.Core;
 
 namespace System
 {

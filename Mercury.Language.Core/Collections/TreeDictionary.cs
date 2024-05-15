@@ -19,20 +19,9 @@
 //ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 //(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Mercury.Language.Exceptions;
-using Mercury.Language.Core;
+using Mercury.Language;
 
 namespace System.Collections.Generic
 {
