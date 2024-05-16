@@ -4749,14 +4749,38 @@ namespace System
             }
         }
 
-        public static double Signum(double a)
+        /// <summary>
+        /// Returns the signum function of the argument; zero if the argument is zero, 1.0 if the argument is greater than zero, -1.0 if the argument is less than zero.
+        /// <p>Special Cases:
+        /// <ul>
+        /// <li> If the argument is NaN, then the result is NaN.
+        /// <li> If the argument is positive zero or negative zero, then the result is the same as the argument.
+        /// </li>ul>
+        /// 
+        /// Author: Joseph D. Darcy
+        /// </summary>
+        /// <param name="d">the floating-point value whose signum is to be returned</param>
+        /// <returns>the signum function of the argument</returns>
+        public static double Signum(double d)
         {
-            return (a < 0.0) ? -1.0 : ((a > 0.0) ? 1.0 : a); // return +0.0/-0.0/NaN depending on a
+            return (d == 0.0 || Double.IsNaN(d)) ? d : CopySign(1.0, d);
         }
 
-        public static float Signum(float a)
+        /// <summary>
+        /// Returns the signum function of the argument; zero if the argument is zero, 1.0f if the argument is greater than zero, -1.0f if the argument is less than zero.
+        /// <p>Special Cases:
+        /// <ul>
+        /// <li> If the argument is NaN, then the result is NaN.
+        /// <li> If the argument is positive zero or negative zero, then the result is the same as the argument.
+        /// </li>ul>
+        /// 
+        /// Author: Joseph D. Darcy
+        /// </summary>
+        /// <param name="f">the floating-point value whose signum is to be returned</param>
+        /// <returns>the signum function of the argument</returns>
+        public static float Signum(float f)
         {
-            return (a < 0.0f) ? -1.0f : ((a > 0.0f) ? 1.0f : a); // return +0.0/-0.0/NaN depending on a
+            return (f == 0.0f || float.IsNaN(f)) ? f : CopySign(1.0f, f);
         }
 
         public static double SquareRoot(double a)

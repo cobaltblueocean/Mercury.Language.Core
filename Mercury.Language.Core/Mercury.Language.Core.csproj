@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Version>0.8.2.10</Version>
+    <Version>0.8.2.11</Version>
     <Authors>Kei Nakai</Authors>
     <Company>Mercury Technologies</Company>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -76,7 +76,14 @@
 - Ported more methods for ArgumentChecker class
 
 [0.8.2.8]
-- Adde some more methods ArgumentChecker class</PackageReleaseNotes>
+- Adde some more methods ArgumentChecker class
+
+[0.8.2.9 ~ 0.9.2.10]
+ - Update package reference
+
+[0.8.2.11]
+- Bug fix for QuickMath.Signum() methods
+</PackageReleaseNotes>
     <ApplicationIcon>Mercury.ico</ApplicationIcon>
     <PackageIcon>Mercury.jpg</PackageIcon>
     <RepositoryUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</RepositoryUrl>
