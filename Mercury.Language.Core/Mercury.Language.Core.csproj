@@ -93,6 +93,8 @@
     <Title>Mercury Language Core Package</Title>
     <Copyright>Copyright (C) Mercury Technologies. All rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -135,6 +137,17 @@
   <ItemGroup>
     <Folder Include="Attributes\" />
     <Folder Include="Utility\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
