@@ -89,6 +89,10 @@
     <RepositoryUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <PackageId>MercuryTech.Language.Core</PackageId>
+    <Title>Mercury Language Core Package</Title>
+    <Copyright>Copyright (C) Mercury Technologies. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
