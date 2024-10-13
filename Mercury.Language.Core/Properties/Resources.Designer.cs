@@ -3851,6 +3851,15 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplied value must be a valid byte literal between {0} and {1}: [{2}].
+        /// </summary>
+        internal static string SUPPLIED_VALUE_MUST_BE_A_VALID_BYTE_LITERAL_BETWEEN_A_AND_B {
+            get {
+                return ResourceManager.GetString("SUPPLIED_VALUE_MUST_BE_A_VALID_BYTE_LITERAL_BETWEEN_A_AND_B", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The array arguments must have the same length..
         /// </summary>
         internal static string THE_ARRAY_ARGUMENTS_MUST_HAVE_THE_SAME_LENGTH {

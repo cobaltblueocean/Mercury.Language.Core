@@ -1380,6 +1380,9 @@
   <data name="SUBARRAY_ENDS_AFTER_ARRAY_END" xml:space="preserve">
     <value>サブ配列は配列の終わりの後に終了しています。</value>
   </data>
+  <data name="SUPPLIED_VALUE_MUST_BE_A_VALID_BYTE_LITERAL_BETWEEN_A_AND_B" xml:space="preserve">
+    <value>与えられたバイトリテラルの値は {0} と {1} の範囲でなければなりません: [{2}]</value>
+  </data>
   <data name="THE_ARRAY_ARGUMENTS_MUST_HAVE_THE_SAME_LENGTH" xml:space="preserve">
     <value>配列の引数は同じ長さでなければなりません。</value>
   </data>

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Version>0.8.2.11</Version>
+    <Version>0.8.2.12</Version>
     <Authors>Kei Nakai</Authors>
     <Company>Mercury Technologies</Company>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -83,7 +83,9 @@
 
 [0.8.2.11]
 - Bug fix for QuickMath.Signum() methods
-</PackageReleaseNotes>
+
+[0.8.2.12]
+- Added ObjectUtility class</PackageReleaseNotes>
     <ApplicationIcon>Mercury.ico</ApplicationIcon>
     <PackageIcon>Mercury.jpg</PackageIcon>
     <RepositoryUrl>https://github.com/cobaltblueocean/Mercury.Language.Core</RepositoryUrl>
@@ -102,14 +104,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mercury.Language.ObjectExtension" Version="0.8.0.5" />
+    <PackageReference Include="MercuryTech.Language.ObjectExtension" Version="0.8.0.6" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
-    <PackageReference Include="System.Diagnostics.EventLog" Version="8.0.0" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.5" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
+    <PackageReference Include="System.Diagnostics.EventLog" Version="8.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
     <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
-    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -136,7 +138,6 @@
 
   <ItemGroup>
     <Folder Include="Attributes\" />
-    <Folder Include="Utility\" />
   </ItemGroup>
 
   <ItemGroup>
