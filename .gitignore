@@ -41,3 +41,5 @@ Mercury.Language.Core/obj/project.assets.json
 /.vs/ProjectEvaluation/mercury.language.core.metadata.v7.bin
 /.vs/ProjectEvaluation/mercury.language.core.projects.v7.bin
 /Mercury.Language.Core.Test/bin/Release/net7.0
+/.vs
+/Mercury.Language.Core/bin/Release

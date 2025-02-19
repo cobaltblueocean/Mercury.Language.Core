@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Version>0.8.2.15</Version>
+    <Version>0.8.2.17</Version>
     <Authors>Kei Nakai</Authors>
     <Company>Mercury Technologies</Company>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -108,14 +108,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MercuryTech.Language.ObjectExtension" Version="0.8.0.9" />
+    <PackageReference Include="MercuryTech.Language.ObjectExtension" Version="0.8.0.11" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
-    <PackageReference Include="System.Diagnostics.EventLog" Version="8.0.1" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
+    <PackageReference Include="System.Diagnostics.EventLog" Version="9.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
     <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
-    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

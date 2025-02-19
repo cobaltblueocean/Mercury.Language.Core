@@ -33,10 +33,19 @@ namespace System
     /// </summary>
     public static class RandomNumberGeneratorExtension
     {
-        public static double Next(this RandomNumberGenerator r)
+        public static double Next(this RandomNumberGenerator g)
         {
-            int buf = RandomNumberGenerator.GetInt32(int.MaxValue);
-            return (double)buf;
+            // output random float number in the interval 0 <= x < 1
+            int r = RandomNumberGenerator.GetInt32(int.MaxValue); // get 32 random bits
+            if (BitConverter.IsLittleEndian)
+            {
+                byte[] i0 = BitConverter.GetBytes((r << 20));
+                byte[] i1 = BitConverter.GetBytes(((r >> 12) | 0x3FF00000));
+                byte[] bytes = { i0[0], i0[1], i0[2], i0[3], i1[0], i1[1], i1[2], i1[3] };
+                double f = BitConverter.ToDouble(bytes, 0);
+                return f - 1.0;
+            }
+            return r * (1.0 / (0xFFFFFFFF + 1.0));
         }
 
         public static double[] GetVector(this RandomNumberGenerator r, int dimension)
