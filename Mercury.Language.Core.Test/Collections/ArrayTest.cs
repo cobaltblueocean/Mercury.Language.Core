@@ -58,5 +58,29 @@ namespace Mercury.Language.Core.Test.Collections
                 ClassicAssert.AreEqual(data[i + start], result[0, i + offset]);
             }
         }
+
+
+        [Test]
+        public void ArrayRangeTest()
+        {
+            double[] data = new double[100];
+            int startIndex = 36;
+            int arrayLength = 23;
+            int lastCount = data.Length - startIndex - arrayLength;
+
+            for (int i = 0; i< data.Length; i++)
+            {
+                data[i] = i;
+            }
+
+            double targetFirst = data[startIndex];
+            double targetLast = data[startIndex + arrayLength - 1];
+
+            var buf = data.Skip(startIndex).SkipLast(lastCount).ToArray();
+
+            ClassicAssert.AreEqual(buf.Length, arrayLength);
+            ClassicAssert.AreEqual(buf[0], targetFirst);
+            ClassicAssert.AreEqual(buf[buf.Length - 1], targetLast);
+        }
     }
 }

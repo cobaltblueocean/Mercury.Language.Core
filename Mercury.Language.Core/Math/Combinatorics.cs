@@ -599,7 +599,7 @@ namespace Mercury.Language.Math
         ///
         /// <remarks>
         /// <para>
-        ///   The Range methods should be equivalent to NumPy's np.arange method, with one
+        ///   The ofRange methods should be equivalent to NumPy's np.arange method, with one
         ///   single difference: when the intervals are inverted (i.e. a > b) and the step
         ///   size is negative, the framework still iterates over the range backwards, as 
         ///   if the step was negative.</para>

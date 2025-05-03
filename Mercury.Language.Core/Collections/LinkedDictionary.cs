@@ -48,14 +48,44 @@ namespace System.Collections.Generic
         private Node firstNode;   // reference to first node of chain
         private int currentSize; // number of entries 
 
-        public LinkedDictionary()
+        private IComparer<K> _comparer;
+        private Boolean isIComparer = false;
+        private StringComparer _stringComparer = StringComparer.InvariantCulture;
+
+        public Boolean IsIComparer => isIComparer;
+
+        public IComparer<K> Comparer
         {
+            get { return _comparer; }
+            set
+            {
+                _comparer = value;
+                if (_comparer == null)
+                    isIComparer = false;
+            }
+        }
+
+        public LinkedDictionary() : this(Comparer<K>.Default)
+        {
+
+        }
+
+
+        public LinkedDictionary(IComparer<K> comparer)
+        {
+            isIComparer = typeof(K).IsComparable();
+            Comparer = comparer;
+
             firstNode = null;
             currentSize = 0;
         } // end default constructor
 
+
         public LinkedDictionary(LinkedDictionary<K, V> source)
         {
+            isIComparer = typeof(K).IsComparable();
+            Comparer = source.Comparer;
+
             var sourceItems = source.GetEnumerator();
             bool hasItem = true;
             if (sourceItems != null)
@@ -72,7 +102,10 @@ namespace System.Collections.Generic
 
         public LinkedDictionary(IDictionary<K, V> source)
         {
-            foreach(var item in source)
+            isIComparer = typeof(K).IsComparable();
+            Comparer = Comparer<K>.Default;
+
+            foreach (var item in source)
             {
                 Add(item.Key, item.Value);
             }
@@ -217,22 +250,68 @@ namespace System.Collections.Generic
             currentSize = 0;
         } // end clear
 
+        public bool ContainsKey(KeyValuePair<K, V> item)
+        {
+
+            int index = -1;
+            return Find(ref index, item.Key) == 0;
+        }
+
         public bool ContainsKey(K key)
         {
+            int index = -1;
+            try
+            {
+                return Find(ref index, key) == 0;
+            }
+            catch
+            {
+                if (firstNode is null)
+                    return false;
+                else
+                {
+                    Node currentNode = firstNode;
+                    while ((currentNode != null) && !key.Equals(currentNode.Key))
+                    {
+                        currentNode = currentNode.NextNode;
+                    } // end while
+
+                    if (currentNode == null)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// returns 0 if found
+        /// 
+        /// when found, index will point to the found node
+        /// </summary>        
+        private int Find(ref int index, K key)
+        {
+            int last = -1;
+            int cmp = -1;
+
             Node currentNode = firstNode;
-            while ((currentNode != null) && !key.Equals(currentNode.Key))
+            do
             {
                 currentNode = currentNode.NextNode;
-            } // end while
+                cmp = CompareValue(key, currentNode.Key);
+                last++;
+            } while (cmp != 0);
 
-            if (currentNode == null)
-            {
-                return false;
-            }
+            index = last;
+            return cmp;
+        }
+
+        private int CompareValue(K value1, K value2)
+        {
+            if (IsIComparer)
+                return Comparer.Compare(value1, value2);
             else
-            {
-                return true;
-            }
+                return _stringComparer.Compare(value1.ToString(), value2.ToString());
         }
 
         public void Add(K key, V value)

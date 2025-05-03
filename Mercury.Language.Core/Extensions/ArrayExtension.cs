@@ -27,6 +27,7 @@ namespace System
         }
 
         #endregion
+
         /// <summary>
         ///   Creates a range vector (like NumPy's arange function).
         /// </summary>
@@ -35,7 +36,7 @@ namespace System
         ///
         /// <remarks>
         /// <para>
-        ///   The Range methods should be equivalent to NumPy's np.arange method, with one
+        ///   The ofRange methods should be equivalent to NumPy's np.arange method, with one
         ///   single difference: when the intervals are inverted (i.e. a > b) and the step
         ///   size is negative, the framework still iterates over the range backwards, as 
         ///   if the step was negative.</para>
@@ -46,7 +47,7 @@ namespace System
         ///
         /// <seealso cref="Interval(int, int)"/>
         ///
-        private static int[] Range(int n)
+        private static int[] ofRange(int n)
         {
             int[] r = new int[(int)n];
             for (int i = 0; i < r.Length; i++)
@@ -1652,7 +1653,7 @@ namespace System
         {
             if (!stable)
             {
-                order = Range(values.Length);
+                order = ofRange(values.Length);
                 Array.Sort(values, order);
 
                 if (direction == ComparerDirection.Descending)

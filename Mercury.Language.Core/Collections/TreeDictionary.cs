@@ -44,6 +44,14 @@ namespace System.Collections.Generic
         private Boolean isIComparer = false;
         private StringComparer _stringComparer = StringComparer.InvariantCulture;
 
+        public Boolean IsIComparer => isIComparer;
+
+        public IComparer<TKey> Comparer
+        {
+            get { return _comparer; }
+            set { _comparer = value; }
+        }
+
         public TreeDictionary() : this(InitSize, null)
         {
 
@@ -54,9 +62,9 @@ namespace System.Collections.Generic
             isIComparer = typeof(TKey).IsComparable();
 
             if (comparer == null)
-                _comparer = Comparer<TKey>.Default;
+                Comparer = Comparer<TKey>.Default;
             else
-                _comparer = comparer;
+                Comparer = comparer;
 
             _nodes = new Node[initSize];
             Keys = new List<TKey>();
@@ -65,8 +73,8 @@ namespace System.Collections.Generic
 
         private void init()
         {
-            if (_comparer == null)
-                _comparer = Comparer<TKey>.Default;
+            if (Comparer == null)
+                Comparer = Comparer<TKey>.Default;
 
             if (_nodes == null)
             {
@@ -229,8 +237,8 @@ namespace System.Collections.Generic
 
         private int CompareValue(TKey value1, TKey value2)
         {
-            if (isIComparer)
-                return _comparer.Compare(value1, value2);
+            if (IsIComparer)
+                return Comparer.Compare(value1, value2);
             else
                 return _stringComparer.Compare(value1.ToString(), value2.ToString());
         }
