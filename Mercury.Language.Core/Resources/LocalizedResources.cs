@@ -90,6 +90,7 @@ namespace Mercury.Language
 
         #endregion
 
+        public String ALL_ROWS_MUST_HAVE_THE_SAME_NUMBER_OF_COLUMNS { get { return Resources.ALL_ROWS_MUST_HAVE_THE_SAME_NUMBER_OF_COLUMNS; } }
         public String ALL_VECTORS_MUST_HAVE_THE_SAME_DIMENSIONALITY { get { return Resources.ALL_VECTORS_MUST_HAVE_THE_SAME_DIMENSIONALITY; } }
         public String ARG_CANNOT_BE_NaN { get { return Resources.ARG_CANNOT_BE_NaN; } }
         public String ARG_MUST_BE_PERIOD { get { return Resources.ARG_MUST_BE_PERIOD; } }
@@ -137,6 +138,10 @@ namespace Mercury.Language
         public String CANNOT_COMPUTE_BETA_DENSITY_AT_1_FOR_SOME_BETA { get { return Resources.CANNOT_COMPUTE_BETA_DENSITY_AT_1_FOR_SOME_BETA; } }
         public String CANNOT_COMPUTE_NTH_ROOT_FOR_NEGATIVE_N { get { return Resources.CANNOT_COMPUTE_NTH_ROOT_FOR_NEGATIVE_N; } }
         public String CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS { get { return Resources.CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS; } }
+        public String CANNOT_DIVIDE_BY_ZERO { get { return Resources.CANNOT_DIVIDE_BY_ZERO; } }
+        public String CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_1D { get { return Resources.CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_1D; } }
+        public String CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_2D { get { return Resources.CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_2D; } }
+        public String CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_3D { get { return Resources.CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_3D; } }
         public String CANNOT_FORMAT_INSTANCE_AS_3D_VECTOR { get { return Resources.CANNOT_FORMAT_INSTANCE_AS_3D_VECTOR; } }
         public String CANNOT_FORMAT_INSTANCE_AS_COMPLEX { get { return Resources.CANNOT_FORMAT_INSTANCE_AS_COMPLEX; } }
         public String CANNOT_FORMAT_INSTANCE_AS_REAL_VECTOR { get { return Resources.CANNOT_FORMAT_INSTANCE_AS_REAL_VECTOR; } }
@@ -274,6 +279,8 @@ namespace Mercury.Language
         public String INVALID_INTERVAL_INITIAL_VALUE_PARAMETERS { get { return Resources.INVALID_INTERVAL_INITIAL_VALUE_PARAMETERS; } }
         public String INVALID_ITERATIONS_LIMITS { get { return Resources.INVALID_ITERATIONS_LIMITS; } }
         public String INVALID_MAX_ITERATIONS { get { return Resources.INVALID_MAX_ITERATIONS; } }
+        public String INVALID_NUMBER_OF_INDICES_2D { get { return Resources.INVALID_NUMBER_OF_INDICES_2D; } }
+        public String INVALID_NUMBER_OF_INDICES_3D { get { return Resources.INVALID_NUMBER_OF_INDICES_3D; } }
         public String INVALID_OPERATION_NEGATIVE_BASE_AND_NON_INTEGER_POWER { get { return Resources.INVALID_OPERATION_NEGATIVE_BASE_AND_NON_INTEGER_POWER; } }
         public String INVALID_OPERATION_ZERO_BASE_AND_NEGATIVE_POWER { get { return Resources.INVALID_OPERATION_ZERO_BASE_AND_NEGATIVE_POWER; } }
         public String INVALID_REGRESSION_ARRAY { get { return Resources.INVALID_REGRESSION_ARRAY; } }
@@ -293,6 +300,7 @@ namespace Mercury.Language
         public String LCM_OVERFLOW_32_BITS { get { return Resources.LCM_OVERFLOW_32_BITS; } }
         public String LCM_OVERFLOW_64_BITS { get { return Resources.LCM_OVERFLOW_64_BITS; } }
         public String LENGTH { get { return Resources.LENGTH; } }
+        public String LENGTH_DOES_NOT_MATCH { get { return Resources.LENGTH_DOES_NOT_MATCH; } }
         public String LINKEDDICTIONARY_COULD_NOT_FIND_THE_KEY { get { return Resources.LINKEDDICTIONARY_COULD_NOT_FIND_THE_KEY; } }
         public String LINKEDHASHSET_OTHER_CANNOT_BE_NULL { get { return Resources.LINKEDHASHSET_OTHER_CANNOT_BE_NULL; } }
         public String LIST_OF_CHROMOSOMES_BIGGER_THAN_POPULATION_SIZE { get { return Resources.LIST_OF_CHROMOSOMES_BIGGER_THAN_POPULATION_SIZE; } }
@@ -548,7 +556,6 @@ namespace Mercury.Language
         public String UNSUPPORTED_EXPANSION_MODE { get { return Resources.UNSUPPORTED_EXPANSION_MODE; } }
         public String UNSUPPORTED_FIELD { get { return Resources.UNSUPPORTED_FIELD; } }
         public String UNSUPPORTED_OPERATION { get { return Resources.UNSUPPORTED_OPERATION; } }
-        public String UNSUPPORTED_OPERATION1 { get { return Resources.UNSUPPORTED_OPERATION1; } }
         public String UNSUPPORTED_UNIT { get { return Resources.UNSUPPORTED_UNIT; } }
         public String URL_CONTAINS_NO_DATA { get { return Resources.URL_CONTAINS_NO_DATA; } }
         public String USER_EXCEPTION { get { return Resources.USER_EXCEPTION; } }

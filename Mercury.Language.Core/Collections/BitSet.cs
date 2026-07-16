@@ -43,7 +43,7 @@ namespace System.Collections
 
         static BitSet()
         {
-            if (BitConverter.IsLittleEndian) EndianFixer = (a) => a.Reverse().ToArray();
+            if (BitConverter.IsLittleEndian) EndianFixer = (a) => System.Linq.Enumerable.Reverse(a).ToArray();
             else EndianFixer = (a) => a;
         }
 

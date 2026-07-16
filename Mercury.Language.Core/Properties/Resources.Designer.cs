@@ -19,7 +19,7 @@ namespace Mercury.Language.Core.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,15 @@ namespace Mercury.Language.Core.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All rows must have the same number of columns..
+        /// </summary>
+        internal static string ALL_ROWS_MUST_HAVE_THE_SAME_NUMBER_OF_COLUMNS {
+            get {
+                return ResourceManager.GetString("ALL_ROWS_MUST_HAVE_THE_SAME_NUMBER_OF_COLUMNS", resourceCulture);
             }
         }
         
@@ -480,6 +489,42 @@ namespace Mercury.Language.Core.Properties {
         internal static string CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS {
             get {
                 return ResourceManager.GetString("CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot divide by zero..
+        /// </summary>
+        internal static string CANNOT_DIVIDE_BY_ZERO {
+            get {
+                return ResourceManager.GetString("CANNOT_DIVIDE_BY_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot divide by zero at element {0}..
+        /// </summary>
+        internal static string CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_1D {
+            get {
+                return ResourceManager.GetString("CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_1D", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot divide by zero at element [{0}, {1}]..
+        /// </summary>
+        internal static string CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_2D {
+            get {
+                return ResourceManager.GetString("CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_2D", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot divide by zero at element [{0}, {1}, {2}]..
+        /// </summary>
+        internal static string CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_3D {
+            get {
+                return ResourceManager.GetString("CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_3D", resourceCulture);
             }
         }
         
@@ -1753,6 +1798,24 @@ namespace Mercury.Language.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid number of indices. Expected 2 indices for a 2D matrix..
+        /// </summary>
+        internal static string INVALID_NUMBER_OF_INDICES_2D {
+            get {
+                return ResourceManager.GetString("INVALID_NUMBER_OF_INDICES_2D", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid number of indices. Expected 3 indices for a 3D matrix..
+        /// </summary>
+        internal static string INVALID_NUMBER_OF_INDICES_3D {
+            get {
+                return ResourceManager.GetString("INVALID_NUMBER_OF_INDICES_3D", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Operation: negative base and non-integer power.
         /// </summary>
         internal static string INVALID_OPERATION_NEGATIVE_BASE_AND_NON_INTEGER_POWER {
@@ -1920,6 +1983,15 @@ namespace Mercury.Language.Core.Properties {
         internal static string LENGTH {
             get {
                 return ResourceManager.GetString("LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length does not match for 2 matrixes.
+        /// </summary>
+        internal static string LENGTH_DOES_NOT_MATCH {
+            get {
+                return ResourceManager.GetString("LENGTH_DOES_NOT_MATCH", resourceCulture);
             }
         }
         
@@ -4225,15 +4297,6 @@ namespace Mercury.Language.Core.Properties {
         internal static string UNSUPPORTED_OPERATION {
             get {
                 return ResourceManager.GetString("UNSUPPORTED_OPERATION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to unsupported operation.
-        /// </summary>
-        internal static string UNSUPPORTED_OPERATION1 {
-            get {
-                return ResourceManager.GetString("UNSUPPORTED_OPERATION1", resourceCulture);
             }
         }
         

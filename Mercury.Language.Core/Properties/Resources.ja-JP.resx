@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALL_ROWS_MUST_HAVE_THE_SAME_NUMBER_OF_COLUMNS" xml:space="preserve">
+    <value>全ての行は同じ数の列を持っていなければなりません。</value>
+  </data>
   <data name="ALL_VECTORS_MUST_HAVE_THE_SAME_DIMENSIONALITY" xml:space="preserve">
     <value>全てのベクトルは同じ次元でなければなりません。</value>
   </data>
@@ -251,6 +254,18 @@
   </data>
   <data name="CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS" xml:space="preserve">
     <value>負の数の要素 ({0})を破棄することはできません。</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO" xml:space="preserve">
+    <value>0で割ることはできません。</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_1D" xml:space="preserve">
+    <value>要素 [{0}] をゼロで割ることはできません。</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_2D" xml:space="preserve">
+    <value>要素 [{0}, {1}] をゼロで割ることはできません。</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_3D" xml:space="preserve">
+    <value>要素 [{0}, {1}, {2}] をゼロで割ることはできません。</value>
   </data>
   <data name="CANNOT_FORMAT_INSTANCE_AS_3D_VECTOR" xml:space="preserve">
     <value>{0}インスタンスを3Dベクトルとしてフォーマットできません。</value>
@@ -459,7 +474,7 @@
   <data name="EVALUATION_FAILED_FOR_ARGUMENT" xml:space="preserve">
     <value>引数 {0} で評価に失敗しました。</value>
   </data>
-  <data name="Exception_FromToSize" xml:space="preserve">
+  <data name="EXCEPTION_FROM_TO_SIZE" xml:space="preserve">
     <value>{0} から {1} へ、サイズは {2} です。</value>
   </data>
   <data name="EXPANSION_FACTOR_SMALLER_THAN_ONE" xml:space="preserve">
@@ -658,7 +673,7 @@
     <value>無効なブラケットパラメータ：下限= {0}、初期= {1}、上限= {2}</value>
   </data>
   <data name="INVALID_CURRENCY_CODE" xml:space="preserve">
-    <value>無効な通貨コードです。</value>
+    <value>無効な通貨コードです。： {0}</value>
   </data>
   <data name="INVALID_DATE_DAYOFYEAR366_IS_NOT_A_LEAP_YEAR" xml:space="preserve">
     <value>無効な日付 '{0}' の 'DayOfYear 366' はうるう年ではありません。</value>
@@ -680,6 +695,12 @@
   </data>
   <data name="INVALID_MAX_ITERATIONS" xml:space="preserve">
     <value>最大反復回数が不正な値です。：{0}</value>
+  </data>
+  <data name="INVALID_NUMBER_OF_INDICES_2D" xml:space="preserve">
+    <value>インデックスの数が違います。2Dマトリックスには2つのインデックスが必要です。</value>
+  </data>
+  <data name="INVALID_NUMBER_OF_INDICES_3D" xml:space="preserve">
+    <value>インデックスの数が違います。3Dマトリックスには3つのインデックスが必要です。</value>
   </data>
   <data name="INVALID_OPERATION_NEGATIVE_BASE_AND_NON_INTEGER_POWER" xml:space="preserve">
     <value>不正な操作：負の基数と非整数の塁上です。</value>
@@ -737,6 +758,9 @@
   </data>
   <data name="LENGTH" xml:space="preserve">
     <value>長さ ({0})</value>
+  </data>
+  <data name="LENGTH_DOES_NOT_MATCH" xml:space="preserve">
+    <value>2つのインデックスの長さが合致しません。</value>
   </data>
   <data name="LINKEDDICTIONARY_COULD_NOT_FIND_THE_KEY" xml:space="preserve">
     <value>キーを見つけることができませんでした。</value>
@@ -1261,7 +1285,7 @@
     <value>対角行列の順列はできません。</value>
   </data>
   <data name="PERMUTATION_EXCEEDS_N" xml:space="preserve">
-    <value>パーミュテーションサイズ ({0})がパーミッションドメインを超えています。</value>
+    <value>パーミュテーションサイズ ({0})がパーミッションドメイン ({1})を超えています。</value>
   </data>
   <data name="PERMUTATION_SIZE" xml:space="preserve">
     <value>置換サイズ ({0}</value>
@@ -1480,7 +1504,7 @@
     <value>無制限のソリューション</value>
   </data>
   <data name="UNKNOWN_MODE" xml:space="preserve">
-    <value>既知のモード：{1} ({2})、{3} ({4})、{5} ({6})、{7} ({8})、{9} 10})および{11} ({12})</value>
+    <value>既知のモード {0}：{1} ({2})、{3} ({4})、{5} ({6})、{7} ({8})、{9} ({10})および{11} ({12})</value>
   </data>
   <data name="UNKNOWN_PARAMETER" xml:space="preserve">
     <value>未知パラメータ{0}</value>

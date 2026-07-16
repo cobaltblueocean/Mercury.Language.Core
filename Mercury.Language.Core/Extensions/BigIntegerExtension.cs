@@ -435,7 +435,7 @@ namespace System.Numerics
 
         public static int[] Magnitude(this BigInteger i)
         {
-            sbyte[] val = (sbyte[])(Array)i.ToByteArray().Reverse().ToArray();
+            sbyte[] val = (sbyte[])(Array)System.Linq.Enumerable.Reverse(i.ToByteArray()).ToArray();
             if (val[0] < 0)
             {
                 return makePositive(val);
@@ -448,7 +448,7 @@ namespace System.Numerics
 
         public static int Signum(this BigInteger i)
         {
-            sbyte[] val = (sbyte[])(Array)i.ToByteArray().Reverse().ToArray();
+            sbyte[] val = (sbyte[])(Array)System.Linq.Enumerable.Reverse(i.ToByteArray()).ToArray();
             if (val[0] < 0)
             {
                 return -1;

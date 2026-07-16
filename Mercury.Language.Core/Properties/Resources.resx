@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALL_ROWS_MUST_HAVE_THE_SAME_NUMBER_OF_COLUMNS" xml:space="preserve">
+    <value>All rows must have the same number of columns.</value>
+  </data>
   <data name="ALL_VECTORS_MUST_HAVE_THE_SAME_DIMENSIONALITY" xml:space="preserve">
     <value>All vectors must have the same dimensionality.</value>
   </data>
@@ -251,6 +254,18 @@
   </data>
   <data name="CANNOT_DISCARD_NEGATIVE_NUMBER_OF_ELEMENTS" xml:space="preserve">
     <value>cannot discard a negative number of elements ({0})</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO" xml:space="preserve">
+    <value>Cannot divide by zero.</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_1D" xml:space="preserve">
+    <value>Cannot divide by zero at element {0}.</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_2D" xml:space="preserve">
+    <value>Cannot divide by zero at element [{0}, {1}].</value>
+  </data>
+  <data name="CANNOT_DIVIDE_BY_ZERO_AT_ELEMENT_3D" xml:space="preserve">
+    <value>Cannot divide by zero at element [{0}, {1}, {2}].</value>
   </data>
   <data name="CANNOT_FORMAT_INSTANCE_AS_3D_VECTOR" xml:space="preserve">
     <value>cannot format a {0} instance as a 3D vector</value>
@@ -681,6 +696,12 @@
   <data name="INVALID_MAX_ITERATIONS" xml:space="preserve">
     <value>bad value for maximum iterations number: {0}</value>
   </data>
+  <data name="INVALID_NUMBER_OF_INDICES_2D" xml:space="preserve">
+    <value>Invalid number of indices. Expected 2 indices for a 2D matrix.</value>
+  </data>
+  <data name="INVALID_NUMBER_OF_INDICES_3D" xml:space="preserve">
+    <value>Invalid number of indices. Expected 3 indices for a 3D matrix.</value>
+  </data>
   <data name="INVALID_OPERATION_NEGATIVE_BASE_AND_NON_INTEGER_POWER" xml:space="preserve">
     <value>Invalid Operation: negative base and non-integer power</value>
   </data>
@@ -737,6 +758,9 @@
   </data>
   <data name="LENGTH" xml:space="preserve">
     <value>length ({0})</value>
+  </data>
+  <data name="LENGTH_DOES_NOT_MATCH" xml:space="preserve">
+    <value>Length does not match for 2 matrixes</value>
   </data>
   <data name="LINKEDDICTIONARY_COULD_NOT_FIND_THE_KEY" xml:space="preserve">
     <value>Could not find the key.</value>
@@ -1504,9 +1528,6 @@
     <value>Unsupported field: {0}</value>
   </data>
   <data name="UNSUPPORTED_OPERATION" xml:space="preserve">
-    <value>unsupported operation</value>
-  </data>
-  <data name="UNSUPPORTED_OPERATION1" xml:space="preserve">
     <value>unsupported operation</value>
   </data>
   <data name="UNSUPPORTED_UNIT" xml:space="preserve">

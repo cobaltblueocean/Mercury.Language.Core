@@ -185,15 +185,5 @@ namespace Mercury.Language.Core.Test
                 return true;
             }
         }
-
-        [Test]
-        public void XMLDataSet_Test()
-        {
-            String _path = "C:\\Users\\Mercury21\\Documents\\Novel\\Mywork\\Work\\sample.ctx";
-            DataSet _dataSet = new DataSet();
-
-            _dataSet.ReadXml(_path);
-
-        }
     }
 }
